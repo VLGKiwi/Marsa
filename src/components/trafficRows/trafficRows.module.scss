@@ -1,0 +1,51 @@
+@use "@styles/func";
+@use "@styles/mixins";
+@use "@styles/variables";
+
+/* stylelint-disable */
+
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: 20px; // Расстояние между слайдерами
+  padding: 20px;
+  background-color: #0b1120; // Фон контейнера
+  border-radius: 10px; // Округленные углы контейнера
+}
+
+.sliderwrapper {
+  position: relative;
+  width: 100%;
+  height: 8px;
+  background: linear-gradient(to right, #00baff, #003d5c); // Градиент дорожки
+  border-radius: 4px;
+  overflow: hidden; // Обрезка лишних элементов
+}
+
+.slider {
+  position: absolute;
+  width: 100%;
+  height: 8px;
+  appearance: none; // Убираем стандартное отображение
+  background: none;
+  outline: none;
+  pointer-events: none; // Убираем кликабельность самой дорожки
+  z-index: 1;
+}
+
+.slider::-webkit-slider-thumb {
+  appearance: none;
+}
+
+.knob {
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 14px;
+  height: 14px;
+  background-color: #00baff; // Цвет точки
+  border-radius: 50%; // Круглая форма
+  box-shadow: 0 0 10px rgb(0 186 255 / 80%); // Glow-эффект
+  pointer-events: none; // Убираем возможность взаимодействия
+  z-index: 2;
+}

@@ -3,7 +3,7 @@ import classNames from 'classnames'
 
 import styles from './traffic.module.scss'
 import { TrafficProps } from './traffic.types'
-import { TrafficText, TrafficTitle } from '@/components'
+import { TrafficText, TrafficTitle, TrafficTv } from '@/components'
 
 const Traffic: FC<TrafficProps> = ({
   className
@@ -14,6 +14,7 @@ const Traffic: FC<TrafficProps> = ({
     <div className={rootClassName}>
       <TrafficTitle />
       <TrafficText />
+      <TrafficTv />
     </div>
   )
 }

@@ -1,5 +1,12 @@
 @use "@styles/func";
 @use "@styles/mixins";
 @use "@styles/variables";
-  
-.root {}
+
+.root {
+	background: url("../../shared/assets/image/tv.png") no-repeat;
+	height: 995px;
+	background-size: contain;
+	padding: 100px;
+	margin: 0 auto;
+	max-width: 1200px;
+}
