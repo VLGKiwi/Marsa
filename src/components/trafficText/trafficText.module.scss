@@ -1,0 +1,18 @@
+@use "@styles/func";
+@use "@styles/mixins" as *;
+@use "@styles/variables";
+
+.root {
+	font-family: var(--font-esq);
+	margin: 24px 85px;
+	font-size: 14px;
+	line-height: 1.8;
+	font-weight: 400px;
+	color: var(--color-white-2);
+	max-width: 60%;
+
+	@include mobile {
+		margin: 18px 20px;
+		font-size: 12px;
+	}
+}
