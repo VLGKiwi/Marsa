@@ -1,0 +1,25 @@
+@use "@styles/func";
+@use "@styles/mixins";
+@use "@styles/variables";
+
+.root {
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+}
+
+.line {
+	margin-left: 20px;
+}
+
+.text {
+	margin: 0 60px 0 20px;
+	font-family: var(--font-esq);
+	font-size: 13px;
+	line-height: 1.8;
+	color: var(--color-white-2);
+
+	& span {
+		color: var(--color-white);
+	}
+}

@@ -6,7 +6,32 @@
 	background: url("../../shared/assets/image/tv.png") no-repeat;
 	height: 995px;
 	background-size: contain;
-	padding: 100px;
+	padding: 120px 100px 150px 80px;
 	margin: 0 auto;
 	max-width: 1200px;
+	display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 равные колонки */
+  grid-template-rows: repeat(2, auto);  /* 2 строки, высота по содержимому */
+  gap: 10px; /* Расстояние между ячейками */
+  width: 100%; /* Опционально: растягиваем на всю ширину */
+}
+
+.item {
+  border: 1px solid #6DCEFF30; /* Пример: граница */
+  padding: 10px;
+  border-radius: 5px; /* Пример: скругленные углы */
+}
+
+.itemmergedvertical {
+	border: 1px solid #6DCEFF30;
+  padding: 10px;
+  border-radius: 5px; /* Пример: скругленные углы */
+  grid-row: 1/3; /* Занимает две колонки */
+}
+
+.itemmergedhorizontal {
+	border: 1px solid #6DCEFF30;
+  padding: 10px;
+  border-radius: 5px; /* Пример: скругленные углы */
+  grid-column: span 2; /* Занимает две колонки */
 }
