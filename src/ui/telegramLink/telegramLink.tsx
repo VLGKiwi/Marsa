@@ -4,7 +4,7 @@ import classNames from 'classnames'
 import styles from './telegramLink.module.scss'
 import { TelegramLinkProps } from './telegramLink.types'
 
-import SvgTelegram from '@icons/telegram.svg';
+import SvgTelegram from '@icons/tg.svg';
 
 const TelegramLink: FC<TelegramLinkProps> = ({
   className

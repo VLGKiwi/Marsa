@@ -9,15 +9,11 @@
 }
 
 .link {
-	background-color: var(--color-white-2);
-	border-radius: 100%;
-	width: 100%;
 	position: relative;
-	top: 2px;
 
 	&__item {
-		width: 100%;
+    width: 40px;
+    height: 42px;
 		position: relative;
-		top: -2px;
 	}
 }
