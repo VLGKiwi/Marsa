@@ -28,8 +28,8 @@ const Introduce: FC<IntroduceProps> = ({ className }) => {
     <div className={rootClassName}>
       <Image
         src={imageSrc}
-        width={500}
-        height={500}
+        width={1920}
+        height={1080}
         alt="Фон"
         quality={100}
         className={styles.image}

@@ -6,6 +6,7 @@ import { HomeProps } from './home.types'
 import { Button } from '@/ui'
 import { Traffic } from '@/modules/traffic'
 import { Introduce } from '@/modules/introduce'
+import { Faq } from '@/modules/faq'
 
 const Home: FC<HomeProps> = ({ className }) => {
   const rootClassName = classNames(styles.root, className)
@@ -15,6 +16,7 @@ const Home: FC<HomeProps> = ({ className }) => {
       <Introduce />
       <Button size='sm'>ВАКАНСИИ</Button>
       <Traffic />
+      <Faq />
     </main>
   )
 }
