@@ -2,9 +2,9 @@
 @use '@styles/mixins';
 
 .root {
-  position: relative;
+  position: absolute;
+  top: 0;
   width: 100%;
-  background-color: var(--color-white-default);
 
   &::after {
     z-index: 1;

@@ -40,7 +40,7 @@ const TrafficGraphic: FC = () => {
         tension: 0.4, // Плавность линий
         pointRadius: 5, // Размеры всех точек
         pointBackgroundColor: '#add7ee', // Цвет всех точек
-        pointHoverBackgroundColor: '#0056b3', // Цвет точки при наведении
+        pointHoverBackgroundColor: '#0a0c18', // Цвет точки при наведении
         pointHoverRadius: 7, // Увеличение точки при наведении
         fill: true, // Заполнение области под графиком
       },
