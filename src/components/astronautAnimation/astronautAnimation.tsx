@@ -56,7 +56,7 @@ type GLTFResult = GLTF & {
   animations: GLTFAction[]
 }
 
-export function Model(props: JSX.IntrinsicElements['group']) {
+export default function Model(props: JSX.IntrinsicElements['group']) {
   const group = React.useRef<THREE.Group | null>(null)
   const { scene, animations } = useGLTF('/models/Astronaut_Animation-transformed.glb')
   const clone = React.useMemo(() => SkeletonUtils.clone(scene), [scene])
