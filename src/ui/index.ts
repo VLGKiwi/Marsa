@@ -1,4 +1,5 @@
 export { Button } from './button'
+export { GumbitCard } from './gumbitCard'
 export { Heading } from './heading'
 export { Input } from './input'
 export { LanguageLinks } from './languageLinks'

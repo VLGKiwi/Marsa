@@ -12,7 +12,7 @@ const Traffic: FC<TrafficProps> = ({
 
   return (
     <div className={rootClassName}>
-      <TrafficTitle />
+      <TrafficTitle text="Точная навигация в мире трафика" />
       <TrafficText />
       <TrafficTv />
     </div>

@@ -1,0 +1,22 @@
+@use "@styles/func";
+@use "@styles/mixins";
+@use "@styles/variables";
+
+.root {
+	display: flex;
+	flex-direction: column;
+	position: relative;
+	gap: 32px;
+	align-items: center;
+
+	svg {
+    width: 197px;
+    height: 240px;
+		position: relative;
+	}
+}
+
+.row {
+	display: flex;
+	gap: 32px;
+}
