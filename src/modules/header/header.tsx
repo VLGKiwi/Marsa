@@ -1,8 +1,7 @@
 import { FC } from 'react'
-import { Wrapper } from '@/ui'
+import { LanguageLinks, TelegramLink, Wrapper } from '@/ui'
 import classNames from 'classnames'
 
-import config from '../../../package.json'
 import styles from './header.module.scss'
 import { HeaderProps } from './header.types'
 import Logo from './logo'
@@ -12,8 +11,9 @@ const Header: FC<HeaderProps> = ({ className }) => {
   return (
     <header className={headerClassName}>
       <Wrapper className={styles.wrapper}>
+        <TelegramLink />
         <Logo />
-        <strong>v {config.version}</strong>
+        <LanguageLinks />
       </Wrapper>
     </header>
   )
