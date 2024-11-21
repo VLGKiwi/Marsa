@@ -1,6 +1,8 @@
 export { Button } from './button'
+export { GumbitCard } from './gumbitCard'
 export { Heading } from './heading'
 export { Input } from './input'
 export { LanguageLinks } from './languageLinks'
 export { TelegramLink } from './telegramLink'
+export { TitleGradient } from './titleGradient'
 export { Wrapper } from './wrapper'

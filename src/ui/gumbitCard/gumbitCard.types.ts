@@ -1,4 +1,4 @@
-export interface TrafficTitleProps {
+export interface GumbitCardProps {
   className?: string;
   text: string;
 }
