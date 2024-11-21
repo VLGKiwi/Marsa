@@ -1,0 +1,19 @@
+@use "@styles/func";
+@use "@styles/mixins";
+@use "@styles/variables";
+
+.root {
+	display: flex;
+	flex-direction: column;
+}
+
+.text {
+	font-family: var(--font-esq);
+	font-size: 13px;
+	line-height: 1.8;
+	color: var(--color-white-2);
+
+	& span {
+		color: var(--color-white);
+	}
+}

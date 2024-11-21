@@ -8,11 +8,13 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  font-weight: 500;
-  font-size: func.rem(18);
-  line-height: func.rem(20);
-  color: var(--color-white-default);
-  background-color: var(--color-blue);
+  font-family: var(--font-esq);
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 30px;
+  color: var(--color-blue-main);
+  background: url("../../shared/assets/icons/card.svg");
+  background-size: contain;
   cursor: pointer;
   transition: variables.$transition;
   transition-property: color, background-color;
@@ -20,8 +22,8 @@
   user-select: none;
 
   &_sm {
-    height: func.rem(48);
-    padding: func.rem(12) func.rem(20);
+    height: 72px;
+    padding: 26px 75px;
   }
 
   &_md {
@@ -35,7 +37,7 @@
   }
 
   &_white {
-    color: var(--color-black-default);
+    color: var(--color-blue-main);
     background-color: var(--color-white-default);
   }
 

@@ -13,6 +13,7 @@
   --color-white-3: #F0F3F730;
   --color-blue-main: #6DCEFF;
   --color-dark-blue-3: #031A2A30;
+  --color-dark-blue: #0A0C18;
 /* stylelint-enable */
 }
 
@@ -39,6 +40,7 @@ body {
   @include text;
   color: var(--color-black-default);
   overflow-x: hidden;
+  background-color: var(--color-dark-blue);
 }
 
 a {
