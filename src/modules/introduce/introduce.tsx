@@ -4,6 +4,7 @@ import { FC, useState, useEffect } from 'react';
 import classNames from 'classnames';
 import styles from './introduce.module.scss';
 import { IntroduceProps } from './introduce.types';
+import { TitleGradient } from '@/ui/TitleGradient';
 import Image from 'next/image';
 
 const Introduce: FC<IntroduceProps> = ({ className }) => {
@@ -34,6 +35,7 @@ const Introduce: FC<IntroduceProps> = ({ className }) => {
         quality={100}
         className={styles.image}
       />
+      <TitleGradient className="title__large title__absolute" text="MARSA TEAM" />
     </div>
   );
 };
