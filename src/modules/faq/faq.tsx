@@ -5,7 +5,7 @@ import classNames from 'classnames'
 
 import styles from './faq.module.scss'
 import { FaqProps } from './faq.types'
-import { TitleGradient } from '@/ui/TitleGradient'
+import { TitleGradient } from '@/ui'
 import Image from 'next/image'
 
 const Faq: FC<FaqProps> = ({
