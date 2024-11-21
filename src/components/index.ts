@@ -1,3 +1,4 @@
+export { GumbitCards } from './gumbitCards'
 export { TrafficCircle } from './trafficCircle'
 export { TrafficGraphic } from './trafficGraphic'
 export { TrafficRgb } from './trafficRgb'
