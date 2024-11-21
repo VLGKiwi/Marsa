@@ -5,6 +5,7 @@ import classNames from 'classnames'
 
 import styles from './faq.module.scss'
 import { FaqProps } from './faq.types'
+import { TitleGradient } from '@/ui'
 import Image from 'next/image'
 
 const Faq: FC<FaqProps> = ({
@@ -37,6 +38,7 @@ const Faq: FC<FaqProps> = ({
         quality={100}
         className={styles.image}
       />
+      <TitleGradient className="title__large title__absolute" text="FAQ" />
     </div>
   )
 }
