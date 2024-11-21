@@ -8,6 +8,7 @@ import { Traffic } from '@/modules/traffic'
 import { Introduce } from '@/modules/introduce'
 import { Faq } from '@/modules/faq'
 import { Gumbit } from '@/modules/gumbit'
+import Link from 'next/link'
 
 const Home: FC<HomeProps> = ({ className }) => {
   const rootClassName = classNames(styles.root, className)
@@ -15,7 +16,9 @@ const Home: FC<HomeProps> = ({ className }) => {
   return (
     <main className={rootClassName}>
       <Introduce />
-      <Button size='sm'>ВАКАНСИИ</Button>
+      <Link href='/vacancy'>
+        <Button size='sm'>ВАКАНСИИ</Button>
+      </Link>
       <Traffic />
       <Gumbit />
       <Faq />
