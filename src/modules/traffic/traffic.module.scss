@@ -1,0 +1,8 @@
+@use "@styles/func";
+@use "@styles/mixins";
+@use "@styles/variables";
+
+.root {
+	max-width: 1200px;
+	margin: 0 auto;
+}
