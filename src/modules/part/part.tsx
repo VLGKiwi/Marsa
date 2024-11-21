@@ -24,7 +24,6 @@ const Part: FC<PartProps> = ({
         {/* Добавляем окружение для реалистичных отражений */}
         <Environment preset="sunset" background />
 
-        {/* Базовое освещение */}
         <ambientLight intensity={0.5} />
         <directionalLight
           position={[10, 10, 5]}
