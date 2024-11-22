@@ -20,7 +20,7 @@ const Home: FC<HomeProps> = ({ className }) => {
       <Link href='/vacancy'>
         <Button size='sm'>ВАКАНСИИ</Button>
       </Link>
-      <Traffic />      
+      <Traffic />
       <Gumbit />
       <Part />
       <Faq />

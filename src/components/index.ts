@@ -1,3 +1,8 @@
+export { AstronautAnimation } from './astronautAnimation'
+export { BuildimAstronaut } from './buildimAstronaut'
+export { BuildimCard } from './buildimCard'
+export { BuildimCards } from './buildimCards'
+export { BuildimLightning } from './buildimLightning'
 export { GumbitCards } from './gumbitCards'
 export { TrafficCircle } from './trafficCircle'
 export { TrafficGraphic } from './trafficGraphic'

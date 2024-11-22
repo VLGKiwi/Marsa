@@ -4,6 +4,7 @@ import classNames from 'classnames'
 import styles from './vacancy.module.scss'
 import { VacancyProps } from './vacancy.types'
 import { Folder } from '@/modules/folder'
+import { Buildim } from '@/modules/buildim'
 
 
 const Vacancy: FC<VacancyProps> = ({
@@ -17,6 +18,7 @@ const Vacancy: FC<VacancyProps> = ({
 
   return (
     <main className={rootClassName}>
+      <Buildim />
       <Folder
         title={'Привет от команды MARSA!'}
         text={text}
