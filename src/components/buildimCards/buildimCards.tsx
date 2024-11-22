@@ -1,35 +1,45 @@
-'use client'
+'use client';
 
-import { FC } from 'react';
+import { FC, useState } from 'react';
 import classNames from 'classnames';
 
 import styles from './buildimCards.module.scss';
 import { BuildimCardsProps } from './buildimCards.types';
 import BuildimCard from '../buildimCard/buildimCard';
 
-
 const BuildimCards: FC<BuildimCardsProps> = ({ className, onHoverCard }) => {
+  const [activeIcon, setActiveIcon] = useState<string | null>(null);
+
   const rootClassName = classNames(styles.root, className);
+
+  const handleMouseEnter = (hoverKey: string, iconName: string) => {
+    onHoverCard(hoverKey); // Сохраняем текущий функционал
+    setActiveIcon(`${iconName}-active`); // Изменяем значение iconName
+  };
 
   return (
     <div className={rootClassName}>
       <div
-        onMouseEnter={() => onHoverCard('first')}
-        onMouseLeave={() => onHoverCard(null)}
+        onMouseEnter={() => handleMouseEnter('first', 'first')}
       >
-        <BuildimCard className="custom-class" iconName="first" />
+        <BuildimCard
+          className="custom-class"
+          iconName={activeIcon === 'first-active' ? 'first-active' : 'third'}
+        />
       </div>
       <div
-        onMouseEnter={() => onHoverCard('second')}
-        onMouseLeave={() => onHoverCard(null)}
+        onMouseEnter={() => handleMouseEnter('second', 'second')}
       >
-        <BuildimCard iconName="second" />
+        <BuildimCard
+          iconName={activeIcon === 'second-active' ? 'second-active' : 'second'}
+        />
       </div>
       <div
-        onMouseEnter={() => onHoverCard('third')}
-        onMouseLeave={() => onHoverCard(null)}
+        onMouseEnter={() => handleMouseEnter('third', 'third')}
       >
-        <BuildimCard iconName="third" />
+        <BuildimCard
+          iconName={activeIcon === 'third-active' ? 'third-active' : 'first'}
+        />
       </div>
     </div>
   );

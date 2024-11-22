@@ -3,5 +3,13 @@
 @use "@styles/variables";
 
 .root {
-	margin-top: 50vh;
+	display: flex;
+	flex-direction: column;
+	gap: 155px;
+	align-items: flex-end;
+	max-width: 1200px;
+	margin: 0 auto;
+	margin-top: 117px;
+	padding: 223px 50px 26px 0;
+	position: relative;
 }

@@ -13,15 +13,23 @@ const BuildimAstronaut: FC<BuildimAstronautProps> = ({ className, activeImage })
       {activeImage ? (
         // Если есть активная картинка, рендерим её
         <Image
-          src={`@public/images/${activeImage}.png`}
-          width={749}
-          height={642}
+          src={`/images/${activeImage}.png`}
+          width={825}
+          height={672}
+          quality={100}
           alt="Active Astronaut"
           className={styles.image}
         />
       ) : (
         // Если нет активной картинки, отображаем заглушку
-        <p className={styles.placeholder}>Hover over a card to see the astronaut</p>
+        <Image
+          src={`/images/first.png`}
+          width={825}
+          height={672}
+          quality={100}
+          alt="Active Astronaut"
+          className={styles.image}
+        />
       )}
     </div>
   );

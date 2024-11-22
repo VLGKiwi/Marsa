@@ -8,11 +8,18 @@ import CardFirst from '@icons/vacancy-card-first.svg';
 import CardSecond from '@icons/vacancy-card-second.svg';
 import CardThird from '@icons/vacancy-card-third.svg';
 
-// Создаем объект для маппинга SVG
+import CardFirstActive from '@icons/vacancy-card-first-active.svg';
+import CardSecondActive from '@icons/vacancy-card-second-active.svg';
+import CardThirdActive from '@icons/vacancy-card-third-active.svg';
+
+// Обновленный объект для маппинга SVG
 const SVG_MAP = {
   first: CardFirst,
   second: CardSecond,
   third: CardThird,
+  'first-active': CardFirstActive,
+  'second-active': CardSecondActive,
+  'third-active': CardThirdActive,
 };
 
 const BuildimCard: FC<BuildimCardProps> = ({ className, iconName }) => {
@@ -21,10 +28,16 @@ const BuildimCard: FC<BuildimCardProps> = ({ className, iconName }) => {
   // Выбираем нужную SVG на основе iconName
   const SelectedIcon = SVG_MAP[iconName];
 
+  // Проверяем наличие иконки
+  if (!SelectedIcon) {
+    console.error(`Icon with name "${iconName}" not found in SVG_MAP.`);
+    return null;
+  }
+
   return (
     <div className={rootClassName}>
       {/* Рендерим выбранную SVG */}
-      <SelectedIcon alt="Graphic Icon" width="100%" height={100} />
+      <SelectedIcon alt="Graphic Icon" width={238} height={150} />
     </div>
   );
 };

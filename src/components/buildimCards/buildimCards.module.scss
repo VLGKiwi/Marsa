@@ -4,5 +4,7 @@
 
 .root {
 	display: flex;
+	position: relative;
 	gap: 18px;
+	z-index: 10;
 }
