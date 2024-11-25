@@ -29,9 +29,9 @@ const TitleGradient: FC<TitleGradientProps> = ({
   }, []);
 
   return (
-    <div className={rootClassName} ref={textRef}>
+    <span className={rootClassName} ref={textRef}>
       {text}
-    </div>
+    </span>
   );
 };
 
