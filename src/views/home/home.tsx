@@ -3,7 +3,7 @@ import classNames from 'classnames'
 
 import styles from './home.module.scss'
 import { HomeProps } from './home.types'
-import { Part } from '@/modules/part'
+// import { Part } from '@/modules/part'
 import { Button } from '@/ui'
 import { Traffic } from '@/modules/traffic'
 import { Introduce } from '@/modules/introduce'
@@ -22,7 +22,7 @@ const Home: FC<HomeProps> = ({ className }) => {
       </Link>
       <Traffic />
       <Gumbit />
-      <Part />
+      {/* <Part /> */}
       <Faq />
     </main>
   )
