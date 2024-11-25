@@ -14,6 +14,7 @@ import { Mission } from '@/modules/mission'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import gsap from 'gsap'
 import { useGSAP } from '@gsap/react'
+import { Company } from '@/modules/company'
 
 gsap.registerPlugin(ScrollTrigger, useGSAP)
 
@@ -23,6 +24,7 @@ const Home: FC<HomeProps> = ({ className }) => {
   return (
     <main className={rootClassName}>
       <Introduce />
+      <Company />
       <Link href='/vacancy'>
         <Button size='sm'>ВАКАНСИИ</Button>
       </Link>

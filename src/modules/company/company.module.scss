@@ -1,0 +1,44 @@
+/* stylelint-disable selector-class-pattern */
+@use "@styles/func";
+@use "@styles/mixins";
+@use "@styles/variables";
+
+.company {
+	display: flex;
+	justify-content: center;
+	align-self: center;
+}
+
+.root {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 575px;
+	height: 130px;
+
+	.container__title {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+
+
+		position: relative;
+		overflow: hidden;
+
+		.title {
+			padding: 17.5px 30px;
+			z-index: 2;
+
+			h2 {
+				text-align: center;
+
+				font-weight: 400;
+				font-family: var(--font-esq);
+				font-size: 20px;
+				line-height: 150%;
+				color: var(--color-white);
+			}
+		}
+	}
+}
