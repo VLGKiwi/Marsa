@@ -94,7 +94,7 @@ export default function Model(props: JSX.IntrinsicElements['group']) {
       onLeave: () => action.paused = true,
       onEnterBack: () => action.play(),
       onLeaveBack: () => action.paused = true,
-      markers: true, // Remove or set to false in production
+      // markers: true, // Remove or set to false in production
     })
 
     // Animate timeScale with GSAP for smooth speed changes

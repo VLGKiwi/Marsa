@@ -10,6 +10,12 @@ import { Introduce } from '@/modules/introduce'
 import { Faq } from '@/modules/faq'
 import { Gumbit } from '@/modules/gumbit'
 import Link from 'next/link'
+import { Mission } from '@/modules/mission'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import gsap from 'gsap'
+import { useGSAP } from '@gsap/react'
+
+gsap.registerPlugin(ScrollTrigger, useGSAP)
 
 const Home: FC<HomeProps> = ({ className }) => {
   const rootClassName = classNames(styles.root, className)
@@ -21,8 +27,9 @@ const Home: FC<HomeProps> = ({ className }) => {
         <Button size='sm'>ВАКАНСИИ</Button>
       </Link>
       <Traffic />
+      <Mission />
       <Gumbit />
-      {/* <Part /> */}
+      <Part />
       <Faq />
     </main>
   )

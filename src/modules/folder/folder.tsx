@@ -4,6 +4,7 @@ import classNames from 'classnames'
 
 import styles from './folder.module.scss'
 import { FolderProps } from './folder.types'
+import { TitleGradient } from '@/ui'
 
 const Folder: FC<FolderProps> = ({
   className,
@@ -15,7 +16,12 @@ const Folder: FC<FolderProps> = ({
 
   return (
     <section className={rootClassName}>
-      <h2 className={styles.title}>{title}</h2>
+
+      <h2 className={styles.title}>
+        <TitleGradient
+          text={` ${title} `}
+        />
+      </h2>
       {text?.map((paragraph) => (
         <p className={styles.text}>
           <span>

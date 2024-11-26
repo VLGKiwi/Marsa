@@ -5,6 +5,7 @@ import styles from './vacancy.module.scss'
 import { VacancyProps } from './vacancy.types'
 import { Folder } from '@/modules/folder'
 import { Buildim } from '@/modules/buildim'
+import { Friend } from '@/modules/friend'
 
 
 const Vacancy: FC<VacancyProps> = ({
@@ -23,6 +24,11 @@ const Vacancy: FC<VacancyProps> = ({
         title={'Привет от команды MARSA!'}
         text={text}
         ps={ps}
+      />
+      <Friend
+        title={'Отправь продуктивного друга к нам на MARS'}
+        textBonus={'И получи бонусы'}
+        textButton={'Узнать подробности у HR'}
       />
     </main>
   )
