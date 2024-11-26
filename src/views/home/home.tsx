@@ -14,6 +14,7 @@ import { Mission } from '@/modules/mission'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import gsap from 'gsap'
 import { useGSAP } from '@gsap/react'
+import { Part } from '@/modules/part'
 
 gsap.registerPlugin(ScrollTrigger, useGSAP)
 
