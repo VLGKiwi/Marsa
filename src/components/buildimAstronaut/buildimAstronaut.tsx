@@ -14,8 +14,8 @@ const BuildimAstronaut: FC<BuildimAstronautProps> = ({ className, activeImage })
         // Если есть активная картинка, рендерим её
         <Image
           src={`/images/${activeImage}.png`}
-          width={825}
-          height={672}
+          width={1200}
+          height={700}
           quality={100}
           alt="Active Astronaut"
           className={styles.image}
@@ -24,8 +24,8 @@ const BuildimAstronaut: FC<BuildimAstronautProps> = ({ className, activeImage })
         // Если нет активной картинки, отображаем заглушку
         <Image
           src={`/images/first.png`}
-          width={825}
-          height={672}
+          width={1200}
+          height={700}
           quality={100}
           alt="Active Astronaut"
           className={styles.image}

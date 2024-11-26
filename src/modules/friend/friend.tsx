@@ -30,6 +30,7 @@ const Friend: FC<FriendProps> = ({
         src={Astronaut}
         alt='astronaut'
         className={styles.image}
+        quality={100}
       />
     </section>
   )
