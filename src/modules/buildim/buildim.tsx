@@ -17,7 +17,9 @@ const Buildim: FC<BuildimProps> = ({ className }) => {
   return (
     <div className={rootClassName}>
       {/* Передаем функцию управления состоянием в BuildimCards */}
-      <TitleGradient className="title__large title__vacancy" text="Собрали лучших и продолжаем искать" />
+      <h1 className={styles.title}>
+        <TitleGradient className="title__large title__vacancy" text="Собрали лучших и продолжаем искать" />
+      </h1>
       <BuildimCards onHoverCard={setActiveImage} />
 
       {/* Передаем активную картинку в BuildimAstronaut */}

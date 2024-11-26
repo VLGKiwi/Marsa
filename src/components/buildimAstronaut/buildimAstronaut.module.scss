@@ -1,10 +1,25 @@
 @use "@styles/func";
-@use "@styles/mixins";
+@use "@styles/mixins" as *;
 @use "@styles/variables";
 
 .root {
 	position: absolute;
-	left: 0;
 	bottom: 0;
 	z-index: 5;
+	left: -200px;
+
+	@include tablet {
+		left: -350px;
+	}
+
+	@include tablet-small {
+		left: -250px;
+	}
+
+	.image {
+		@include tablet-small {
+			width: 800px;
+			height: 450px;
+		}
+	}
 }
