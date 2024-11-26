@@ -3,9 +3,8 @@
 @use "@styles/variables";
 
 .root {
-	max-width: 1200px;
-	margin: 0 auto;
 	display: flex;
-	flex-direction: column;
-	gap: 32px;
+	position: relative;
+	gap: 18px;
+	z-index: 10;
 }

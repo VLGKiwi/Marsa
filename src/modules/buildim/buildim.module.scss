@@ -1,0 +1,15 @@
+@use "@styles/func";
+@use "@styles/mixins";
+@use "@styles/variables";
+
+.root {
+	display: flex;
+	flex-direction: column;
+	gap: 155px;
+	align-items: flex-end;
+	max-width: 1200px;
+	margin: 0 auto;
+	margin-top: 117px;
+	padding: 223px 50px 26px 0;
+	position: relative;
+}
