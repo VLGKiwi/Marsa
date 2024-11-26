@@ -14,21 +14,33 @@ const Company: FC<CompanyProps> = ({
 }) => {
   const rootClassName = classNames(styles.root, className)
   const container = useRef(null)
+  const text = useRef(null)
 
   useGSAP(() => {
     const cont = container.current
+    const txt = text.current
 
-    gsap.fromTo(cont, {
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: cont,
+        start: 'top center',
+      }
+    })
+
+    tl.fromTo(cont, {
       width: 43,
       height: 46
     }, {
       width: '100%',
       height: '100%',
       duration: 2,
-      scrollTrigger: {
-        trigger: cont,
-        start: 'top center',
-      }
+
+    })
+
+    tl.fromTo(txt, {
+      opacity: 0
+    }, {
+      opacity:1
     })
   })
 
@@ -38,7 +50,7 @@ const Company: FC<CompanyProps> = ({
         <div className={styles.container__title} ref={container}>
           <Disclose />
           <div className={styles.title}>
-            <h2>Управляем сложными процессами медиабаинга с помощью прогнозирования, анализа и оптимизации кампаний</h2>
+            <h2 ref={text}>Управляем сложными процессами медиабаинга с помощью прогнозирования, анализа и оптимизации кампаний</h2>
           </div>
         </div>
       </div>
