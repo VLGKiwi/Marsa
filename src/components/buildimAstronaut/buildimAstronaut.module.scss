@@ -13,13 +13,13 @@
 	}
 
 	@include tablet-small {
-		left: -250px;
+		left: -210px;
 	}
 
 	.image {
 		@include tablet-small {
-			width: 800px;
-			height: 450px;
+			width: 700px;
+			height: 400px;
 		}
 	}
 }
