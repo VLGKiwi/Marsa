@@ -1,5 +1,49 @@
 @use "@styles/func";
 @use "@styles/mixins";
 @use "@styles/variables";
-  
-.root {}
+
+.root {
+	max-width: 736px;
+	position: relative;
+	width: 100%;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 12px 32px;
+	margin: 0 auto;
+}
+
+.content {
+	position: absolute;
+	top: 102px;
+	left: 130px;
+	max-width: 534px;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 12px 32px;
+}
+
+.number {
+	font-family: var(--font-esq);
+	font-size: 22px;
+	line-height: 1.5;
+	font-weight: 400;
+	color: var(--color-white-3);
+}
+
+.title {
+	font-family: var(--font-act);
+	font-size: 24px;
+	line-height: 1.5;
+	font-weight: bold;
+	color: var(--color-white);
+	text-transform: uppercase;
+}
+
+.description {
+	font-family: var(--font-esq);
+	font-size: 16px;
+	line-height: 1.8;
+	font-weight: 400;
+	color: var(--color-white-2);
+	width: 80%;
+}

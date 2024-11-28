@@ -1,3 +1,6 @@
 export interface PrincipleCardProps {
-  className?: string
+  className?: string;
+  title: string;
+  description: string;
+  number: number;
 }
