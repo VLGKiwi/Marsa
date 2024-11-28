@@ -3,7 +3,6 @@ import classNames from 'classnames'
 
 import styles from './home.module.scss'
 import { HomeProps } from './home.types'
-// import { Part } from '@/modules/part'
 import { Button } from '@/ui'
 import { Traffic } from '@/modules/traffic'
 import { Introduce } from '@/modules/introduce'
@@ -15,6 +14,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import gsap from 'gsap'
 import { useGSAP } from '@gsap/react'
 // import { Part } from '@/modules/part'
+import { Company } from '@/modules/company'
 
 gsap.registerPlugin(ScrollTrigger, useGSAP)
 
@@ -24,6 +24,7 @@ const Home: FC<HomeProps> = ({ className }) => {
   return (
     <main className={rootClassName}>
       <Introduce />
+      <Company />
       <Link href='/vacancy'>
         <Button size='sm'>ВАКАНСИИ</Button>
       </Link>
