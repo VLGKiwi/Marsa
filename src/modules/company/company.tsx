@@ -41,6 +41,7 @@ const Company: FC<CompanyProps> = ({
       scrollTrigger: {
         trigger: cont,
         start: 'top center',
+        markers: true
       }
     })
 
