@@ -8,11 +8,11 @@ import styles from './header.module.scss';
 import { HeaderProps } from './header.types';
 import Logo from './logo';
 import Link from 'next/link';
-import { useRouter } from 'next/compat/router';
+import { usePathname } from 'next/navigation';
 
 const Header: FC<HeaderProps> = ({ className }) => {
   const [isLargeScreen, setIsLargeScreen] = useState<boolean>(typeof window !== 'undefined' && window.innerWidth >= 480);
-  const router = useRouter();
+  const name = usePathname();
 
   useEffect(() => {
 
@@ -34,13 +34,14 @@ const Header: FC<HeaderProps> = ({ className }) => {
     <header className={headerClassName}>
       <Wrapper className={styles.wrapper}>
         {/* Отображение TelegramLink для больших экранов */}
-        {isLargeScreen && <TelegramLink className={styles.telegram} />}
-
-        {router?.pathname === '/vacancy' && (
-          <Link href={'/'}>
-            <p style={{color: 'white'}}>О нас</p>
-          </Link>
-        )}
+        <div className={styles.tg__about}>
+          {isLargeScreen && <TelegramLink className={styles.telegram} />}
+          {name === '/vacancy' && window.innerWidth > 1199 && (
+            <Link href={'/'}>
+              <p>О нас</p>
+            </Link>
+          )}
+        </div>
 
         <Logo className={styles.logo} />
 
