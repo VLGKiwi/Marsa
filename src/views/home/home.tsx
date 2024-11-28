@@ -3,14 +3,14 @@ import classNames from 'classnames'
 
 import styles from './home.module.scss'
 import { HomeProps } from './home.types'
-// import { Part } from '@/modules/part'
-// import { Button } from '@/ui'
-// import { Traffic } from '@/modules/traffic'
+import { Part } from '@/modules/part'
+import { Button } from '@/ui'
+import { Traffic } from '@/modules/traffic'
 import { Introduce } from '@/modules/introduce'
-// import { Faq } from '@/modules/faq'
-// import { Gumbit } from '@/modules/gumbit'
-// import Link from 'next/link'
-// import { Mission } from '@/modules/mission'
+import { Faq } from '@/modules/faq'
+import { Gumbit } from '@/modules/gumbit'
+import Link from 'next/link'
+import { Mission } from '@/modules/mission'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import gsap from 'gsap'
 import { useGSAP } from '@gsap/react'
@@ -25,14 +25,14 @@ const Home: FC<HomeProps> = ({ className }) => {
     <main className={rootClassName}>
       <Introduce />
       <Company />
-      {/* <Link href='/vacancy'>
+      <Link href='/vacancy'>
         <Button size='sm'>ВАКАНСИИ</Button>
-      </Link> */}
-      {/* <Traffic />
+      </Link>
+      <Traffic />
       <Mission />
       <Gumbit />
       <Part />
-      <Faq /> */}
+      <Faq />
     </main>
   )
 }
