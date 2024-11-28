@@ -13,8 +13,8 @@ import { Mission } from '@/modules/mission'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import gsap from 'gsap'
 import { useGSAP } from '@gsap/react'
+// import { Part } from '@/modules/part'
 import { Company } from '@/modules/company'
-import { Part } from '@/modules/part'
 
 gsap.registerPlugin(ScrollTrigger, useGSAP)
 
@@ -31,7 +31,7 @@ const Home: FC<HomeProps> = ({ className }) => {
       <Traffic />
       <Mission />
       <Gumbit />
-      <Part />
+      {/* <Part /> */}
       <Faq />
     </main>
   )

@@ -4,8 +4,9 @@ import { FC, useState, useEffect } from 'react';
 import classNames from 'classnames';
 import styles from './introduce.module.scss';
 import { IntroduceProps } from './introduce.types';
-import { TitleGradient } from '@/ui'
+import { ButtonBlue, TitleGradient } from '@/ui';
 import Image from 'next/image';
+import { AnimatedImage } from '@/ui/animatedImage';
 
 const Introduce: FC<IntroduceProps> = ({ className }) => {
   const [imageSrc, setImageSrc] = useState('/images/introduce.png');
@@ -13,11 +14,15 @@ const Introduce: FC<IntroduceProps> = ({ className }) => {
 
   useEffect(() => {
     const updateImageSrc = () => {
-      setImageSrc(
-        window.matchMedia('(min-width: 1440px)').matches
-          ? '/images/introduce-large.png'
-          : '/images/introduce.png'
-      );
+      if (window.matchMedia('(max-width: 480px)').matches) {
+        setImageSrc('/images/introduce-mobile.png'); // Mobile
+      } else if (window.matchMedia('(max-width: 1200px)').matches) {
+        setImageSrc('/images/introduce-tablet.png'); // Tablet
+      } else if (window.matchMedia('(min-width: 1440px)').matches) {
+        setImageSrc('/images/introduce-large.png'); // Large screen
+      } else {
+        setImageSrc('/images/introduce.png'); // Default
+      }
     };
 
     updateImageSrc(); // Set initial image
@@ -35,6 +40,8 @@ const Introduce: FC<IntroduceProps> = ({ className }) => {
         quality={100}
         className={styles.image}
       />
+      <div className={styles.button}><ButtonBlue>ВАКАНСИИ</ButtonBlue></div>
+      <AnimatedImage />
       <TitleGradient className="title__large title__absolute" text="MARSA TEAM" />
     </div>
   );
