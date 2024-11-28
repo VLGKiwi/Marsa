@@ -7,6 +7,7 @@ import { IntroduceProps } from './introduce.types';
 import { ButtonBlue, TitleGradient } from '@/ui';
 import Image from 'next/image';
 import { AnimatedImage } from '@/ui/animatedImage';
+import Link from 'next/link';
 
 const Introduce: FC<IntroduceProps> = ({ className }) => {
   const [imageSrc, setImageSrc] = useState('/images/introduce.png');
@@ -40,7 +41,7 @@ const Introduce: FC<IntroduceProps> = ({ className }) => {
         quality={100}
         className={styles.image}
       />
-      <div className={styles.button}><ButtonBlue>ВАКАНСИИ</ButtonBlue></div>
+      <div className={styles.button}><Link href='/vacancy'><ButtonBlue>ВАКАНСИИ</ButtonBlue></Link></div>
       <AnimatedImage />
       <TitleGradient className="title__large title__absolute" text="MARSA TEAM" />
     </div>
