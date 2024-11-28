@@ -1,3 +1,5 @@
+'use client';
+
 import { FC } from 'react';
 import classNames from 'classnames';
 
@@ -10,27 +12,41 @@ const BuildimAstronaut: FC<BuildimAstronautProps> = ({ className, activeImage })
 
   return (
     <div className={rootClassName}>
-      {activeImage ? (
-        // Если есть активная картинка, рендерим её
+      {/* Первое изображение */}
         <Image
-          src={`/images/${activeImage}.png`}
+          src="/images/first.png"
           width={1200}
           height={700}
           quality={100}
-          alt="Active Astronaut"
-          className={styles.image}
+          alt="First Astronaut"
+          className={classNames(styles.image, {
+            [styles.visible]: activeImage === 'first', // Видимое, если activeImage === 'first'
+          })}
         />
-      ) : (
-        // Если нет активной картинки, отображаем заглушку
+
+        {/* Второе изображение */}
         <Image
-          src={`/images/first.png`}
+          src="/images/second.png"
           width={1200}
           height={700}
           quality={100}
-          alt="Active Astronaut"
-          className={styles.image}
+          alt="Second Astronaut"
+          className={classNames(styles.image, {
+            [styles.visible]: activeImage === 'second', // Видимое, если activeImage === 'second'
+          })}
         />
-      )}
+
+        {/* Третье изображение */}
+        <Image
+          src="/images/third.png"
+          width={1200}
+          height={700}
+          quality={100}
+          alt="Third Astronaut"
+          className={classNames(styles.image, {
+            [styles.visible]: activeImage === 'third', // Видимое, если activeImage === 'third'
+          })}
+        />
     </div>
   );
 };
