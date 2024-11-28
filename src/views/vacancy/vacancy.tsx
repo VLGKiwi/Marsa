@@ -26,7 +26,6 @@ const Vacancy: FC<VacancyProps> = ({
         ps={ps}
       />
       <Friend
-        title={'Отправь продуктивного друга к нам на MARS'}
         textBonus={'И получи бонусы'}
         textButton={'Узнать подробности у HR'}
       />

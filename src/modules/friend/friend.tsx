@@ -1,3 +1,4 @@
+/* eslint-disable no-irregular-whitespace */
 import { FC } from 'react'
 import classNames from 'classnames'
 
@@ -9,7 +10,6 @@ import Image from 'next/image'
 
 const Friend: FC<FriendProps> = ({
   className,
-  title,
   textBonus,
   textButton
 }) => {
@@ -19,9 +19,9 @@ const Friend: FC<FriendProps> = ({
     <section className={rootClassName}>
       <div className={styles.section}>
         <h2 className={styles.title}>
-          <TitleGradient
-            text={` ${title} `}
-          />
+          <TitleGradient>
+            Отправь продуктивного друга к нам на&nbsp;MARS
+          </TitleGradient>
         </h2>
         <p className={styles.text}>{textBonus}</p>
       </div>
