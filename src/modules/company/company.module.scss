@@ -6,7 +6,70 @@
 .company {
 	display: flex;
 	justify-content: center;
-	align-self: center;
+	align-items: center;
+	position: relative;
+
+	height: 695px;
+
+	.text1 {
+		position: absolute;
+		left: 21%;
+		top: 29%;
+		background: center no-repeat url('../../shared/assets/icons/line1.svg');
+
+		padding: 14px 90px 7px 10px;
+
+		&__company {
+			color: var(--color-white-2);
+			font-size: 18px;
+			font-family: var(--font-esq);
+			line-height: 150%;
+
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+		}
+	}
+
+	.text2 {
+		position: absolute;
+		right: 21%;
+		top: 15%;
+		background: center no-repeat url('../../shared/assets/icons/line2.svg');
+
+		padding: 10px 3.5px 110.5px 105px;
+
+		&__company {
+			color: var(--color-white-2);
+			font-size: 18px;
+			font-family: var(--font-esq);
+			line-height: 150%;
+
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+		}
+	}
+
+	.text3 {
+		position: absolute;
+		right: 21%;
+		bottom: 15%;
+		background: center no-repeat url('../../shared/assets/icons/line3.svg');
+
+		padding: 170px 0 0 91px;
+
+		&__company {
+			color: var(--color-white-2);
+			font-size: 18px;
+			font-family: var(--font-esq);
+			line-height: 150%;
+
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+		}
+	}
 }
 
 .root {

@@ -16,6 +16,10 @@ const Company: FC<CompanyProps> = ({
   const container = useRef<HTMLDivElement>(null)
   const text = useRef<HTMLHeadingElement>(null)
 
+  const text1 = useRef(null)
+  const text2 = useRef(null)
+  const text3 = useRef(null)
+
   const fullText = "Управляем сложными процессами медиабаинга с помощью прогнозирования, анализа и оптимизации кампаний";
   const randomChars = "_{}#.&"; // Ограниченный набор символов
 
@@ -26,6 +30,10 @@ const Company: FC<CompanyProps> = ({
   useGSAP(() => {
     const cont = container.current
     const txt = text.current
+
+    const t1 = text1.current
+    const t2 = text2.current
+    const t3 = text3.current
 
     if (!cont || !txt) return
 
@@ -53,6 +61,27 @@ const Company: FC<CompanyProps> = ({
       onComplete: () => {
         typewriterEffect(txt)
       }
+    })
+
+    tl.fromTo(t1, {
+      opacity: 0
+    }, {
+      opacity: 1,
+      duration: 2
+    })
+
+    tl.fromTo(t2, {
+      opacity: 0
+    }, {
+      opacity: 1,
+      duration: 2
+    })
+
+    tl.fromTo(t3, {
+      opacity: 0
+    }, {
+      opacity: 1,
+      duration: 2
     })
   })
 
@@ -104,6 +133,9 @@ const Company: FC<CompanyProps> = ({
           </div>
         </div>
       </div>
+      <div className={styles.text1} ref={text1}><p className={styles.text1__company}>500+ клиентов <span>с 2020 года</span></p></div>
+      <div className={styles.text2} ref={text2}><p className={styles.text2__company}>Ориентируемся на <span>ROI вместо объемов</span></p></div>
+      <div className={styles.text3} ref={text3}><p className={styles.text3__company}>Рассчитываем всю <span>экономику заливов</span></p></div>
     </div>
   )
 }

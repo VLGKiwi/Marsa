@@ -1,3 +1,4 @@
+export { AstronautAnimation } from './astronautAnimation'
 export { GumbitCards } from './gumbitCards'
 export { TrafficCircle } from './trafficCircle'
 export { TrafficGraphic } from './trafficGraphic'
