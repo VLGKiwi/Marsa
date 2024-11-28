@@ -59,7 +59,7 @@ const BuildimCards: FC<BuildimCardsProps> = ({ className, onHoverCard }) => {
         }}
         breakpoints={{
           359: {
-            slidesPerView: 1,
+            slidesPerView: 1.5,
             spaceBetween: 20,
             navigation: true,
             pagination: { clickable: true },
