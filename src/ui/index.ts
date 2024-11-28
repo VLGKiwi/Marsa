@@ -1,6 +1,7 @@
 export { AnimatedImage } from './animatedImage'
 export { Button } from './button'
 export { ButtonBlue } from './buttonBlue'
+export { Disclose } from './disclose'
 export { GumbitCard } from './gumbitCard'
 export { Heading } from './heading'
 export { Input } from './input'
