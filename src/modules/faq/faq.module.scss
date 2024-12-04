@@ -5,4 +5,8 @@
 .root {
 	position: relative;
 	overflow: hidden;
+	background: center no-repeat url('../../../public/images/spaceship.png');
+	background-size: cover;
+	height: 100vh;
+	width: 100vw;
 }

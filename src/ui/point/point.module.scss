@@ -1,0 +1,163 @@
+/* stylelint-disable selector-class-pattern */
+@use "@styles/func";
+@use "@styles/mixins" as *;
+@use "@styles/variables";
+
+.root {
+	display: flex;
+	width: 550px;
+	height: max-content;
+	z-index: 11;
+	position: absolute;
+
+	@include tablet-small {
+		width: 336px;
+		height: 284px;
+	}
+
+	.text {
+		width: 534px;
+		height: 130px;
+		position: relative;
+		right: 0;
+
+		z-index: 12;
+
+		@include tablet-small {
+			width: 336px;
+			height: 202px;
+		}
+
+		.text__cont {
+			@include tablet {
+				position: relative;
+				left: -50%;
+			}
+
+			.cardText {
+				position: relative;
+				opacity: 0;
+				z-index: 13;
+
+				padding: 36px 29px;
+
+				@include tablet-small {
+					padding: 55px 34px;
+				}
+
+				h3 {
+					font-family: var(--font-esq);
+					font-size: 20px;
+					font-weight: 400;
+					line-height: 150%;
+					color: var(--color-white);
+
+					@include tablet {
+						font-size: 18px;
+					}
+
+					@include tablet-small {
+						font-size: 16px;
+					}
+				}
+
+				p {
+					font-family: var(--font-esq);
+					font-size: 13px;
+					font-weight: 400;
+					line-height: 150%;
+					color: var(--color-white-2);
+
+					@include tablet {
+						font-size: 12px;
+					}
+				}
+			}
+		}
+	}
+
+	.container {
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		display: flex;
+		flex-direction: column;
+		width: 27px;
+		height: 83px;
+
+		z-index: 15;
+
+		@include tablet-small {
+			top: -70px;
+			bottom: auto;
+		}
+	}
+
+	.point {
+		z-index: 2;
+		position: absolute;
+		bottom: 0;
+		width: 27px;
+		height: 27px;
+
+		@include tablet-small {
+			top: 0;
+		}
+
+		svg {
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			width: 27px;
+			height: 27px;
+		}
+	}
+
+	.line {
+		svg {
+			position: absolute;
+			top: -15px;
+			left: 10px;
+			opacity: 0;
+			width: 27px;
+			height: 83px;
+
+			@include tablet-small {
+				top: 15px;
+			}
+		}
+	}
+
+}
+
+.root1 {
+	position: absolute;
+	bottom: 0;
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	opacity: 0;
+
+	background: center no-repeat url('../../shared/assets/icons/Vector 42.svg');
+
+	width: 100%;
+	height: 100%;
+
+	@include tablet-small {
+		background: center no-repeat url('../../../public/images/cardBackMob.png');
+	}
+
+	.left {
+		position: absolute;
+		top: 0;
+		left: 0;
+	}
+
+	.right {
+		position: absolute;
+		bottom: 0;
+		right: 0;
+	}
+}
