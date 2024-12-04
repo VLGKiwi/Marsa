@@ -1,3 +1,5 @@
+/* stylelint-disable color-function-notation */
+/* stylelint-disable alpha-value-notation */
 /* stylelint-disable selector-class-pattern */
 @use "@styles/func";
 @use "@styles/mixins" as *;
@@ -5,10 +7,15 @@
 
 .root {
 	display: flex;
+	flex-direction: column;
 	width: 550px;
-	height: max-content;
-	z-index: 11;
+	height: 230px;
 	position: absolute;
+
+	@include tablet {
+		width: 100%;
+		height: 100%;
+	}
 
 	@include tablet-small {
 		width: 336px;
@@ -17,11 +24,9 @@
 
 	.text {
 		width: 534px;
-		height: 130px;
+		height: max-content;
 		position: relative;
 		right: 0;
-
-		z-index: 12;
 
 		@include tablet-small {
 			width: 336px;
@@ -29,6 +34,9 @@
 		}
 
 		.text__cont {
+			position: relative;
+			z-index: 10;
+
 			@include tablet {
 				position: relative;
 				left: -50%;
@@ -37,7 +45,6 @@
 			.cardText {
 				position: relative;
 				opacity: 0;
-				z-index: 13;
 
 				padding: 36px 29px;
 
@@ -77,15 +84,13 @@
 	}
 
 	.container {
-		position: absolute;
+		position: relative;
 		bottom: 0;
 		left: 0;
 		display: flex;
 		flex-direction: column;
 		width: 27px;
 		height: 83px;
-
-		z-index: 15;
 
 		@include tablet-small {
 			top: -70px;
@@ -94,11 +99,11 @@
 	}
 
 	.point {
-		z-index: 2;
 		position: absolute;
 		bottom: 0;
 		width: 27px;
 		height: 27px;
+		z-index: 9;
 
 		@include tablet-small {
 			top: 0;
@@ -140,7 +145,8 @@
 
 	opacity: 0;
 
-	background: center no-repeat url('../../shared/assets/icons/Vector 42.svg');
+	backdrop-filter: blur(10px);
+	border-radius: 25px 0;
 
 	width: 100%;
 	height: 100%;

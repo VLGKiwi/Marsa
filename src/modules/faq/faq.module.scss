@@ -1,5 +1,5 @@
 @use "@styles/func";
-@use "@styles/mixins";
+@use "@styles/mixins" as *;
 @use "@styles/variables";
 
 .root {
@@ -9,4 +9,11 @@
 	background-size: cover;
 	height: 100vh;
 	width: 100vw;
+
+	@include desktop {
+		h2 {
+			position: relative;
+			bottom: -200px;
+		}
+	}
 }
