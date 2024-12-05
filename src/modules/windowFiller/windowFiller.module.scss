@@ -3,7 +3,7 @@
 @use "@styles/variables";
 
 .root {
-	max-width: 1200px;
-	margin: 0 auto;
-	overflow: hidden;
+	width: 100vw;
+	height: 100vh;
+	z-index: -1;
 }

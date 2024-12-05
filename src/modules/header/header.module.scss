@@ -35,6 +35,10 @@
     display: flex;
     gap: 20px;
 
+    @include mobile-large {
+      display: none;
+    }
+
     a {
       display: flex;
       align-items: center;
