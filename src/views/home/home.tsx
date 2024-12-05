@@ -16,6 +16,7 @@ import { useGSAP } from '@gsap/react'
 import { Part } from '@/modules/part'
 import { Company } from '@/modules/company'
 import { WindowFiller } from '@/modules/windowFiller'
+import { Principle } from '@/modules/principle'
 
 gsap.registerPlugin(ScrollTrigger, useGSAP)
 
@@ -32,6 +33,7 @@ const Home: FC<HomeProps> = ({ className }) => {
           <Button size='sm'>ВАКАНСИИ</Button>
         </Link>
         <Traffic />
+        <Principle />
         <Mission />
         <Gumbit />
         <Part />
