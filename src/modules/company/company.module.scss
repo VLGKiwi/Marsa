@@ -1,6 +1,6 @@
 /* stylelint-disable selector-class-pattern */
 @use "@styles/func";
-@use "@styles/mixins";
+@use "@styles/mixins" as *;
 @use "@styles/variables";
 
 .company {
@@ -14,10 +14,22 @@
 	.text1 {
 		position: absolute;
 		left: 21%;
-		top: 29%;
+		top: 20%;
 		background: center no-repeat url('../../shared/assets/icons/line1.svg');
 
-		padding: 14px 90px 7px 10px;
+		padding: 50px 100px 70px 30px;
+
+		@include tablet {
+			left: 5%;
+		}
+
+		@include tablet-small {
+			background: center no-repeat url('../../shared/assets/icons/line1-m.svg');
+
+			padding: 10px 33px 30px 15px;
+			top: 24%;
+			left: 3%;
+		}
 
 		&__company {
 			color: var(--color-white-2);
@@ -28,6 +40,14 @@
 			display: flex;
 			flex-direction: column;
 			align-items: center;
+
+			@include tablet {
+				font-size: 16px;
+			}
+
+			@include tablet-small {
+				font-size: 12px;
+			}
 		}
 	}
 
@@ -39,6 +59,16 @@
 
 		padding: 10px 3.5px 110.5px 105px;
 
+		@include tablet {
+			right: 5%;
+		}
+
+		@include tablet-small {
+			background: center no-repeat url('../../shared/assets/icons/line2-m.svg');
+
+			padding: 12px 0 90px 40px;
+		}
+
 		&__company {
 			color: var(--color-white-2);
 			font-size: 18px;
@@ -48,6 +78,14 @@
 			display: flex;
 			flex-direction: column;
 			align-items: center;
+
+			@include tablet {
+				font-size: 16px;
+			}
+
+			@include tablet-small {
+				font-size: 12px;
+			}
 		}
 	}
 
@@ -59,6 +97,14 @@
 
 		padding: 170px 0 0 91px;
 
+		@include tablet-small {
+			bottom: 23%;
+
+			background: center no-repeat url('../../shared/assets/icons/line3-m.svg');
+
+			padding: 80px 0 0 80px;
+		}
+
 		&__company {
 			color: var(--color-white-2);
 			font-size: 18px;
@@ -68,6 +114,14 @@
 			display: flex;
 			flex-direction: column;
 			align-items: center;
+
+			@include tablet {
+				font-size: 16px;
+			}
+
+			@include tablet-small {
+				font-size: 12px;
+			}
 		}
 	}
 }
@@ -78,6 +132,11 @@
 	align-items: center;
 	width: 575px;
 	height: 130px;
+
+	@include tablet-small {
+		width: 336px;
+		height: 202px;
+	}
 
 	.container__title {
 		display: flex;
