@@ -10,6 +10,7 @@ import { TitleGradientProps } from './titleGradient.types';
 const TitleGradient: FC<TitleGradientProps> = ({
   className,
   text,
+  children
 }) => {
   const rootClassName = classNames(
     styles.root, // Основной класс из CSS-модуля
@@ -29,9 +30,10 @@ const TitleGradient: FC<TitleGradientProps> = ({
   }, []);
 
   return (
-    <div className={rootClassName} ref={textRef}>
+    <span className={rootClassName} ref={textRef}>
       {text}
-    </div>
+      {children}
+    </span>
   );
 };
 

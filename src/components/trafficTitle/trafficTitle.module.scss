@@ -1,12 +1,12 @@
 @use "@styles/func";
-@use "@styles/mixins";
+@use "@styles/mixins" as *;
 @use "@styles/variables";
 
+/* stylelint-disable */
 /* stylelint-disable */
 
 .root {
   display: flex;
-	margin: 0 40px;
   align-items: center;
   padding: 26px 45px;
   position: relative;
@@ -24,8 +24,18 @@
   font-weight: 400;
   line-height: 1.2;
 	letter-spacing: 5%;
+	margin: 0 72px;
   text-transform: uppercase;
 	text-shadow: var(--color-blue-main) 0 0 10px;
+
+	@include tablet {
+		margin: 0 31px 0 52px;
+	}
+
+	@include mobile-large {
+		margin: 0 12px;
+		font-size: 12px;
+	}
 }
 
 .icon {

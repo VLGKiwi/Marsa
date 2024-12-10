@@ -1,0 +1,16 @@
+@use "@styles/func";
+@use "@styles/mixins" as *;
+@use "@styles/variables";
+
+.root {
+	display: flex;
+	position: relative;
+	gap: 18px;
+	z-index: 10;
+	width: 70%;
+	padding-left: 50px;
+
+	@include tablet-small {
+		padding-left: 12px;
+	}
+}

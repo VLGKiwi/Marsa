@@ -46,6 +46,11 @@
 		line-height: 120%;
 		letter-spacing: 50%;
 		text-transform: uppercase;
+		text-align: left;
+
+		span {
+			text-align: left;
+		}
 
 		@include tablet-small {
 			font-size: 28px;
@@ -56,6 +61,8 @@
 		font-family: var(--font-esq);
 		font-size: 15px;
 		line-height: 150%;
+
+		text-align: justify;
 
 		color: var(--color-white-2);
 
