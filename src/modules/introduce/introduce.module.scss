@@ -4,10 +4,23 @@
 
 .root {
 	display: flex;
-	position: relative;
+	overflow: hidden;
+	position: fixed;
+	top: 0;
+	left: 0;
 }
 
 .image {
 	width: 100vw;
 	height: 100vh;
+}
+
+.button {
+	position: absolute;
+	display: flex;
+	justify-content: center;
+	top: 60%;
+	width: 100%;
+	left: 0%;
+	z-index: 10;
 }

@@ -1,4 +1,5 @@
 export interface TitleGradientProps {
   className?: string;
-  text: string;
+  text?: string;
+  children?: string
 }
