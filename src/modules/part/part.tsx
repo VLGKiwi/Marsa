@@ -12,7 +12,8 @@ import { Canvas } from '@react-three/fiber'
 import Model from '@/components/astronautAnimation/astronautAnimation'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-// import EnvironmentGLTF from '@/components/environmentGltf/environmentGltf'
+import * as THREE from 'three';
+import EnvironmentGLTF from '@/components/environmentGltf/environmentGltf'
 import { Environment, PerspectiveCamera } from '@react-three/drei'
 import { TitleGradient } from '@/ui'
 import Line1 from '@icons/line1_part.svg'
@@ -358,10 +359,10 @@ const Part: FC<PartProps> = ({ className }) => {
             />
             <PerspectiveCamera ref={cameraRef} makeDefault position={[-0.1, 0, 0.5]} fov={50} />
 
-            {/* <EnvironmentGLTF url="/models/environment.glb"
+            <EnvironmentGLTF url="/models/environment.glb"
               scale={[2, 2, 2]}
               position={[0, -30, 0]}
-            /> */}
+            />
             <Environment files="/models/outer-space-1.exr" />
             <pointLight position={[-10, -10, -10]} intensity={0.5} />
 
