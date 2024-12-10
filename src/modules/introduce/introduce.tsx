@@ -18,11 +18,11 @@ const Introduce: FC<IntroduceProps> = ({ className }) => {
       if (window.matchMedia('(max-width: 480px)').matches) {
         setImageSrc('/images/introduce-mobile.png'); // Mobile
       } else if (window.matchMedia('(max-width: 1200px)').matches) {
-        setImageSrc('/images/introduce-tablet.png'); // Tablet
+        setImageSrc('/images/introduce.png'); // Tablet
       } else if (window.matchMedia('(min-width: 1440px)').matches) {
         setImageSrc('/images/introduce-large.png'); // Large screen
       } else {
-        setImageSrc('/images/introduce.png'); // Default
+        setImageSrc('/images/introduce-tablet.png'); // Default
       }
     };
 
@@ -42,7 +42,7 @@ const Introduce: FC<IntroduceProps> = ({ className }) => {
         className={styles.image}
       />
       <div className={styles.button}><Link href='/vacancy'><ButtonBlue>ВАКАНСИИ</ButtonBlue></Link></div>
-      <AnimatedImage />
+      <AnimatedImage className={styles.introducesvg} />
       <TitleGradient className="title__large title__absolute" text="MARSA TEAM" />
     </div>
   );
