@@ -23,7 +23,7 @@ const Home: FC<HomeProps> = ({ className }) => {
       <Traffic />
       <Gumbit /> */}
       <Part />
-      <div style={{width: 360, height: 800}}>
+      <div style={{width: 336, height: 800}}>
         <h1>fdsafsda</h1>
       </div>
       {/* <Faq /> */}
