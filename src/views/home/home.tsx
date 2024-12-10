@@ -38,7 +38,6 @@ const Home: FC<HomeProps> = ({ className }) => {
         <Gumbit />
         <Part />
         <Faq />
-
       </div>
     </main>
   )

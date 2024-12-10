@@ -1,4 +1,5 @@
 export { AstronautAnimation } from './astronautAnimation'
+export { EnvironmentGltf } from './environmentGltf'
 export { BuildimAstronaut } from './buildimAstronaut'
 export { BuildimCard } from './buildimCard'
 export { BuildimCards } from './buildimCards'
