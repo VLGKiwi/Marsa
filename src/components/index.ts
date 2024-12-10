@@ -1,3 +1,5 @@
+export { AstronautAnimation } from './astronautAnimation'
+export { EnvironmentGltf } from './environmentGltf'
 export { GumbitCards } from './gumbitCards'
 export { TrafficCircle } from './trafficCircle'
 export { TrafficGraphic } from './trafficGraphic'

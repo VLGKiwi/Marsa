@@ -7,7 +7,7 @@ import { Part } from '@/modules/part'
 // import { Button } from '@/ui'
 // import { Traffic } from '@/modules/traffic'
 import { Introduce } from '@/modules/introduce'
-import { Faq } from '@/modules/faq'
+// import { Faq } from '@/modules/faq'
 // import { Gumbit } from '@/modules/gumbit'
 // import Link from 'next/link'
 
@@ -23,7 +23,10 @@ const Home: FC<HomeProps> = ({ className }) => {
       <Traffic />
       <Gumbit /> */}
       <Part />
-      <Faq />
+      <div style={{width: 360, height: 800}}>
+        <h1>fdsafsda</h1>
+      </div>
+      {/* <Faq /> */}
     </main>
   )
 }
