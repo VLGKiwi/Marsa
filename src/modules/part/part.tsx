@@ -203,7 +203,7 @@ const Part: FC<PartProps> = ({ className }) => {
       end: `+=${scrollEndPercentage}%`, // Увеличиваем область прокрутки
       scrub: true,
       pin: true,
-      markers: true, // Установите true для отладки, false для продакшена
+      markers: false, // Установите true для отладки, false для продакшена
       onUpdate: (self) => {
         camMove(self)
       },
