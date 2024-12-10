@@ -2,9 +2,12 @@
 import { FC, useEffect, useRef } from 'react';
 import classNames from 'classnames';
 import { gsap } from 'gsap';
+import ScrollTrigger from 'gsap/ScrollTrigger';
 
 import styles from './principleCard.module.scss';
 import { PrincipleCardProps } from './principleCard.types';
+
+gsap.registerPlugin(ScrollTrigger);
 
 const PrincipleCard: FC<PrincipleCardProps> = ({
   className,
@@ -37,7 +40,14 @@ const PrincipleCard: FC<PrincipleCardProps> = ({
       );
 
       // Создаем таймлайн для последовательной анимации
-      const timeline = gsap.timeline();
+      const timeline = gsap.timeline({
+        scrollTrigger: {
+          trigger: contentRef.current,
+          start: 'top 70%', // Запускается, когда элемент находится в центре экрана
+          end: 'bottom center',
+          toggleActions: 'play none none reverse',
+        },
+      });
 
       // Анимация полосок (lines)
       timeline.fromTo(

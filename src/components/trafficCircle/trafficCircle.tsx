@@ -14,7 +14,7 @@ const TrafficCircle: FC<TrafficCircleProps> = ({
 
   return (
     <div className={rootClassName}>
-      <SvgCircle alt="Circle" width={'100%'} height={'auto'} />
+      <SvgCircle className={styles.image} alt="Circle" width={'100%'} height={'auto'} />
       <p className={styles.text}><span className={styles.textwhite}>Анализируем эффективность</span><br></br> и меняем направление, если видим отклонения от заданного курса</p>
     </div>
   )

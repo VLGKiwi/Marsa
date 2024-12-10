@@ -1,5 +1,5 @@
 @use "@styles/func";
-@use "@styles/mixins";
+@use "@styles/mixins" as *;
 @use "@styles/variables";
 
 .root {
@@ -19,4 +19,20 @@
 .row {
 	display: flex;
 	gap: 32px;
+}
+
+.evenRow {
+	@include tablet {
+		transform: translateX(100px);
+	}
+
+	@include tablet-small {
+		transform: translateX(0);
+	}
+}
+
+.evenCard {
+	@include tablet-small {
+		transform: translateY(30px);
+	}
 }

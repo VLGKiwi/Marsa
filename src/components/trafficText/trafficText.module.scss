@@ -11,8 +11,9 @@
 	color: var(--color-white-2);
 	max-width: 60%;
 
-	@include mobile {
-		margin: 18px 20px;
+	@include tablet-small {
 		font-size: 12px;
+		margin: 0 12px;
+		max-width: 100%;
 	}
 }

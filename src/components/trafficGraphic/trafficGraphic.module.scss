@@ -1,5 +1,5 @@
 @use "@styles/func";
-@use "@styles/mixins";
+@use "@styles/mixins" as *;
 @use "@styles/variables";
 
 .root {
@@ -10,6 +10,15 @@
 	border-left: 1px solid #add7ee;
 	border-bottom: 1px solid #add7ee;
 	border-radius: 0 0 0 6px;
+
+	@include tablet {
+    height: 200px;
+	}
+
+	@include tablet-small {
+		width: 90%;
+		margin: 0 auto;
+	}
 }
 
 .textcontainer {
@@ -25,6 +34,14 @@
 	font-size: 13px;
 	line-height: 1.8;
 	color: var(--color-white-2);
+
+	@include tablet {
+		font-size: 9px;
+	}
+
+	@include tablet-small {
+		max-width: 80%;
+	}
 
 	& span {
 		color: var(--color-white);

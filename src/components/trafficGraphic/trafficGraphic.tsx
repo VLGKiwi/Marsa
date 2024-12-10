@@ -81,7 +81,7 @@ const TrafficGraphic: FC = () => {
   };
 
   return (
-    <div className={styles.root} style={{ width: '100%', height: '300px' }}>
+    <div className={styles.root}>
       <Line data={chartData} options={options} />
       <div className={styles.textcontainer}>
         <p className={styles.text}>
