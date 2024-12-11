@@ -13,9 +13,11 @@ const Gumbit: FC<GumbitProps> = ({
 
   return (
     <div className={rootClassName}>
-      <TrafficTitle text="КОМАНДА" />
-      <TitleGradient text="12 отделов · 1 миссия · общий успех!" />
-      <GumbitCards />
+      <div className={styles.wrapper}>
+        <TrafficTitle text="КОМАНДА" />
+        <h2 className={styles.title}><TitleGradient text="12 отделов · 1 миссия · общий успех!" /></h2>
+        <GumbitCards />
+      </div>
     </div>
   )
 }

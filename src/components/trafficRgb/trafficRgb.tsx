@@ -18,13 +18,13 @@ const TrafficRgb: FC<TrafficRgbProps> = ({ className }) => {
   return (
     <div className={rootClassName}>
       {/* Первый SVG */}
-      <SvgGreen alt="Green Graphic" width={'100%'} height={100} />
+      <SvgGreen className={styles.svg} alt="Green Graphic" width={'100%'} height={100} />
 
       {/* Второй SVG */}
-      <SvgYellow alt="Yellow Graphic" width={'100%'} height={100} />
+      <SvgYellow className={styles.svg} alt="Yellow Graphic" width={'100%'} height={100} />
 
       {/* Третий SVG */}
-      <SvgRed alt="Red Graphic" width={'100%'} height={100} />
+      <SvgRed className={styles.svg} alt="Red Graphic" width={'100%'} height={100} />
       <SvgLine alt="Line" className={styles.line} width={88} height={172} />
       <p className={styles.text}><span className={styles.textwhite}>Снижаем риски</span> с помощью подробного расчета экономики заливов</p>
     </div>

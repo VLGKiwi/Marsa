@@ -204,10 +204,14 @@
 	display: flex;
 	flex-direction: column;
 
-	bottom: 540px;
+	bottom: 700px;
 
 	padding-top: 165px;
 	padding-bottom: 100px;
+
+	@include desktop {
+		bottom: 540px;
+	}
 
 	@include tablet-small {
 		max-width: 336px;
