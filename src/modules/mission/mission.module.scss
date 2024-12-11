@@ -28,12 +28,24 @@
 		align-items: center;
 		overflow: visible;
 
-		background: center no-repeat url('../../../public/images/mission__background.png');
-		background-size: 1440px 100%;
+		background: center no-repeat url('../../../public/images/mission-background-large.png');
+		background-size: cover;
 		height: 100vh;
 		width: 100vw;
 
-		padding-top: 60px;
+		padding-top: 70px;
+
+		@include desktop {
+			background: center no-repeat url('../../../public/images/mission-background-desk1200.png');
+			background-size: cover;
+		}
+
+		@include tablet-small {
+			background: center no-repeat url('../../../public/images/mission-background-mobile.png');
+			background-size: cover;
+
+			height: 600px;
+		}
 
 		&__wrapper {
 			overflow-y: hidden;
@@ -61,7 +73,7 @@
 				@include tablet-small {
 					font-size: 10px;
 
-					max-width: 360px;
+					max-width: 280px;
 					max-height: 245px;
 				}
 			}
