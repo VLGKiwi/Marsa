@@ -13,7 +13,7 @@ import { Mission } from '@/modules/mission'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import gsap from 'gsap'
 import { useGSAP } from '@gsap/react'
-// import { Part } from '@/modules/part'
+import { Part } from '@/modules/part'
 import { Company } from '@/modules/company'
 import { WindowFiller } from '@/modules/windowFiller'
 import { Principle } from '@/modules/principle'
@@ -36,7 +36,7 @@ const Home: FC<HomeProps> = ({ className }) => {
         <Principle />
         <Mission />
         <Gumbit />
-        {/* <Part /> */}
+        <Part />
         <Faq />
       </div>
     </main>

@@ -1,4 +1,3 @@
-// src/components/EnvironmentGLTF.tsx
 'use client'
 
 import React, { useRef, useEffect } from 'react'
@@ -24,19 +23,31 @@ const EnvironmentGLTF: React.FC<EnvironmentGLTFProps> = ({
   const { scene } = useGLTF(url)
 
   useEffect(() => {
-    if (group.current) {
-      group.current.add(scene.clone())
-      console.log('Окружение загружено и добавлено в сцену')
+    if (scene) {
+      // Обновление материалов для поддержки отражений
+      scene.traverse((child) => {
+        if (child.isMesh) {
+          const material = child.material as THREE.MeshStandardMaterial
+          material.envMapIntensity = 1
+          material.metalness = 1
+          material.roughness = 0.1
+          material.needsUpdate = true // Применить изменения
+        }
+      })
+
+      if (group.current) {
+        group.current.add(scene.clone())
+      }
     }
   }, [scene])
 
   return (
     <group ref={group} scale={scale} position={position} rotation={rotation} {...props}>
-      {/* GLB-модель уже добавлена через useEffect */}
+      {/* GLB-модель */}
     </group>
   )
 }
 
-useGLTF.preload('/models/environment.glb') // Предзагрузка модели для оптимизации
+useGLTF.preload('/models/environment.glb')
 
 export default EnvironmentGLTF

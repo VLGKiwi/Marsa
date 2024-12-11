@@ -5,7 +5,7 @@ import classNames from 'classnames'
 import Astronaut from '@public/images/astrounaut__vacancy.png'
 import styles from './friend.module.scss'
 import { FriendProps } from './friend.types'
-import { Button, TitleGradient } from '@/ui'
+import { ButtonTwo, TitleGradient } from '@/ui'
 import Image from 'next/image'
 
 const Friend: FC<FriendProps> = ({
@@ -25,7 +25,7 @@ const Friend: FC<FriendProps> = ({
         </h2>
         <p className={styles.text}>{textBonus}</p>
       </div>
-      <Button className={styles.button}>{textButton}</Button>
+      <ButtonTwo text={'Узнать подробности у HR'} big={true} />
       <Image
         src={Astronaut}
         alt='astronaut'
