@@ -15,11 +15,12 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import * as THREE from 'three';
 import EnvironmentGLTF from '@/components/environmentGltf/environmentGltf'
 import { Environment, PerspectiveCamera } from '@react-three/drei'
-import { TitleGradient } from '@/ui'
+import { ButtonTwo, TitleGradient } from '@/ui'
 import Line1 from '@icons/line1_part.svg'
 import Line2 from '@icons/line2_part.svg'
 import Line3 from '@icons/line3_part.svg'
 import Line from '@icons/linemob_part.svg'
+import { Bloom, DepthOfField, EffectComposer, Noise, Vignette } from '@react-three/postprocessing'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -33,6 +34,7 @@ const Part: FC<PartProps> = ({ className }) => {
   const box1Ref = useRef(null)
   const box2Ref = useRef(null)
   const box3Ref = useRef(null)
+  const teamRef = useRef(null)
 
   // Определите коэффициент скорости
   const speedFactor = 0.1 // Меняйте значение для регулировки скорости (0.5 = вдвое медленнее)
@@ -57,6 +59,18 @@ const Part: FC<PartProps> = ({ className }) => {
         gsap.to(friendRef.current, {
           opacity: 0,
           duration: 1,
+        })
+      }
+
+      if (self.progress <= 0.05) {
+        gsap.to(teamRef.current, {
+          opacity: 1,
+          duration: 0.3
+        })
+      } else {
+        gsap.to(teamRef.current, {
+          opacity: 0,
+          duration: 0.3
         })
       }
 
@@ -91,7 +105,12 @@ const Part: FC<PartProps> = ({ className }) => {
           opacity: 0,
           duration: 0.5
         })
-      } else if (self.progress < 0.15) {
+      } else if (self.progress <= 0.05) {
+        gsap.to(box1Ref.current, {
+          opacity: 0,
+          duration: 0.5
+        })
+      } else if ((self.progress < 0.15) || (self.progress > 0.05)) {
         gsap.to(box1Ref.current, {
           opacity: 1,
           duration: 0.5
@@ -218,19 +237,19 @@ const Part: FC<PartProps> = ({ className }) => {
 
     return (
       <div>
-        <div className={styles.team}>
-          <h2>
-            <TitleGradient text={'Стань частью команды'} />
-          </h2>
-          <p>Хочешь работать плечом к плечу с ключевыми игроками рынка? Присоединяйся к нам</p>
-          <button>вакансии</button>
-        </div>
         <div
           className={rootClassName}
           id='mascot'
           ref={mascotRef}
           style={{ height: `${10 / speedFactor}vh`, position: 'relative' }} // Установите высоту пропорционально speedFactor
         >
+          <div className={styles.team} ref={teamRef}>
+            <h2>
+              <TitleGradient text={'Стань частью команды'} />
+            </h2>
+            <p>Хочешь работать плечом к плечу с ключевыми игроками рынка? Присоединяйся к нам</p>
+            <ButtonTwo text={'вакансии'} />
+          </div>
           <div className={styles.box} ref={box1Ref}>
             <div className={styles.box__content}>
               <h3>Обучение и наставничество</h3>
@@ -253,9 +272,11 @@ const Part: FC<PartProps> = ({ className }) => {
             <Line />
           </div>
           <div className={styles.friend} ref={friendRef}>
-            <h2><TitleGradient text={'Отправь продуктивного друга к нам на MARS'} /></h2>
-            <p>И получи бонусы</p>
-            <button>Узнать подробности у HR</button>
+            <div>
+              <h2><TitleGradient text={'Отправь продуктивного друга к нам на MARS'} /></h2>
+              <p>И получи бонусы</p>
+            </div>
+            <ButtonTwo text={'Узнать подробности у HR'} big={true} />
           </div>
           <Canvas
             style={{
@@ -297,19 +318,19 @@ const Part: FC<PartProps> = ({ className }) => {
 
     return (
       <div>
-        <div className={styles.team}>
-          <h2>
-            <TitleGradient text={'Стань частью команды'} />
-          </h2>
-          <p>Хочешь работать плечом к плечу с ключевыми игроками рынка? Присоединяйся к нам</p>
-          <button>вакансии</button>
-        </div>
         <div
           className={rootClassName}
           id='mascot'
           ref={mascotRef}
           style={{ height: `${10 / speedFactor}vh`, position: 'relative' }} // Установите высоту пропорционально speedFactor
         >
+          <div className={styles.team} ref={teamRef}>
+            <h2>
+              <TitleGradient text={'Стань частью команды'} />
+            </h2>
+            <p>Хочешь работать плечом к плечу с ключевыми игроками рынка? Присоединяйся к нам</p>
+            <ButtonTwo text={'вакансии'} />
+          </div>
           <div className={styles.box} ref={box1Ref}>
             <div className={styles.box__content}>
               <h3>Обучение и наставничество</h3>
@@ -332,9 +353,11 @@ const Part: FC<PartProps> = ({ className }) => {
             <Line1 />
           </div>
           <div className={styles.friend} ref={friendRef}>
-            <h2><TitleGradient text={'Отправь продуктивного друга к нам на MARS'} /></h2>
-            <p>И получи бонусы</p>
-            <button>Узнать подробности у HR</button>
+          <div>
+              <h2><TitleGradient text={'Отправь продуктивного друга к нам на MARS'} /></h2>
+              <p>И получи бонусы</p>
+            </div>
+            <ButtonTwo text={'Узнать подробности у HR'} big={true} />
           </div>
           <Canvas
             style={{
@@ -375,19 +398,19 @@ const Part: FC<PartProps> = ({ className }) => {
   } else {
     return (
       <div>
-        <div className={styles.team}>
-          <h2>
-            <TitleGradient text={'Стань частью команды'} />
-          </h2>
-          <p>Хочешь работать плечом к плечу с ключевыми игроками рынка? Присоединяйся к нам</p>
-          <button>вакансии</button>
-        </div>
         <div
           className={rootClassName}
           id='mascot'
           ref={mascotRef}
           style={{ height: `${10 / speedFactor}vh`, position: 'relative' }} // Установите высоту пропорционально speedFactor
         >
+          <div className={styles.team} ref={teamRef}>
+            <h2>
+              <TitleGradient text={'Стань частью команды'} />
+            </h2>
+            <p>Хочешь работать плечом к плечу с ключевыми игроками рынка? Присоединяйся к нам</p>
+            <ButtonTwo text={'вакансии'} />
+          </div>
           <div className={styles.box} ref={box1Ref}>
             <div className={styles.box__content}>
               <h3>Обучение и наставничество</h3>
@@ -410,9 +433,11 @@ const Part: FC<PartProps> = ({ className }) => {
             <Line3 />
           </div>
           <div className={styles.friend} ref={friendRef}>
-            <h2><TitleGradient text={'Отправь продуктивного друга к нам на MARS'} /></h2>
-            <p>И получи бонусы</p>
-            <button>Узнать подробности у HR</button>
+            <div>
+              <h2><TitleGradient text={'Отправь продуктивного друга к нам на MARS'} /></h2>
+              <p>И получи бонусы</p>
+            </div>
+            <ButtonTwo text={'Узнать подробности у HR'} big={true} />
           </div>
           <Canvas
             style={{
@@ -422,27 +447,35 @@ const Part: FC<PartProps> = ({ className }) => {
             shadows
 
           >
-            <ambientLight intensity={0.5} />
+            {/* <axesHelper /> */}
+            {/* <ambientLight intensity={0.5} /> */}
             <directionalLight
-              position={[10, 10, 5]}
+              position={[0, 1, 0.5]}
               intensity={1}
               castShadow
               shadow-mapSize-width={1024}
               shadow-mapSize-height={1024}
               shadow-camera-far={50}
-              shadow-camera-left={-10}
-              shadow-camera-right={10}
-              shadow-camera-top={10}
-              shadow-camera-bottom={-10}
+              shadow-camera-left={-1}
+              shadow-camera-right={1}
+              shadow-camera-top={1}
+              shadow-camera-bottom={-1}
             />
             <PerspectiveCamera ref={cameraRef} makeDefault position={[-0.1, 0, 0.5]} fov={50} />
 
-            {/* <EnvironmentGLTF url="/models/environment.glb"
+            <EnvironmentGLTF url="/models/environment.glb"
               scale={[2, 2, 2]}
               position={[0, -30, 0]}
-            /> */}
-            <Environment files="/models/outer-space-1.exr" />
-            <pointLight position={[-10, -10, -10]} intensity={0.5} />
+            />
+            <Environment files="/models/outer-space-1.exr" environmentRotation={[0, Math.PI, 0]} />
+            {/* <pointLight position={[-3, 0, -1]} intensity={0.5} /> */}
+
+            <EffectComposer>
+              <DepthOfField focusDistance={0} focalLength={0.02} bokehScale={2} height={480} />
+              <Bloom luminanceThreshold={1} luminanceSmoothing={10} height={300} />
+              <Noise opacity={0.02} />
+              <Vignette eskil={false} offset={0.1} darkness={1.1} />
+            </EffectComposer>
 
             {/* Передача scrollProgressRef и position в Model */}
             <Model scrollProgressRef={scrollProgressRef} position={[0, -0.2, 0]} />
