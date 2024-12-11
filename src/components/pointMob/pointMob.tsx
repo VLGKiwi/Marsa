@@ -15,12 +15,8 @@ const Point: FC = () => {
     { id: 6, text: 'Точка 6: Email маркетинг и автоматизация' },
   ];
 
-  const handleMouseEnter = (id: number) => {
-    setActivePoint(id);
-  };
-
-  const handleMouseLeave = () => {
-    setActivePoint(null);
+  const handlePointClick = (id: number) => {
+    setActivePoint((prev) => (prev === id ? null : id)); // Закрывает карточку при повторном клике
   };
 
   return (
@@ -30,9 +26,8 @@ const Point: FC = () => {
         {points.map((point) => (
           <div
             key={point.id}
-            className={styles.point}
-            onMouseEnter={() => handleMouseEnter(point.id)}
-            onMouseLeave={handleMouseLeave}
+            className={`${styles.point} ${activePoint === point.id ? styles.active : ''}`}
+            onClick={() => handlePointClick(point.id)}
           >
             <svg
               width="27"

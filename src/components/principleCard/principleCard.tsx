@@ -53,21 +53,34 @@ const PrincipleCard: FC<PrincipleCardProps> = ({
       timeline.fromTo(
         lines,
         { fillOpacity: 0 },
-        { fillOpacity: 0.3, duration: 0.5, stagger: 0.05 }
+        { fillOpacity: 0.3, duration: 0.1, stagger: 0.05 }
       );
 
       // Анимация paths
-      timeline.fromTo(
-        paths,
-        { strokeDasharray: '1000', strokeDashoffset: '1000' },
-        { strokeDashoffset: '0', duration: 1, stagger: 0.05 }
-      );
+      paths.forEach((path) => {
+        const pathLength = (path as SVGPathElement).getTotalLength();
+        gsap.set(path, {
+          strokeDasharray: pathLength,
+          strokeDashoffset: pathLength,
+        });
+
+        timeline.to(
+          path,
+          {
+            strokeDashoffset: 0,
+            duration: 1,
+            ease: 'power1.out',
+          },
+          '<+=0.1'
+        );
+      });
+
 
       // Анимация ellipses
       timeline.fromTo(
         ellipses,
         { scale: 0, transformOrigin: 'center' },
-        { scale: 1, duration: 0.5, stagger: 0.05 },
+        { scale: 1, duration: 0.1, stagger: 0.05 },
         '+=0.2'
       );
 
@@ -75,7 +88,7 @@ const PrincipleCard: FC<PrincipleCardProps> = ({
       timeline.fromTo(
         rects,
         { scale: 0, transformOrigin: 'center' },
-        { scale: 1, duration: 0.5, stagger: 0.05 },
+        { scale: 1, duration: 0.1, stagger: 0.05 },
         '+=0.2'
       );
 
@@ -84,7 +97,7 @@ const PrincipleCard: FC<PrincipleCardProps> = ({
         timeline.fromTo(
           triangle,
           { scale: 0, opacity: 0, transformOrigin: 'center' },
-          { scale: 1, opacity: 1, duration: 0.5 },
+          { scale: 1, opacity: 1, duration: 0.2 },
           '+=0.2'
         );
       }
@@ -94,7 +107,7 @@ const PrincipleCard: FC<PrincipleCardProps> = ({
         timeline.fromTo(
           [titleElement, numberElement, descriptionElement],
           { opacity: 0 },
-          { opacity: 1, duration: 1, stagger: 0.3 },
+          { opacity: 1, duration: 0.2, stagger: 0.3 },
           '+=0.5' // Задержка перед текстом
         );
       }
@@ -135,10 +148,20 @@ const PrincipleCard: FC<PrincipleCardProps> = ({
         <g filter="url(#filter0_b_862_97)">
 
 
-        {/* <!-- Фон конец--> */}
+        {/* <!-- Фон начало--> */}
 
 
-        <path d="M63.8006 84.8814H1V242.672L24.4769 266.136V337.699L63.8006 377H209.944L265.702 322.448H474.646H700.611L737 285.493V66.6973L700.611 30.3292H308.547L279.201 1H117.211L63.8006 84.8814Z" fill="#031A2A" fill-opacity="0.3"/>
+        <defs>
+          <filter id="blurFilter" x="0" y="0" width="100%" height="100%">
+            <feGaussianBlur stdDeviation="0" />
+          </filter>
+        </defs>
+        <path
+          d="M63.8006 84.8814H1V242.672L24.4769 266.136V337.699L63.8006 377H209.944L265.702 322.448H474.646H700.611L737 285.493V66.6973L700.611 30.3292H308.547L279.201 1H117.211L63.8006 84.8814Z"
+          fill="#031A2A"
+          fill-opacity="0.3"
+          filter="url(#blurFilter)"
+        />
 
 
         {/* <!-- Фон конец--> */}

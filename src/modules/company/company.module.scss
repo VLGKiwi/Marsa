@@ -16,6 +16,7 @@
 		left: 21%;
 		top: 20%;
 		background: center no-repeat url('../../shared/assets/icons/line1.svg');
+		background-size: contain;
 
 		padding: 50px 100px 70px 30px;
 
@@ -56,6 +57,7 @@
 		right: 21%;
 		top: 15%;
 		background: center no-repeat url('../../shared/assets/icons/line2.svg');
+		background-size: contain;
 
 		padding: 10px 3.5px 110.5px 105px;
 
@@ -94,6 +96,7 @@
 		right: 21%;
 		bottom: 15%;
 		background: center no-repeat url('../../shared/assets/icons/line3.svg');
+		background-size: contain;
 
 		padding: 170px 0 0 91px;
 
@@ -160,6 +163,14 @@
 				font-size: 20px;
 				line-height: 150%;
 				color: var(--color-white);
+
+				@include tablet {
+					font-size: 18px;
+				}
+
+				@include tablet-small {
+					font-size: 16px;
+				}
 			}
 		}
 	}

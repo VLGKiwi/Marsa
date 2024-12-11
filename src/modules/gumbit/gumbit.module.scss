@@ -3,26 +3,31 @@
 @use "@styles/variables";
 
 .root {
+	background: url("../../shared/assets/icons/table.svg") repeat;
+	background-size: 60%;
+
+	@include tablet-small {
+		background-size: 100%;
+	}
+}
+
+.wrapper {
 	max-width: 1200px;
 	margin: 0 auto;
 	padding: 39px 0 48px;
 
 	display: flex;
 	flex-direction: column;
-	gap: 49px;
-
-	background: url("../../shared/assets/icons/table.svg") repeat;
-	background-size: 100%;
+	gap: 36px;
 
 	@include tablet {
-		gap: 38px;
+		gap: 30px;
 		padding: 80px 103px;
 	}
 
 	@include tablet-small {
-		gap: 24px;
+		gap: 18px;
 		padding: 77px 12px 80px;
-		background-size: 100%;
 	}
 }
 
