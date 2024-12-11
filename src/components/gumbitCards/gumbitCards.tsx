@@ -30,18 +30,11 @@ const GumbitCards: FC<GumbitCardsProps> = ({ className }) => {
           ['Фарм отдел', 'HR-отдел'],
           ['IT-отдел', 'SEO отдел'],
           ['Фарм отдел', 'HR-отдел'],
-          ['IT-отдел', 'SEO отдел'],
-          ['Фарм отдел', 'HR-отдел'],
-          ['IT-отдел', 'SEO отдел'],
-          ['Фарм отдел', 'HR-отдел'],
-          ['IT-отдел', 'SEO отдел'],
         ]);
       } else if (width < 1200) {
         setRows([
           ['Фарм отдел', 'Production', 'HR-отдел'],
-          ['SEO отдел', 'IT-отдел', 'Пустышка'],
-          ['Фарм отдел', 'Production', 'HR-отдел'],
-          ['SEO отдел', 'IT-отдел', 'Пустышка'],
+          ['SEO отдел', 'IT-отдел'],
         ]);
       } else {
         setRows([
@@ -64,12 +57,19 @@ const GumbitCards: FC<GumbitCardsProps> = ({ className }) => {
     gsap.registerPlugin(ScrollTrigger);
 
     if (containerRef.current) {
+      const containerBounds = containerRef.current.getBoundingClientRect();
+
       cardRefs.current.forEach((row) => {
         row.forEach((card) => {
           if (card) {
+            const cardBounds = card.getBoundingClientRect();
+
+            const startX = containerBounds.left - cardBounds.left;
+            const startY = containerBounds.top - cardBounds.top;
+
             gsap.set(card, {
-              x: 0,
-              y: 100,
+              x: startX,
+              y: startY,
               opacity: 0,
             });
           }
@@ -84,12 +84,15 @@ const GumbitCards: FC<GumbitCardsProps> = ({ className }) => {
             if (hasAnimatedRef.current) return;
             hasAnimatedRef.current = true;
 
+            const isMobile = window.innerWidth < 768; // Проверка на мобильное устройство
+
             cardRefs.current.forEach((row, rowIndex) => {
               row.forEach((card, cardIndex) => {
                 if (card) {
+                  const yOffset = isMobile && card.classList.contains(styles.offsetCard) ? 60 : 0; // Смещение только для мобильных
                   gsap.to(card, {
                     x: 0,
-                    y: 0,
+                    y: yOffset,
                     opacity: 1,
                     duration: 1.5,
                     ease: 'power3.out',
@@ -121,7 +124,8 @@ const GumbitCards: FC<GumbitCardsProps> = ({ className }) => {
                 if (el) cardRefs.current[rowIndex][index] = el;
               }}
               className={classNames(styles.card, {
-                [styles.evenCard]: index % 2 === 1, // Класс для каждой второй карточки
+                [styles.evenCard]: index % 2 === 1,
+                [styles.offsetCard]: index % 2 === 1, // Добавляем класс смещения для каждой второй карточки
               })}
             >
               <GumbitCard text={text} />
