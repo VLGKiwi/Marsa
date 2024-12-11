@@ -5,16 +5,39 @@
 .root {
 	max-width: 1200px;
 	margin: 0 auto;
+	padding: 39px 0 48px;
 
 	display: flex;
 	flex-direction: column;
 	gap: 49px;
 
+	background: url("../../shared/assets/icons/table.svg") repeat;
+	background-size: 100%;
+
 	@include tablet {
 		gap: 38px;
+		padding: 80px 103px;
 	}
 
 	@include tablet-small {
 		gap: 24px;
+		padding: 77px 12px 80px;
+		background-size: 100%;
+	}
+}
+
+.title {
+	span {
+		font-size: 28px;
+		line-height: 1.5;
+		margin: 0 0 0 72px;
+		font-weight: 400;
+		font-family: var(--font-esq);
+		letter-spacing: 0;
+
+		@include tablet-small {
+			font-size: 16px;
+			margin: 0;
+		}
 	}
 }

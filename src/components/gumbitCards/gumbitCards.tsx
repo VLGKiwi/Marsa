@@ -29,6 +29,12 @@ const GumbitCards: FC<GumbitCardsProps> = ({ className }) => {
         setRows([
           ['Фарм отдел', 'HR-отдел'],
           ['IT-отдел', 'SEO отдел'],
+          ['Фарм отдел', 'HR-отдел'],
+          ['IT-отдел', 'SEO отдел'],
+          ['Фарм отдел', 'HR-отдел'],
+          ['IT-отдел', 'SEO отдел'],
+          ['Фарм отдел', 'HR-отдел'],
+          ['IT-отдел', 'SEO отдел'],
         ]);
       } else if (width < 1200) {
         setRows([
