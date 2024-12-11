@@ -15,6 +15,7 @@
 	max-width: 1200px;
 	margin: 0 auto;
 	padding: 39px 0 48px;
+	position: relative;
 
 	display: flex;
 	flex-direction: column;
@@ -43,6 +44,19 @@
 		@include tablet-small {
 			font-size: 16px;
 			margin: 0;
+		}
+	}
+}
+
+.gradient {
+  position: absolute;
+  top: 50%;
+  left: 0%;
+  transform: translateX(-50%) translateY(-50%);
+
+	svg {
+		@include tablet-small {
+			width: 320px;
 		}
 	}
 }
