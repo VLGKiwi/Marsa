@@ -29,9 +29,9 @@ const Home: FC<HomeProps> = ({ className }) => {
       <Introduce />
       <div className={styles.imposter}>
         <Company />
-        <Link href='/vacancy'>
+        {/* <Link href='/vacancy'>
           <Button size='sm'>ВАКАНСИИ</Button>
-        </Link>
+        </Link> */}
         <Traffic />
         <Principle />
         <Mission />
