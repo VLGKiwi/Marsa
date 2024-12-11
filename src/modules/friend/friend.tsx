@@ -10,8 +10,7 @@ import Image from 'next/image'
 
 const Friend: FC<FriendProps> = ({
   className,
-  textBonus,
-  textButton
+  textBonus
 }) => {
   const rootClassName = classNames(styles.root, className)
 
