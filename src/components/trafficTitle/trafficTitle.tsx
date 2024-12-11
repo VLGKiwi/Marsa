@@ -11,7 +11,9 @@ const TrafficTitle: FC<TrafficTitleProps> = ({ className, text }) => {
   return (
     <div className={rootClassName}>
       <div className={styles.icon}><Square /></div>
-      <span className={styles.text}>{text}</span>
+      <div className={styles.border}>
+        <span className={styles.text}>{text}</span>
+      </div>
     </div>
   );
 };

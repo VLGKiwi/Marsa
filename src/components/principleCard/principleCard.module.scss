@@ -1,5 +1,5 @@
 @use "@styles/func";
-@use "@styles/mixins";
+@use "@styles/mixins" as *;
 @use "@styles/variables";
 
 .root {
@@ -10,6 +10,22 @@
 	flex-wrap: wrap;
 	gap: 12px 32px;
 	margin: 0 auto;
+
+	@include tablet-small {
+		max-width: 390px;
+		max-height: 200px;
+		padding-right: 1px;
+	}
+
+	@include mobile {
+		max-width: 370px;
+	}
+
+	svg {
+		@include tablet-small {
+			max-height: 200px;
+		}
+	}
 }
 
 .content {
@@ -20,6 +36,12 @@
 	display: flex;
 	flex-wrap: wrap;
 	gap: 12px 32px;
+
+	@include tablet-small {
+		max-width: 90vw;
+		left: 15%;
+		top: 25%;
+	}
 }
 
 .number {
@@ -28,6 +50,12 @@
 	line-height: 1.5;
 	font-weight: 400;
 	color: var(--color-white-3);
+
+	@include tablet-small {
+		font-size: 12px;
+		line-height: 1.37;
+		letter-spacing: -0.04em;
+	}
 }
 
 .title {
@@ -37,6 +65,12 @@
 	font-weight: bold;
 	color: var(--color-white);
 	text-transform: uppercase;
+
+	@include tablet-small {
+		font-size: 12px;
+		line-height: 1.5;
+		letter-spacing: 0.02em;
+	}
 }
 
 .description {
@@ -46,4 +80,10 @@
 	font-weight: 400;
 	color: var(--color-white-2);
 	width: 80%;
+
+	@include tablet-small {
+		font-size: 10px;
+		line-height: 1.8;
+		width: 100%;
+	}
 }

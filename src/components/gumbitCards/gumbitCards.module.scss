@@ -9,10 +9,20 @@
 	gap: 32px;
 	align-items: center;
 
+	@include tablet-small {
+		gap: 24px 28px;
+		align-items: flex-start;
+	}
+
 	svg {
     width: 197px;
     height: 240px;
 		position: relative;
+
+		@include tablet-small {
+			width: 156px;
+			height: 192px;
+		}
 	}
 }
 
