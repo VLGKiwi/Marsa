@@ -20,14 +20,14 @@ const EnvironmentGLTF: React.FC<EnvironmentGLTFProps> = ({
   ...props
 }) => {
   const group = useRef<THREE.Group>(null)
-  const { scene } = useGLTF(url)
+  const { scene } = useGLTF(url) as unknown as { scene: THREE.Scene } // Явно указываем тип сцены
 
   useEffect(() => {
     if (scene) {
       // Обновление материалов для поддержки отражений
       scene.traverse((child) => {
-        if (child.isMesh) {
-          const material = child.material as THREE.MeshStandardMaterial
+        if ((child as THREE.Mesh).isMesh) { // Уточняем тип для child
+          const material = (child as THREE.Mesh).material as THREE.MeshStandardMaterial
           material.envMapIntensity = 1
           material.metalness = 1
           material.roughness = 0.1
@@ -36,7 +36,8 @@ const EnvironmentGLTF: React.FC<EnvironmentGLTFProps> = ({
       })
 
       if (group.current) {
-        group.current.add(scene.clone())
+        const clonedScene = scene.clone() // Клонируем сцену для добавления
+        group.current.add(clonedScene)
       }
     }
   }, [scene])
@@ -48,6 +49,7 @@ const EnvironmentGLTF: React.FC<EnvironmentGLTFProps> = ({
   )
 }
 
+// Предзагрузка модели
 useGLTF.preload('/models/environment.glb')
 
 export default EnvironmentGLTF
