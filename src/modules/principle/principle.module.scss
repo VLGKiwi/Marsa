@@ -9,6 +9,7 @@
 	align-items: center;
 	gap: 32px;
 	padding: 121px 0 124px;
+	overflow: hidden;
 
 	background: url("../../shared/assets/icons/table.svg") repeat;
 	background-size: 60%;
@@ -17,6 +18,19 @@
 		font-size: 43px;
 		background-size: 100%;
 		padding: 36px 0 84px;
+	}
+}
+
+.gradient {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+
+	svg {
+		@include tablet-small {
+			width: 320px;
+		}
 	}
 }
 

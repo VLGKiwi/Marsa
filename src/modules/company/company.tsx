@@ -5,7 +5,7 @@ import classNames from 'classnames';
 
 import styles from './company.module.scss';
 import { CompanyProps } from './company.types';
-import { Disclose } from '@/ui';
+import { Disclose, GradientBlur } from '@/ui';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 
@@ -112,6 +112,7 @@ const Company: FC<CompanyProps> = ({ className }) => {
 
   return (
     <div className={styles.company}>
+      <GradientBlur className={styles.gradient} />
       <div className={rootClassName}>
         <div className={styles.container__title} ref={container}>
           <Disclose />
