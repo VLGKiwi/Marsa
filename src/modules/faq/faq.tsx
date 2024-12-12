@@ -23,7 +23,7 @@ const Faq: FC<FaqProps> = ({
           <Point title={'Кто руководит баингом?'} text={'В каждом источнике трафика, есть свой Head – опытный специалист, который координирует свои команды. В каждой команде есть свой Team lead, который помогает сориентироваться в поиске связок, в выборе продукта и технических особенностях'} leftP={'60%'} topP={'0%'} />
           <Point title={'Что необходимо, чтобы попасть к вам в команду?'} text={'Для начала напиши нашему HR Варваре @var_marsa. Тебя пригласят на собеседование, по итогам которого у тебя будет шанс прийти к нам на тестовый пролив. После теста мы принимаем решение о дальнейшем трудоустройстве'} leftP={'25%'} topP={'5%'} />
         <h2>
-          <TitleGradient className="title__large title__absolute" text="FAQ" />
+          <TitleGradient text="FAQ" />
         </h2>
       </div>
     )
@@ -32,7 +32,7 @@ const Faq: FC<FaqProps> = ({
       <div className={rootClassName}>
         <PointMob />
         <h2>
-          <TitleGradient className="title__large title__absolute" text="FAQ" />
+          <TitleGradient text="FAQ" />
         </h2>
       </div>
     )
@@ -41,7 +41,7 @@ const Faq: FC<FaqProps> = ({
       <div className={rootClassName}>
         <PointTab />
         <h2>
-          <TitleGradient className="title__large title__absolute" text="FAQ" />
+          <TitleGradient text="FAQ" />
         </h2>
       </div>
     )

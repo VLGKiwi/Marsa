@@ -7,7 +7,6 @@ import styles from './principle.module.scss';
 import { PrincipleProps } from './principle.types';
 import { GradientBlur, TitleGradient } from '@/ui';
 import PrincipleCard from '../../components/principleCard/principleCard';
-import Sound from './sword__sound.mp3'
 
 const principles = [
   { number: 1, title: 'Результат важнее процесса', description: 'Мы верим в то, что действительно важно — это то, что ты создаешь. Здесь ценят тех, кто фокусируется на конечных результатах, а не просто выполняет задачи' },
@@ -30,6 +29,10 @@ const Principle: FC<PrincipleProps> = ({ className }) => {
   const audioRef = useRef<HTMLAudioElement | null>(null); // Реф для аудио
 
   useEffect(() => {
+    if (audioRef.current) {
+      audioRef.current.volume = 0.5;
+    }
+
     const startTimer = setTimeout(() => {
       const interval = setInterval(() => {
         setAnimationStage('exiting'); // Устанавливаем стадию "исчезновение"
@@ -80,7 +83,11 @@ const Principle: FC<PrincipleProps> = ({ className }) => {
         ))}
       </div>
       {/* Аудио для воспроизведения звука */}
-      <audio ref={audioRef} src={Sound} />
+      <audio
+        ref={audioRef}
+        src="https://infodevelopmentpreview.ru/sword__sound.mp3"
+        preload="auto"
+      />
     </div>
   );
 };
