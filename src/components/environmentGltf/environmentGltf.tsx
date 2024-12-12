@@ -20,27 +20,27 @@ const EnvironmentGLTF: React.FC<EnvironmentGLTFProps> = ({
   ...props
 }) => {
   const group = useRef<THREE.Group>(null)
-  const { scene } = useGLTF(url) as unknown as { scene: THREE.Scene } // Явно указываем тип сцены
+  // const { scene } = useGLTF(url) as unknown as { scene: THREE.Scene } // Явно указываем тип сцены
 
-  useEffect(() => {
-    if (scene) {
-      // Обновление материалов для поддержки отражений
-      scene.traverse((child) => {
-        if ((child as THREE.Mesh).isMesh) { // Уточняем тип для child
-          const material = (child as THREE.Mesh).material as THREE.MeshStandardMaterial
-          material.envMapIntensity = 1
-          material.metalness = 1
-          material.roughness = 0.1
-          material.needsUpdate = true // Применить изменения
-        }
-      })
+  // useEffect(() => {
+  //   if (scene) {
+  //     // Обновление материалов для поддержки отражений
+  //     // scene.traverse((child) => {
+  //     //   if ((child as THREE.Mesh).isMesh) { // Уточняем тип для child
+  //     //     const material = (child as THREE.Mesh).material as THREE.MeshStandardMaterial
+  //     //     material.envMapIntensity = 0.5
+  //     //     material.metalness = 1
+  //     //     material.roughness = 0.1
+  //     //     material.needsUpdate = true // Применить изменения
+  //     //   }
+  //     // })
 
-      if (group.current) {
-        const clonedScene = scene.clone() // Клонируем сцену для добавления
-        group.current.add(clonedScene)
-      }
-    }
-  }, [scene])
+  //     if (group.current) {
+  //       const clonedScene = scene.clone() // Клонируем сцену для добавления
+  //       group.current.add(clonedScene)
+  //     }
+  //   }
+  // }, [scene])
 
   return (
     <group ref={group} scale={scale} position={position} rotation={rotation} {...props}>

@@ -30,12 +30,14 @@ const esqadero = localFont({
 })
 
 export default function RootLayout({
-  children
+  children,
+  params,
 }: Readonly<{
-  children: ReactNode
+  children: ReactNode;
+  params: { locale: string };
 }>) {
   return (
-    <html lang="ru">
+    <html lang={params.locale}>
       <body className={`${actay.variable} ${esqadero.variable}`}>
         <Provider>
           <div id="root">

@@ -126,12 +126,12 @@ const Model = forwardRef<THREE.Group, ModelProps>(({ scrollProgressRef, ...props
               skeleton={nodes.GEARS_2.skeleton}
             />
           </group>
-          <skinnedMesh
-            name="GLOVES"
-            geometry={nodes.GLOVES.geometry}
-            material={materials.GLOVES}
-            skeleton={nodes.GLOVES.skeleton}
-          />
+            <skinnedMesh
+              name="GLOVES"
+              geometry={nodes.GLOVES.geometry}
+              material={materials.GLOVES}
+              skeleton={nodes.GLOVES.skeleton}
+            />
           <group name="HELMET">
             <skinnedMesh
               name="HELMET_1"

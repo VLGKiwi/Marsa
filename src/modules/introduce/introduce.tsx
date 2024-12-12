@@ -8,10 +8,16 @@ import { ButtonBlue, TitleGradient } from '@/ui';
 import Image from 'next/image';
 import { AnimatedImage } from '@/ui/animatedImage';
 import Link from 'next/link';
+import { useTranslation } from '@/shared/hooks';
+import { useRouter } from 'next/router';
+
 
 const Introduce: FC<IntroduceProps> = ({ className }) => {
   const [imageSrc, setImageSrc] = useState('/images/introduce.png');
   const rootClassName = classNames(styles.root, className);
+
+  const { locale } = useRouter(); // Получаем текущую локаль из маршрута
+  const t = useTranslation(locale as 'en' | 'ru', 'intro') // Используем строго типизированный хук
 
   useEffect(() => {
     const updateImageSrc = () => {
@@ -43,7 +49,7 @@ const Introduce: FC<IntroduceProps> = ({ className }) => {
       />
       <div className={styles.button}><Link href='/vacancy'><ButtonBlue>ВАКАНСИИ</ButtonBlue></Link></div>
       <AnimatedImage className={styles.introducesvg} />
-      <TitleGradient className="title__large title__absolute" text="MARSA TEAM" />
+      <TitleGradient className="title__large title__absolute" text={t.title} />
     </div>
   );
 };

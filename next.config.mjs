@@ -1,6 +1,10 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   // output: 'standalone',
+  i18n: {
+    locales: ['en', 'ru'], // Список поддерживаемых языков
+    defaultLocale: 'ru',  // Язык по умолчанию
+  },
   reactStrictMode: true,
   webpack(config) {
     const fileLoaderRule = config.module.rules.find((rule) =>
@@ -26,7 +30,8 @@ const nextConfig = {
   },
   images: {
     unoptimized: false,
-  }
+  },
+
 };
 
 export default nextConfig;
