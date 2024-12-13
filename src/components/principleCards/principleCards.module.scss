@@ -7,17 +7,4 @@
 
 .root {
   display: flex;
-  overflow: hidden; // Обрезаем содержимое за пределами видимой области
-  position: relative; // Для позиционирования кнопок управления
-}
-
-.sliderWrapper {
-  display: flex;
-  transition: transform 0.5s ease-out; // Анимация для плавного перехода
-  will-change: transform; // Оптимизация для анимации
-}
-
-.slide {
-  flex-shrink: 0; // Предотвращаем уменьшение слайда
-  width: 100%; // Слайд занимает всю ширину контейнера
 }
