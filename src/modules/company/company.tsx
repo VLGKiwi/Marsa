@@ -1,4 +1,4 @@
-'use client'
+'use client';
 
 import { FC, useRef } from 'react';
 import classNames from 'classnames';
@@ -8,6 +8,32 @@ import { CompanyProps } from './company.types';
 import { Disclose, GradientBlur } from '@/ui';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
+import { Language, useLanguage } from '@/service/language';
+
+type Translations = Record<
+  Language,
+  {
+    fullText: string;
+    text1: string;
+    text2: string;
+    text3: string;
+  }
+>;
+
+const translations: Translations = {
+  ru: {
+    fullText: 'Управляем сложными процессами медиабаинга с помощью прогнозирования, анализа и оптимизации кампаний',
+    text1: '500+ клиентов <span>с 2020 года</span>',
+    text2: 'Ориентируемся на <span>ROI вместо объемов</span>',
+    text3: 'Рассчитываем всю <span>экономику заливов</span>',
+  },
+  en: {
+    fullText: 'We manage complex media buying processes through forecasting, analysis, and campaign optimization.',
+    text1: '500+ clients <span>since 2020</span>',
+    text2: 'Focused on <span>ROI, not volume</span>',
+    text3: 'Comprehensive funnel <span>economics analysis</span>',
+  },
+};
 
 const Company: FC<CompanyProps> = ({ className }) => {
   const rootClassName = classNames(styles.root, className);
@@ -18,8 +44,9 @@ const Company: FC<CompanyProps> = ({ className }) => {
   const text2 = useRef(null);
   const text3 = useRef(null);
 
-  const fullText =
-    "Управляем сложными процессами медиабаинга с помощью прогнозирования, анализа и оптимизации кампаний";
+  const { language } = useLanguage();
+  const { fullText, text1: localizedText1, text2: localizedText2, text3: localizedText3 } = translations[language];
+
   const randomChars = "_{}#.&@!$%^*()-+=<>?/[]|~`";
 
   const getRandomChar = () =>
@@ -128,19 +155,22 @@ const Company: FC<CompanyProps> = ({ className }) => {
         </div>
       </div>
       <div className={styles.text1} ref={text1}>
-        <p className={styles.text1__company}>
-          500+ клиентов <span>с 2020 года</span>
-        </p>
+        <p
+          className={styles.text1__company}
+          dangerouslySetInnerHTML={{ __html: localizedText1 }}
+        />
       </div>
       <div className={styles.text2} ref={text2}>
-        <p className={styles.text2__company}>
-          Ориентируемся на <span>ROI вместо объемов</span>
-        </p>
+        <p
+          className={styles.text2__company}
+          dangerouslySetInnerHTML={{ __html: localizedText2 }}
+        />
       </div>
       <div className={styles.text3} ref={text3}>
-        <p className={styles.text3__company}>
-          Рассчитываем всю <span>экономику заливов</span>
-        </p>
+        <p
+          className={styles.text3__company}
+          dangerouslySetInnerHTML={{ __html: localizedText3 }}
+        />
       </div>
     </div>
   );

@@ -4,14 +4,28 @@ import { FC, useEffect, useState } from 'react';
 import { Line } from 'react-chartjs-2';
 import { Chart as ChartJS, LineElement, PointElement, LinearScale, CategoryScale, Tooltip } from 'chart.js';
 import styles from './trafficGraphic.module.scss';
+import { useLanguage, Language } from '@/service/language';
 
 ChartJS.register(LineElement, PointElement, LinearScale, CategoryScale, Tooltip);
 
 const NUM_VISIBLE_POINTS = 15; // Количество видимых точек на графике
 const UPDATE_INTERVAL = 1000; // Интервал обновления (мс)
 
+// Объект переводов
+const translations: Record<Language, { whiteText: string; regularText: string }> = {
+  ru: {
+    whiteText: 'Курс на успех:',
+    regularText: 'ориентируемся на ROI, чтобы обеспечить заказчикам качественные лиды',
+  },
+  en: {
+    whiteText: 'Course to success:',
+    regularText: 'We prioritize ROI to provide clients with high-quality leads',
+  },
+};
+
 const TrafficGraphic: FC = () => {
   const [data, setData] = useState<number[]>([150]); // Начальное значение Y = 150
+  const { language } = useLanguage(); // Получение текущего языка
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -80,12 +94,15 @@ const TrafficGraphic: FC = () => {
     },
   };
 
+  // Получаем текущий перевод
+  const { whiteText, regularText } = translations[language];
+
   return (
     <div className={styles.root}>
       <Line data={chartData} options={options} />
       <div className={styles.textcontainer}>
         <p className={styles.text}>
-          <span className={styles.textwhite}>Курс на успех:</span> ориентируемся на ROI, чтобы обеспечить заказчикам качественные лиды
+          <span className={styles.textwhite}>{whiteText}</span> {regularText}
         </p>
       </div>
     </div>

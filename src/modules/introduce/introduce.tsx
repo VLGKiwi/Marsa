@@ -11,14 +11,16 @@ import { AnimatedImage } from '@/ui/animatedImage';
 import Link from 'next/link';
 import { Language, useLanguage } from '@/service/language';
 
-type Translations = Record<Language, { welcome: string }>;
+type Translations = Record<Language, { welcome: string; vacancies: string }>;
 
 const translations: Translations = {
   ru: {
     welcome: 'Экономика заливов— путь к космическому профиту',
+    vacancies: 'ВАКАНСИИ',
   },
   en: {
     welcome: 'Funnel economics – the path to cosmic profit',
+    vacancies: 'VACANCIES',
   },
 };
 
@@ -75,7 +77,7 @@ const Introduce: FC<IntroduceProps> = ({ className }) => {
         quality={100}
         className={styles.image}
       />
-      <div className={styles.button}><Link href='/vacancy'><ButtonBlue>ВАКАНСИИ</ButtonBlue></Link></div>
+      <div className={styles.button}><Link href='/vacancy'><ButtonBlue>{ translations[language].vacancies }</ButtonBlue></Link></div>
       <AnimatedImage className={styles.introducesvg} />
       <div className={styles.marsa}>
         {isMobile ? (
