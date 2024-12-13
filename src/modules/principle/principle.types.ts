@@ -1,4 +1,4 @@
 export interface PrincipleProps {
   className?: string;
-  cards: PrincipleCardProps[]; // Массив данных для карточек
+  cards: PrincipleProps[]; // Массив данных для карточек
 }
