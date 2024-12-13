@@ -2,6 +2,11 @@
 @use "@styles/mixins" as *;
 @use "@styles/variables";
 
+/* stylelint-disable rule */
+/* stylelint-disable rule */
+
+
+
 .root {
   font-family: var(--font-act);
   text-align: center;
@@ -15,7 +20,7 @@
     102.81deg,
     #949494 43.46%,
     #d5d5d5 51.32%,
-    #ffffff 55.16%,
+    #fff 55.16%,
     #d5d5d5 57.85%,
     #949494 65.14%
   );
@@ -35,7 +40,20 @@
   }
 
   &__large {
-    font-size: 64px;
+    font-size: 42px;
+    margin-bottom: 28px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+
+    @include tablet {
+      font-size: 37px;
+      margin-bottom: 20px;
+    }
+
+    @include tablet-small {
+      font-size: 31px;
+    }
   }
 
   &__absolute {
