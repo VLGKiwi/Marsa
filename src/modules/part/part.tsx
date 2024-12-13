@@ -20,7 +20,7 @@ import Line1 from '@icons/line1_part.svg'
 import Line2 from '@icons/line2_part.svg'
 import Line3 from '@icons/line3_part.svg'
 import Line from '@icons/linemob_part.svg'
-import { Bloom, DepthOfField, EffectComposer, Noise, Vignette } from '@react-three/postprocessing'
+// import { Bloom, DepthOfField, EffectComposer, Noise, Vignette } from '@react-three/postprocessing'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -307,13 +307,6 @@ const Part: FC<PartProps> = ({ className }) => {
             />
             <Environment files="/models/outer-space-1.exr" />
 
-            <EffectComposer>
-              <DepthOfField focusDistance={0} focalLength={0.02} bokehScale={2} height={480} />
-              <Bloom luminanceThreshold={1} luminanceSmoothing={10} height={300} />
-              <Noise opacity={0.02} />
-              <Vignette eskil={false} offset={0.1} darkness={1.1} />
-            </EffectComposer>
-
             <pointLight position={[-10, -10, -10]} intensity={0.5} />
 
             {/* Передача scrollProgressRef и position в Model */}
@@ -395,13 +388,6 @@ const Part: FC<PartProps> = ({ className }) => {
               position={[0, -30, 0]}
             />
             <Environment files="/models/outer-space-1.exr" />
-
-            <EffectComposer>
-              <DepthOfField focusDistance={0} focalLength={0.02} bokehScale={2} height={480} />
-              <Bloom luminanceThreshold={1} luminanceSmoothing={10} height={300} />
-              <Noise opacity={0.02} />
-              <Vignette eskil={false} offset={0.1} darkness={1.1} />
-            </EffectComposer>
 
             <pointLight position={[-10, -10, -10]} intensity={0.5} />
 
@@ -486,12 +472,6 @@ const Part: FC<PartProps> = ({ className }) => {
             <Environment files="/models/outer-space-1.exr" environmentRotation={[0, Math.PI, 0]} />
             {/* <pointLight position={[-3, 0, -1]} intensity={0.5} /> */}
 
-            <EffectComposer>
-              <DepthOfField focusDistance={0} focalLength={0.02} bokehScale={2} height={480} />
-              <Bloom luminanceThreshold={1} luminanceSmoothing={10} height={300} />
-              <Noise opacity={0.02} />
-              <Vignette eskil={false} offset={0.1} darkness={1.1} />
-            </EffectComposer>
 
             {/* Передача scrollProgressRef и position в Model */}
             <Model scrollProgressRef={scrollProgressRef} position={[0, -0.2, 0]} />
