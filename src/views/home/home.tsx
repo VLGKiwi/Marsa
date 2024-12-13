@@ -4,19 +4,19 @@ import classNames from 'classnames'
 import styles from './home.module.scss'
 import { HomeProps } from './home.types'
 // import { Button } from '@/ui'
-// import { Traffic } from '@/modules/traffic'
+import { Traffic } from '@/modules/traffic'
 import { Introduce } from '@/modules/introduce'
 import { Faq } from '@/modules/faq'
-// import { Gumbit } from '@/modules/gumbit'
+import { Gumbit } from '@/modules/gumbit'
 // import Link from 'next/link'
-// import { Mission } from '@/modules/mission'
+import { Mission } from '@/modules/mission'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import gsap from 'gsap'
 import { useGSAP } from '@gsap/react'
-// import { Part } from '@/modules/part'
+import { Part } from '@/modules/part'
 import { Company } from '@/modules/company'
 import { WindowFiller } from '@/modules/windowFiller'
-// import { Principle } from '@/modules/principle'
+import { Principle } from '@/modules/principle'
 
 gsap.registerPlugin(ScrollTrigger, useGSAP)
 
@@ -32,11 +32,11 @@ const Home: FC<HomeProps> = ({ className }) => {
         {/* <Link href='/vacancy'>
           <Button size='sm'>ВАКАНСИИ</Button>
         </Link> */}
-        {/* <Traffic /> */}
-        {/* <Principle /> */}
-        {/* <Mission /> */}
-        {/* <Gumbit /> */}
-        {/* <Part /> */}
+        <Traffic />
+        <Principle />
+        <Mission />
+        <Gumbit />
+        <Part />
         <Faq />
       </div>
     </main>

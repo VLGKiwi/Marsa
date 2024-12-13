@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useRef, useEffect } from 'react'
+import React, { useRef } from 'react'
 import { useGLTF } from '@react-three/drei'
 import { GroupProps } from '@react-three/fiber'
 import * as THREE from 'three'
@@ -13,6 +13,7 @@ interface EnvironmentGLTFProps extends GroupProps {
 }
 
 const EnvironmentGLTF: React.FC<EnvironmentGLTFProps> = ({
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   url,
   scale = [1, 1, 1],
   position = [0, 0, 0],
