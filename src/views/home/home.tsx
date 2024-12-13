@@ -33,7 +33,7 @@ const Home: FC<HomeProps> = ({ className }) => {
           <Button size='sm'>ВАКАНСИИ</Button>
         </Link> */}
         <Traffic />
-        <Principle />
+        <Principle cards={[]} />
         <Mission />
         <Gumbit />
         {/* <Part /> */}
