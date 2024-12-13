@@ -1,24 +1,34 @@
-import { FC } from 'react'
-import classNames from 'classnames'
+import React, { FC } from 'react';
+import classNames from 'classnames';
+import styles from './languageLinks.module.scss';
+import { LanguageLinksProps } from './languageLinks.types';
+import { Language, useLanguage } from '@/service/language';
 
-import styles from './languageLinks.module.scss'
-import { LanguageLinksProps } from './languageLinks.types'
+const LanguageLinks: FC<LanguageLinksProps> = ({ className }) => {
+  const rootClassName = classNames(styles.root, className);
 
-const LanguageLinks: FC<LanguageLinksProps> = ({
-  className
-}) => {
-  const rootClassName = classNames(styles.root, className)
+  const { setLanguage } = useLanguage();
+
+  const handleLanguageChange = (lang: Language) => {
+    setLanguage(lang);
+  };
 
   return (
     <div className={rootClassName}>
-      <a href="" className={styles.link}>
-        en
-      </a>
-      <a href="" className={styles.link}>
-        ru
-      </a>
+      <button
+        onClick={() => handleLanguageChange('ru')}
+        className={`${styles.link} ${styles.ru}`}
+      >
+        RU
+      </button>
+      <button
+        onClick={() => handleLanguageChange('en')}
+        className={`${styles.link} ${styles.en}`}
+      >
+        EN
+      </button>
     </div>
-  )
-}
+  );
+};
 
-export default LanguageLinks
+export default LanguageLinks;

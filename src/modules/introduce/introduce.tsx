@@ -9,11 +9,24 @@ import { ButtonBlue } from '@/ui';
 import Image from 'next/image';
 import { AnimatedImage } from '@/ui/animatedImage';
 import Link from 'next/link';
+import { Language, useLanguage } from '@/service/language';
+
+type Translations = Record<Language, { welcome: string }>;
+
+const translations: Translations = {
+  ru: {
+    welcome: 'Экономика заливов— путь к космическому профиту',
+  },
+  en: {
+    welcome: 'Funnel economics – the path to cosmic profit',
+  },
+};
 
 const Introduce: FC<IntroduceProps> = ({ className }) => {
   const [imageSrc, setImageSrc] = useState('/images/introduce.png');
   const [isMobile, setIsMobile] = useState(false); // Для отслеживания ширины экрана
   const rootClassName = classNames(styles.root, className);
+  const { language } = useLanguage();
 
   useEffect(() => {
     const updateImageSrc = () => {
@@ -93,7 +106,7 @@ const Introduce: FC<IntroduceProps> = ({ className }) => {
           </defs>
           </svg>
         )}
-        <p className={styles.description}>Экономика заливов— путь к космическому профиту</p>
+        <p className={styles.description}>{ translations[language].welcome }</p>
       </div>
 
 
