@@ -20,7 +20,7 @@ import Line1 from '@icons/line1_part.svg'
 import Line2 from '@icons/line2_part.svg'
 import Line3 from '@icons/line3_part.svg'
 import Line from '@icons/linemob_part.svg'
-import { Bloom, DepthOfField, EffectComposer, Noise, Vignette } from '@react-three/postprocessing'
+// import { Bloom, DepthOfField, EffectComposer, Noise, Vignette } from '@react-three/postprocessing'
 
 gsap.registerPlugin(ScrollTrigger)
 
