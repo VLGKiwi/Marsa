@@ -1,3 +1,4 @@
+'use client'
 import { ReactNode } from 'react'
 import { Footer } from '@modules/footer'
 import { Header } from '@modules/header'
@@ -6,6 +7,7 @@ import '@styles/global.scss'
 
 import localFont from 'next/font/local'
 import { Provider } from '@service/provider'
+import { LanguageProvider } from '@/service/language'
 
 const actay = localFont({
   src: [
@@ -38,13 +40,15 @@ export default function RootLayout({
     <html lang="ru">
       <body className={`${actay.variable} ${esqadero.variable}`}>
         <Provider>
-          <div id="root">
-            <Header />
-            {children}
-            <Footer />
-          </div>
+          <LanguageProvider>
+            <div id="root">
+              <Header />
+              {children}
+              <Footer />
+            </div>
 
-          <div id="modal-root" />
+            <div id="modal-root" />
+          </LanguageProvider>
         </Provider>
       </body>
     </html>

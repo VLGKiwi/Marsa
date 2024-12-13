@@ -15,14 +15,58 @@
 	height: 100vh;
 }
 
+.marsa {
+	max-width: 100vw;
+	position: absolute;
+	top: 40%;
+	left: 50%;
+	transform: translateX(-50%) translateY(-50%);
+
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 28px;
+
+	@include tablet {
+		font-size: 37px;
+		gap: 20px;
+	}
+
+	@include tablet-small {
+		gap: 31px;
+	}
+
+	.description {
+		font-size: 22px;
+		line-height: 120%;
+		color: var(--color-white-2);
+		font-family: var(--font-esq);
+		text-align: center;
+
+		@include tablet {
+			font-size: 18px;
+			line-height: 180%;
+		}
+
+		@include tablet-small {
+			max-width: 80%;
+			font-size: 14px;
+		}
+	}
+}
+
 .button {
 	position: absolute;
 	display: flex;
 	justify-content: center;
-	top: 60%;
+	top: 48%;
 	width: 100%;
 	left: 0%;
 	z-index: 10;
+
+	@include tablet-small {
+		top: 55%;
+	}
 }
 
 .introducesvg {

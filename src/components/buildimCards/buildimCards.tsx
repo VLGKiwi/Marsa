@@ -1,3 +1,6 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable react/jsx-no-duplicate-props */
 'use client';
 
 import { FC, useState, useEffect } from 'react';
@@ -13,21 +16,21 @@ import 'swiper/css';
 import 'swiper/css/scrollbar';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
+import { Modal } from '@/ui';
 
 const BuildimCards: FC<BuildimCardsProps> = ({ className, onHoverCard }) => {
   const [activeIcon, setActiveIcon] = useState<string | null>(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedCard, setSelectedCard] = useState<string | null>(null);
 
   const rootClassName = classNames(styles.root, className);
 
-  // Функция для обновления activeIcon и передачи значения в родительский компонент
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const handleSlideChange = (swiper: any) => {
-    const realIndex = swiper.realIndex; // Получаем реальный индекс слайда
-    console.log('Active Slide Real Index:', realIndex);
-    switch(realIndex) {
+    const realIndex = swiper.realIndex;
+    switch (realIndex) {
       case 0:
         setActiveIcon('first-active');
-        onHoverCard('first'); // Передаём значение в родительский компонент
+        onHoverCard('first');
         break;
       case 1:
         setActiveIcon('second-active');
@@ -43,10 +46,10 @@ const BuildimCards: FC<BuildimCardsProps> = ({ className, onHoverCard }) => {
     }
   };
 
-  useEffect(() => {
-    // При монтировании компонента, устанавливаем активный слайд
-    // Это нужно, чтобы установить правильный initial activeIcon и activeImage
-  }, []);
+  const handleCardClick = (cardName: string) => {
+    setSelectedCard(cardName);
+    setIsModalOpen(true);
+  };
 
   return (
     <div className={rootClassName}>
@@ -78,7 +81,7 @@ const BuildimCards: FC<BuildimCardsProps> = ({ className, onHoverCard }) => {
             navigation: false,
             pagination: false,
             scrollbar: false,
-            autoplay: false, // Отключаем автоплей на больших экранах
+            autoplay: false,
           },
         }}
         onSlideChange={handleSlideChange}
@@ -86,8 +89,8 @@ const BuildimCards: FC<BuildimCardsProps> = ({ className, onHoverCard }) => {
       >
         <SwiperSlide className={styles.swiperSlide}>
           <div
-            onMouseEnter={() => handleSlideChange({ realIndex: 0 })} // Для десктопа
-            onClick={() => handleSlideChange({ realIndex: 0 })} // Для мобильных устройств
+            onMouseEnter={() => handleSlideChange({ realIndex: 0 })}
+            onClick={() => handleCardClick('first')}
           >
             <BuildimCard
               className="custom-class"
@@ -98,7 +101,7 @@ const BuildimCards: FC<BuildimCardsProps> = ({ className, onHoverCard }) => {
         <SwiperSlide className={styles.swiperSlide}>
           <div
             onMouseEnter={() => handleSlideChange({ realIndex: 1 })}
-            onClick={() => handleSlideChange({ realIndex: 1 })}
+            onClick={() => handleCardClick('second')}
           >
             <BuildimCard
               iconName={activeIcon === 'second-active' ? 'second-active' : 'second'}
@@ -108,7 +111,7 @@ const BuildimCards: FC<BuildimCardsProps> = ({ className, onHoverCard }) => {
         <SwiperSlide className={styles.swiperSlide}>
           <div
             onMouseEnter={() => handleSlideChange({ realIndex: 2 })}
-            onClick={() => handleSlideChange({ realIndex: 2 })}
+            onClick={() => handleCardClick('third')}
           >
             <BuildimCard
               iconName={activeIcon === 'third-active' ? 'third-active' : 'first'}
@@ -116,6 +119,11 @@ const BuildimCards: FC<BuildimCardsProps> = ({ className, onHoverCard }) => {
           </div>
         </SwiperSlide>
       </Swiper>
+
+      <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
+        <h2>Информация о карточке</h2>
+        <p>Вы выбрали карточку: {selectedCard}</p>
+      </Modal>
     </div>
   );
 };

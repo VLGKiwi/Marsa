@@ -20,7 +20,7 @@ import Line1 from '@icons/line1_part.svg'
 import Line2 from '@icons/line2_part.svg'
 import Line3 from '@icons/line3_part.svg'
 import Line from '@icons/linemob_part.svg'
-import { Bloom, DepthOfField, EffectComposer, Noise, Vignette } from '@react-three/postprocessing'
+// import { Bloom, DepthOfField, EffectComposer, Noise, Vignette } from '@react-three/postprocessing'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -288,24 +288,25 @@ const Part: FC<PartProps> = ({ className }) => {
           >
             <ambientLight intensity={0.5} />
             <directionalLight
-              position={[10, 10, 5]}
+              position={[0, 1, 0.5]}
               intensity={1}
               castShadow
               shadow-mapSize-width={1024}
               shadow-mapSize-height={1024}
               shadow-camera-far={50}
-              shadow-camera-left={-10}
-              shadow-camera-right={10}
-              shadow-camera-top={10}
-              shadow-camera-bottom={-10}
+              shadow-camera-left={-1}
+              shadow-camera-right={1}
+              shadow-camera-top={1}
+              shadow-camera-bottom={-1}
             />
             <PerspectiveCamera ref={cameraRef} makeDefault position={[0, 0.05, 0.5]} fov={50} />
 
-            {/* <EnvironmentGLTF url="/models/environment.glb"
+            <EnvironmentGLTF url="/models/environment.glb"
               scale={[2, 2, 2]}
               position={[0, -30, 0]}
-            /> */}
+            />
             <Environment files="/models/outer-space-1.exr" />
+
             <pointLight position={[-10, -10, -10]} intensity={0.5} />
 
             {/* Передача scrollProgressRef и position в Model */}
@@ -369,16 +370,16 @@ const Part: FC<PartProps> = ({ className }) => {
           >
             <ambientLight intensity={0.5} />
             <directionalLight
-              position={[10, 10, 5]}
+              position={[0, 1, 0.5]}
               intensity={1}
               castShadow
               shadow-mapSize-width={1024}
               shadow-mapSize-height={1024}
               shadow-camera-far={50}
-              shadow-camera-left={-10}
-              shadow-camera-right={10}
-              shadow-camera-top={10}
-              shadow-camera-bottom={-10}
+              shadow-camera-left={-1}
+              shadow-camera-right={1}
+              shadow-camera-top={1}
+              shadow-camera-bottom={-1}
             />
             <PerspectiveCamera ref={cameraRef} makeDefault position={[-0.1, 0, 0.5]} fov={50} />
 
@@ -387,6 +388,7 @@ const Part: FC<PartProps> = ({ className }) => {
               position={[0, -30, 0]}
             />
             <Environment files="/models/outer-space-1.exr" />
+
             <pointLight position={[-10, -10, -10]} intensity={0.5} />
 
             {/* Передача scrollProgressRef и position в Model */}
@@ -470,12 +472,6 @@ const Part: FC<PartProps> = ({ className }) => {
             <Environment files="/models/outer-space-1.exr" environmentRotation={[0, Math.PI, 0]} />
             {/* <pointLight position={[-3, 0, -1]} intensity={0.5} /> */}
 
-            <EffectComposer>
-              <DepthOfField focusDistance={0} focalLength={0.02} bokehScale={2} height={480} />
-              <Bloom luminanceThreshold={1} luminanceSmoothing={10} height={300} />
-              <Noise opacity={0.02} />
-              <Vignette eskil={false} offset={0.1} darkness={1.1} />
-            </EffectComposer>
 
             {/* Передача scrollProgressRef и position в Model */}
             <Model scrollProgressRef={scrollProgressRef} position={[0, -0.2, 0]} />

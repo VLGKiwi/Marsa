@@ -19,7 +19,7 @@ const GumbitCards: FC<GumbitCardsProps> = ({ className }) => {
   const [rows, setRows] = useState([
     ['Фарм отдел', 'Production', 'HR-отдел', 'Финансовый отдел', 'Креативный отдел'],
     ['SEO отдел', 'Отдел мобильной разработки', 'IT-отдел', 'Отдел Media buying FB'],
-    ['Отдел Media buying Google', 'АSO отдел'],
+    ['Отдел Media buying Google', 'АSO отдел', 'Юридический отдел'],
   ]);
 
   useEffect(() => {
@@ -27,20 +27,25 @@ const GumbitCards: FC<GumbitCardsProps> = ({ className }) => {
       const width = window.innerWidth;
       if (width < 768) {
         setRows([
-          ['Фарм отдел', 'HR-отдел'],
-          ['IT-отдел', 'SEO отдел'],
-          ['Фарм отдел', 'HR-отдел'],
+          ['Фарм отдел', 'Production'],
+          ['HR-отдел', 'Финансовый отдел'],
+          ['Креативный отдел', 'SEO отдел'],
+          ['Отдел мобильной разработки', 'IT-отдел'],
+          ['Отдел Media buying FB', 'Отдел Media buying Google'],
+          ['АSO отдел', 'Юридический отдел'],
         ]);
       } else if (width < 1200) {
         setRows([
           ['Фарм отдел', 'Production', 'HR-отдел'],
-          ['SEO отдел', 'IT-отдел'],
+          ['Финансовый отдел', 'Креативный отдел', 'SEO отдел'],
+          ['Отдел мобильной разработки', 'IT-отдел', 'Отдел Media buying FB'],
+          ['Отдел Media buying Google', 'АSO отдел', 'Юридический отдел']
         ]);
       } else {
         setRows([
           ['Фарм отдел', 'Production', 'HR-отдел', 'Финансовый отдел', 'Креативный отдел'],
           ['SEO отдел', 'Отдел мобильной разработки', 'IT-отдел', 'Отдел Media buying FB'],
-          ['Отдел Media buying Google', 'АSO отдел'],
+          ['Отдел Media buying Google', 'АSO отдел', 'Юридический отдел'],
         ]);
       }
     };

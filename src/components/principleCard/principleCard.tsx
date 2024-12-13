@@ -14,22 +14,21 @@ const PrincipleCard: FC<PrincipleCardProps> = ({
   title,
   description,
   number,
+  isFirst,
 }) => {
   const rootClassName = classNames(styles.root, className);
   const svgRef = useRef<SVGSVGElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (svgRef.current && contentRef.current) {
+    if (isFirst && svgRef.current && contentRef.current) {
       const paths = svgRef.current.querySelectorAll('path');
       const ellipses = svgRef.current.querySelectorAll('ellipse');
       const rects = svgRef.current.querySelectorAll('rect');
-      const lines = svgRef.current.querySelectorAll(
-        'path[fill-opacity="0.3"]'
-      ); // Выбираем полоски
+      const lines = svgRef.current.querySelectorAll('path[fill-opacity="0.3"]');
       const triangle = svgRef.current.querySelector(
         'path[d="M730.544 261.443L713.523 278.454H730.544V261.443Z"]'
-      ); // Выбираем треугольник
+      );
 
       const titleElement = contentRef.current.querySelector(`.${styles.title}`);
       const numberElement = contentRef.current.querySelector(
@@ -39,13 +38,13 @@ const PrincipleCard: FC<PrincipleCardProps> = ({
         `.${styles.description}`
       );
 
-      // Создаем таймлайн для последовательной анимации
       const timeline = gsap.timeline({
         scrollTrigger: {
           trigger: contentRef.current,
-          start: 'top 70%', // Запускается, когда элемент находится в центре экрана
+          start: 'top 70%',
           end: 'bottom center',
-          toggleActions: 'play none none reverse',
+          toggleActions: 'play none none none', // Анимация выполняется один раз
+          once: true, // Запускаем только один раз
         },
       });
 
@@ -74,7 +73,6 @@ const PrincipleCard: FC<PrincipleCardProps> = ({
           '<+=0.1'
         );
       });
-
 
       // Анимация ellipses
       timeline.fromTo(
@@ -108,11 +106,11 @@ const PrincipleCard: FC<PrincipleCardProps> = ({
           [titleElement, numberElement, descriptionElement],
           { opacity: 0 },
           { opacity: 1, duration: 0.2, stagger: 0.3 },
-          '+=0.5' // Задержка перед текстом
+          '+=0.5'
         );
       }
     }
-  }, []);
+  }, [isFirst]);
 
   return (
     <div className={rootClassName}>
