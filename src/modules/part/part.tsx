@@ -1,20 +1,21 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable no-dupe-else-if */
 // src/components/Part.tsx
 'use client'
 
-import React, { FC, useRef, useEffect } from 'react'
+import React, { FC, useRef, useEffect, useState } from 'react'
 import classNames from 'classnames'
 
 import styles from './part.module.scss'
 import { PartProps } from './part.types'
 
-import { Canvas } from '@react-three/fiber'
+import { Canvas, useFrame } from '@react-three/fiber'
 import Model from '@/components/astronautAnimation/astronautAnimation'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import * as THREE from 'three';
 import EnvironmentGLTF from '@/components/environmentGltf/environmentGltf'
-import { Environment, PerspectiveCamera } from '@react-three/drei'
+import { Environment, OrbitControls, PerspectiveCamera } from '@react-three/drei'
 import { ButtonTwo, TitleGradient } from '@/ui'
 import Line1 from '@icons/line1_part.svg'
 import Line2 from '@icons/line2_part.svg'
@@ -23,6 +24,25 @@ import Line from '@icons/linemob_part.svg'
 // import { Bloom, DepthOfField, EffectComposer, Noise, Vignette } from '@react-three/postprocessing'
 
 gsap.registerPlugin(ScrollTrigger)
+
+const RotatingEnvironment = ({ targetRotation }: { targetRotation: [number, number, number] }) => {
+  const [rotation, setRotation] = useState<[number, number, number]>([0, 0, 0]);
+
+  // Плавное обновление вращения
+  useFrame(() => {
+    setRotation((prevRotation) => {
+      const lerp = (start: number, end: number, alpha: number) => start + (end - start) * alpha;
+      const smoothFactor = 0.01; // Уменьшенное значение для большей плавности
+      return [
+        lerp(prevRotation[0], targetRotation[0], smoothFactor),
+        lerp(prevRotation[1], targetRotation[1], smoothFactor),
+        lerp(prevRotation[2], targetRotation[2], smoothFactor),
+      ];
+    });
+  });
+
+  return <Environment files="/models/MARSA-team-logo.hdr" environmentRotation={rotation} />;
+};
 
 const Part: FC<PartProps> = ({ className }) => {
   const rootClassName = classNames(styles.root, className)
@@ -35,6 +55,7 @@ const Part: FC<PartProps> = ({ className }) => {
   const box2Ref = useRef(null)
   const box3Ref = useRef(null)
   const teamRef = useRef(null)
+  const [targetRotation, setTargetRotation] = useState<[number, number, number]>([0, 0, 0]);
 
   // Определите коэффициент скорости
   const speedFactor = 0.1 // Меняйте значение для регулировки скорости (0.5 = вдвое медленнее)
@@ -55,6 +76,9 @@ const Part: FC<PartProps> = ({ className }) => {
           opacity: 1,
           duration: 1,
         })
+
+        const targetY = 0.9 * Math.PI * 2; // Преобразуем в радианы
+        setTargetRotation([0, targetY, 0]);
       } else if (self.progress < 1) {
         gsap.to(friendRef.current, {
           opacity: 0,
@@ -212,6 +236,7 @@ const Part: FC<PartProps> = ({ className }) => {
       }
     }
 
+
     // Рассчитайте конец прокрутки на основе speedFactor
     const scrollEndPercentage = 100 / speedFactor // Например, 200% для speedFactor=0.5
 
@@ -242,7 +267,7 @@ const Part: FC<PartProps> = ({ className }) => {
           id='mascot'
           ref={mascotRef}
           style={{ height: `${10 / speedFactor}vh`, position: 'relative' }} // Установите высоту пропорционально speedFactor
-        >
+          >
           <div className={styles.team} ref={teamRef}>
             <h2>
               <TitleGradient text={'Стань частью команды'} />
@@ -301,10 +326,10 @@ const Part: FC<PartProps> = ({ className }) => {
             />
             <PerspectiveCamera ref={cameraRef} makeDefault position={[0, 0.05, 0.5]} fov={50} />
 
-            <EnvironmentGLTF url="/models/environment.glb"
+            {/* <EnvironmentGLTF url="/models/environment.glb"
               scale={[2, 2, 2]}
               position={[0, -30, 0]}
-            />
+            /> */}
             <Environment files="/models/outer-space-1.exr" />
 
             <pointLight position={[-10, -10, -10]} intensity={0.5} />
@@ -465,13 +490,16 @@ const Part: FC<PartProps> = ({ className }) => {
             />
             <PerspectiveCamera ref={cameraRef} makeDefault position={[-0.1, 0, 0.5]} fov={50} />
 
-            <EnvironmentGLTF url="/models/environment.glb"
-              scale={[2, 2, 2]}
-              position={[0, -30, 0]}
-            />
-            <Environment files="/models/outer-space-1.exr" environmentRotation={[0, Math.PI, 0]} />
-            {/* <pointLight position={[-3, 0, -1]} intensity={0.5} /> */}
+            <group layers={2}>
+              <RotatingEnvironment targetRotation={targetRotation} />
+            </group>
+            <group layers={1}>
+              <Environment files="/models/outer-space-1.exr" environmentRotation={[0, Math.PI, 0]} />
+            </group>
 
+            {/* <Environment files="/models/MARSA-team-logo.hdr" environmentRotation={[rotation]} /> */}
+
+            {/* <OrbitControls /> */}
 
             {/* Передача scrollProgressRef и position в Model */}
             <Model scrollProgressRef={scrollProgressRef} position={[0, -0.2, 0]} />
