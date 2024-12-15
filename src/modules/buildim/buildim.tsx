@@ -1,4 +1,4 @@
-'use client'
+'use client';
 
 import { FC, useState } from 'react';
 import classNames from 'classnames';
@@ -7,9 +7,23 @@ import styles from './buildim.module.scss';
 import { BuildimProps } from './buildim.types';
 import { BuildimAstronaut, BuildimCards } from '@/components';
 import { TitleGradient } from '@/ui';
+import { useLanguage, Language } from '@/service/language';
+
+// Объект переводов
+const translations: Record<Language, { title: string }> = {
+  ru: {
+    title: 'Собрали лучших и продолжаем искать',
+  },
+  en: {
+    title: 'We’ve gathered the best and are continuing the search ',
+  },
+};
 
 const Buildim: FC<BuildimProps> = ({ className }) => {
   const rootClassName = classNames(styles.root, className);
+
+  const { language } = useLanguage(); // Получаем текущий язык
+  const { title } = translations[language]; // Получаем перевод
 
   // Состояние для текущей активной картинки
   const [activeImage, setActiveImage] = useState<string | null>(null);
@@ -18,9 +32,9 @@ const Buildim: FC<BuildimProps> = ({ className }) => {
     <div className={rootClassName}>
       {/* Передаем функцию управления состоянием в BuildimCards */}
       <h1 className={styles.title}>
-        <TitleGradient className="title__large title__vacancy" text="Собрали лучших и продолжаем искать" />
+        <TitleGradient className="title__large title__vacancy" text={title} />
       </h1>
-      <BuildimCards onHoverCard={setActiveImage}/>
+      <BuildimCards onHoverCard={setActiveImage} />
 
       {/* Передаем активную картинку в BuildimAstronaut */}
       <BuildimAstronaut activeImage={activeImage} />

@@ -1,38 +1,52 @@
 /* eslint-disable no-irregular-whitespace */
-import { FC } from 'react'
-import classNames from 'classnames'
+'use client';
 
-import Astronaut from '@public/images/astrounaut__vacancy.png'
-import styles from './friend.module.scss'
-import { FriendProps } from './friend.types'
-import { ButtonTwo, TitleGradient } from '@/ui'
-import Image from 'next/image'
+import { FC } from 'react';
+import classNames from 'classnames';
 
-const Friend: FC<FriendProps> = ({
-  className,
-  textBonus
-}) => {
-  const rootClassName = classNames(styles.root, className)
+import Astronaut from '@public/images/astrounaut__vacancy.png';
+import styles from './friend.module.scss';
+import { FriendProps } from './friend.types';
+import { ButtonTwo, TitleGradient } from '@/ui';
+import Image from 'next/image';
+import { useLanguage, Language } from '@/service/language';
+
+// Объект переводов
+const translations: Record<Language, { title: string; button: string; textBonus: string }> = {
+  ru: {
+    title: 'Отправь продуктивного друга к нам на MARS',
+    button: 'Узнать подробности у HR',
+    textBonus: 'И получи бонусы', // Перевод для текста
+  },
+  en: {
+    title: 'Send a productive friend to MARS',
+    button: 'Get Info from HR',
+    textBonus: 'and earn bonuses!', // Перевод для текста
+  },
+};
+
+const Friend: FC<FriendProps> = ({ className }) => {
+  const rootClassName = classNames(styles.root, className);
+  const { language } = useLanguage(); // Получаем текущий язык
+  const { title, button, textBonus } = translations[language]; // Извлекаем переводы
 
   return (
     <section className={rootClassName}>
       <div className={styles.section}>
         <h2 className={styles.title}>
-          <TitleGradient>
-            Отправь продуктивного друга к нам на&nbsp;MARS
-          </TitleGradient>
+          <TitleGradient>{title}</TitleGradient>
         </h2>
-        <p className={styles.text}>{textBonus}</p>
+        <p className={styles.text}>{textBonus}</p> {/* Используем переведенный textBonus */}
       </div>
-      <ButtonTwo text={'Узнать подробности у HR'} big={true} />
+      <ButtonTwo text={button} big={true} />
       <Image
         src={Astronaut}
-        alt='astronaut'
+        alt="astronaut"
         className={styles.image}
         quality={100}
       />
     </section>
-  )
-}
+  );
+};
 
-export default Friend
+export default Friend;
