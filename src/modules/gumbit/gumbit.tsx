@@ -14,11 +14,11 @@ type Translations = Record<Language, { title: string; subtitle: string }>;
 const translations: Translations = {
   ru: {
     title: 'КОМАНДА',
-    subtitle: '12 отделов · 1 миссия · общий успех!',
+    subtitle: '13 отделов · 1 миссия · общий успех!',
   },
   en: {
     title: 'TEAM',
-    subtitle: '12 Departments · 1 Mission · Shared success!',
+    subtitle: '13 Departments · 1 Mission · Shared success!',
   },
 };
 
