@@ -25,24 +25,24 @@ import Line from '@icons/linemob_part.svg'
 
 gsap.registerPlugin(ScrollTrigger)
 
-const RotatingEnvironment = ({ targetRotation }: { targetRotation: [number, number, number] }) => {
-  const [rotation, setRotation] = useState<[number, number, number]>([0, 0, 0]);
+// const RotatingEnvironment = ({ targetRotation }: { targetRotation: [number, number, number] }) => {
+//   const [rotation, setRotation] = useState<[number, number, number]>([0, 0, 0]);
 
-  // Плавное обновление вращения
-  useFrame(() => {
-    setRotation((prevRotation) => {
-      const lerp = (start: number, end: number, alpha: number) => start + (end - start) * alpha;
-      const smoothFactor = 0.01; // Уменьшенное значение для большей плавности
-      return [
-        lerp(prevRotation[0], targetRotation[0], smoothFactor),
-        lerp(prevRotation[1], targetRotation[1], smoothFactor),
-        lerp(prevRotation[2], targetRotation[2], smoothFactor),
-      ];
-    });
-  });
+//   // Плавное обновление вращения
+//   useFrame(() => {
+//     setRotation((prevRotation) => {
+//       const lerp = (start: number, end: number, alpha: number) => start + (end - start) * alpha;
+//       const smoothFactor = 0.01; // Уменьшенное значение для большей плавности
+//       return [
+//         lerp(prevRotation[0], targetRotation[0], smoothFactor),
+//         lerp(prevRotation[1], targetRotation[1], smoothFactor),
+//         lerp(prevRotation[2], targetRotation[2], smoothFactor),
+//       ];
+//     });
+//   });
 
-  return <Environment files="/models/MARSA-team-logo.hdr" environmentRotation={rotation} />;
-};
+//   return <Environment files="/models/MARSA-team-logo.hdr" environmentRotation={rotation} />;
+// };
 
 const Part: FC<PartProps> = ({ className }) => {
   const rootClassName = classNames(styles.root, className)
@@ -475,7 +475,7 @@ const Part: FC<PartProps> = ({ className }) => {
 
           >
             {/* <axesHelper /> */}
-            {/* <ambientLight intensity={0.5} /> */}
+            {/* <ambientLight intensity={0.5} /> hj*/}
             <directionalLight
               position={[0, 1, 0.5]}
               intensity={1}
@@ -490,7 +490,9 @@ const Part: FC<PartProps> = ({ className }) => {
             />
             <PerspectiveCamera ref={cameraRef} makeDefault position={[-0.1, 0, 0.5]} fov={50} />
 
-            <RotatingEnvironment targetRotation={targetRotation} />
+            {/* <RotatingEnvironment targetRotation={targetRotation} /> */}
+
+            <Environment files={'/models/outer-space-1.exr'} environmentRotation={[0, Math.PI, 0]}/>
 
             {/* <Environment files="/models/MARSA-team-logo.hdr" environmentRotation={[rotation]} /> */}
 

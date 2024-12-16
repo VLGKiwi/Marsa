@@ -6,8 +6,8 @@
 import * as THREE from 'three'
 import React, { forwardRef, useRef, useEffect } from 'react'
 import { useGLTF, useAnimations } from '@react-three/drei'
-import { GLTF } from 'three-stdlib'
-import { useFrame, GroupProps } from '@react-three/fiber'
+import { EXRLoader, GLTF, RGBELoader } from 'three-stdlib'
+import { useFrame, GroupProps, useThree } from '@react-three/fiber'
 
 // Тип для имени анимации
 type ActionName = 'Action.001'
@@ -58,9 +58,45 @@ interface ModelProps extends GroupProps {
 const Model = forwardRef<THREE.Group, ModelProps>(({ scrollProgressRef, ...props }, ref) => {
   const group = useRef<THREE.Group>(null)
 
-  // Правильное приведение типа useGLTF к GLTFResult
+  // Доступ к сцене и рендереру
+  const { scene, gl } = useThree()
+
+  // Настройка тонмаппинга и гамма-коррекции
+  useEffect(() => {
+    gl.toneMapping = THREE.ACESFilmicToneMapping
+    gl.toneMappingExposure = 2.0 // Сделаем немного ярче
+    gl.outputEncoding = THREE.sRGBEncoding
+  }, [gl])
+
+  // Загружаем модель
   const { nodes, materials, animations } = useGLTF('/models/Astronaut_Animation-transformed.glb') as GLTFResult
   const { actions, mixer } = useAnimations(animations, group)
+
+  useEffect(() => {
+    const rgbeLoader = new RGBELoader()
+    rgbeLoader.load('/models/MARSA-team-logo.hdr', (texture) => {
+      const pmremGenerator = new THREE.PMREMGenerator(gl)
+      pmremGenerator.compileEquirectangularShader()
+
+      const hdrEnvMap = pmremGenerator.fromEquirectangular(texture).texture
+
+      // Применяем HDR-карту только к материалам шлема
+      const helmetMaterials = [materials.Material]
+
+      helmetMaterials.forEach((mat) => {
+        mat.envMap = hdrEnvMap
+        mat.metalness = 0.5
+        mat.roughness = 0.0
+        mat.envMapIntensity = 2.0
+        mat.needsUpdate = true
+      })
+
+      // Если уверены, что ресурсы больше не нужны, можно освободить:
+      // texture.dispose()
+      // pmremGenerator.dispose()
+    })
+  }, [gl, materials])
+
 
   useEffect(() => {
     // Проверяем наличие анимации
@@ -88,10 +124,7 @@ const Model = forwardRef<THREE.Group, ModelProps>(({ scrollProgressRef, ...props
       // Устанавливаем время анимации на основе прогресса прокрутки
       action.time = progress * duration
 
-      // Не вызываем mixer.update, так как useAnimations управляет обновлением
-
-      // Для отладки, можно раскомментировать следующий лог
-      // console.log('Animating model, progress:', progress, 'Action Time:', action.time)
+      // Не вызываем mixer.update вручную, useAnimations это делает автоматически
     }
   })
 
