@@ -34,6 +34,7 @@
 
 	@include tablet-small {
 		gap: 31px;
+		top: 35%;
 	}
 
 	.description {
@@ -42,6 +43,7 @@
 		color: var(--color-white-2);
 		font-family: var(--font-esq);
 		text-align: center;
+		text-transform: uppercase;
 
 		@include tablet {
 			font-size: 18px;
@@ -65,7 +67,7 @@
 	z-index: 10;
 
 	@include tablet-small {
-		top: 55%;
+		top: 48%;
 	}
 }
 

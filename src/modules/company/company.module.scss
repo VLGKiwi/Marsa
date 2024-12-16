@@ -25,6 +25,10 @@
 
 	height: 695px;
 
+	@include tablet-small {
+		height: 580px;
+	}
+
 	.text1 {
 		position: absolute;
 		left: 21%;

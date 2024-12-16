@@ -30,6 +30,20 @@ const Introduce: FC<IntroduceProps> = ({ className }) => {
   const rootClassName = classNames(styles.root, className);
   const { language } = useLanguage();
 
+  const [isVisible, setIsVisible] = useState(true);
+
+  useEffect(() => {
+    const checkWidth = () => {
+      setIsVisible(window.innerWidth >= 768);
+    };
+
+    // Проверяем ширину экрана при монтировании
+    checkWidth();
+    window.addEventListener('resize', checkWidth);
+
+    return () => window.removeEventListener('resize', checkWidth);
+  }, []);
+
   useEffect(() => {
     const updateImageSrc = () => {
       if (window.matchMedia('(max-width: 480px)').matches) {
@@ -78,7 +92,7 @@ const Introduce: FC<IntroduceProps> = ({ className }) => {
         className={styles.image}
       />
       <div className={styles.button}><Link href='/vacancy'><ButtonBlue>{ translations[language].vacancies }</ButtonBlue></Link></div>
-      <AnimatedImage className={styles.introducesvg} />
+      {isVisible && <AnimatedImage className={styles.introducesvg} />}
       <div className={styles.marsa}>
         {isMobile ? (
 
