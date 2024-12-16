@@ -17,12 +17,14 @@ const originalRows = {
     ['Фарм отдел', 'Production', 'HR-отдел', 'Финансовый отдел', 'Креативный отдел'],
     ['SEO отдел', 'Отдел мобильной разработки', 'IT-отдел', 'Отдел Media buying FB'],
     ['Отдел Media buying Google', 'АSO отдел', 'Юридический отдел'],
+    ['Sales отдел'],
   ],
   tablet: [
     ['Фарм отдел', 'Production', 'HR-отдел'],
     ['Финансовый отдел', 'Креативный отдел', 'SEO отдел'],
     ['Отдел мобильной разработки', 'IT-отдел', 'Отдел Media buying FB'],
     ['Отдел Media buying Google', 'АSO отдел', 'Юридический отдел'],
+    ['Sales отдел'],
   ],
   mobile: [
     ['Фарм отдел', 'Production'],
@@ -31,6 +33,7 @@ const originalRows = {
     ['Отдел мобильной разработки', 'IT-отдел'],
     ['Отдел Media buying FB', 'Отдел Media buying Google'],
     ['АSO отдел', 'Юридический отдел'],
+    ['Sales отдел'],
   ],
 };
 
@@ -49,6 +52,7 @@ const translations: Record<Language, Record<string, string>> = {
     'Отдел Media buying Google': 'Отдел Media buying Google',
     'АSO отдел': 'АSO отдел',
     'Юридический отдел': 'Юридический отдел',
+    'Sales отдел': 'Sales отдел',
   },
   en: {
     'Фарм отдел': 'Farming Department',
@@ -62,7 +66,8 @@ const translations: Record<Language, Record<string, string>> = {
     'Отдел Media buying FB': 'Media Buying Department (FB)',
     'Отдел Media buying Google': 'Media Buying Department (Google)',
     'АSO отдел': 'ASO Department',
-    'Юридический отдел': 'Sales Department',
+    'Юридический отдел': 'Legal Department',
+    'Sales отдел': 'Sales Department',
   },
 };
 

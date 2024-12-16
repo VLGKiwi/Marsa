@@ -34,12 +34,13 @@
 	left: 130px;
 	max-width: 534px;
 	display: flex;
+	justify-content: space-between;
 	flex-wrap: wrap;
 	gap: 12px 32px;
 
 	@include tablet-small {
-		max-width: 90vw;
-		left: 15%;
+		max-width: 80vw;
+		left: 10%;
 		top: 25%;
 	}
 }
@@ -68,6 +69,7 @@
 	text-transform: uppercase;
 
 	@include tablet-small {
+		max-width: 73%;
 		font-size: 12px;
 		line-height: 1.5;
 		letter-spacing: 0.02em;
