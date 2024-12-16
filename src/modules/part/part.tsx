@@ -490,12 +490,7 @@ const Part: FC<PartProps> = ({ className }) => {
             />
             <PerspectiveCamera ref={cameraRef} makeDefault position={[-0.1, 0, 0.5]} fov={50} />
 
-            <group layers={2}>
-              <RotatingEnvironment targetRotation={targetRotation} />
-            </group>
-            <group layers={1}>
-              <Environment files="/models/outer-space-1.exr" environmentRotation={[0, Math.PI, 0]} />
-            </group>
+            <RotatingEnvironment targetRotation={targetRotation} />
 
             {/* <Environment files="/models/MARSA-team-logo.hdr" environmentRotation={[rotation]} /> */}
 
