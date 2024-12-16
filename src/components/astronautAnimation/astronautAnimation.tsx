@@ -65,7 +65,7 @@ const Model = forwardRef<THREE.Group, ModelProps>(({ scrollProgressRef, ...props
   useEffect(() => {
     gl.toneMapping = THREE.ACESFilmicToneMapping
     gl.toneMappingExposure = 2.0 // Сделаем немного ярче
-    gl.outputEncoding = THREE.sRGBEncoding
+    gl.outputColorSpace = THREE.SRGBColorSpace;
   }, [gl])
 
   // Загружаем модель
