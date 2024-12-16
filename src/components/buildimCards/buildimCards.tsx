@@ -271,27 +271,39 @@ const BuildimCards: FC<BuildimCardsProps> = ({ className, onHoverCard }) => {
           </div>
 
           {/* Основной текст */}
-          <div className={styles.modalText}>
-            <p className={styles.modalText__inside}>{t.descriptions[selectedCard]}</p>
-          </div>
+<div className={styles.modalText}>
+  {selectedCard && (
+    <p className={styles.modalText__inside}>{t.descriptions[selectedCard]}</p>
+  )}
+</div>
 
-          <div className={styles.modalSection}>
-            <h3 className={styles.modalSubtitle}>What you will do:</h3>
-            <ul className={styles.modalList}>
-              {t.tasks[selectedCard]?.map((task: string, i: number) => <li key={i}>{task}</li>)}
-            </ul>
-          </div>
+<div className={styles.modalSection}>
+  <h3 className={styles.modalSubtitle}>What you will do:</h3>
+  {selectedCard && (
+    <ul className={styles.modalList}>
+      {t.tasks[selectedCard]?.map((task: string, i: number) => (
+        <li key={i}>{task}</li>
+      ))}
+    </ul>
+  )}
+</div>
 
-          <div className={styles.modalSection}>
-            <h3 className={styles.modalSubtitle}>What we expect from you:</h3>
-            <ul className={styles.modalList}>
-              {t.expectations[selectedCard]?.map((exp: string, i: number) => <li key={i}>{exp}</li>)}
-            </ul>
-          </div>
+<div className={styles.modalSection}>
+  <h3 className={styles.modalSubtitle}>What we expect from you:</h3>
+  {selectedCard && (
+    <ul className={styles.modalList}>
+      {t.expectations[selectedCard]?.map((exp: string, i: number) => (
+        <li key={i}>{exp}</li>
+      ))}
+    </ul>
+  )}
+</div>
 
-          <div className={styles.modalText}>
-            <p className={styles.modalText__inside}>{t.hrMessages[selectedCard]}</p>
-          </div>
+<div className={styles.modalText}>
+  {selectedCard && (
+    <p className={styles.modalText__inside}>{t.hrMessages[selectedCard]}</p>
+  )}
+</div>
 
           <ButtonTwo className={styles.modalButton} text={t.button} big={false} />
       </Modal>
