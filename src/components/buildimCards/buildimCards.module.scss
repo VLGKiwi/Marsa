@@ -21,25 +21,22 @@
 // Шапка модального окна (h2 + SVG)
 .modalHeader {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+	flex-direction: column;
+	gap: 0;
+  align-items: flex-start;
   margin-bottom: 20px;
 
   .modalIcons {
     display: flex;
-    gap: 10px;
-
-    svg {
-      width: 24px;
-      height: 24px;
-      fill: none;
-      stroke: #e5e5e5; // Цвет рамки SVG
-    }
+    gap: 12px;
   }
 
   .modalTitle {
-    font-size: 28px;
-    font-weight: 600;
+		font-family: var(--font-act);
+    font-size: 62px;
+    font-weight: 700;
+		letter-spacing: 0.2em;
+		line-height: 130%;
     color: #ffffff; // Заголовок
     margin: 0;
   }
@@ -47,19 +44,36 @@
 
 // Секция с текстом
 .modalSection {
-  margin-bottom: 16px;
+  margin-top: 40px;
+  margin-bottom: 40px;
 
   .modalSubtitle {
-    font-size: 20px;
-    font-weight: 500;
-    margin-bottom: 10px;
-    color: #add7ee; // Светло-голубой цвет подзаголовков
+		margin-bottom: 12px;
+		font-size: 16px;
+		color: #d0d0d0;
+		list-style: disc;
+		font-family: var(--font-act);
+		font-size: 20px;
+		line-height: 1.5;
+		letter-spacing: 0em;
+		color: #F0F3F7;
   }
 
   .modalText {
-    font-size: 16px;
+		font-family: var(--font-act);
+    font-size: 14px;
     line-height: 1.5;
-    color: #d0d0d0; // Светлый серый текст
+		letter-spacing: -0.04em;
+    color: #F0F3F7; // Светлый серый текст
+		margin-bottom: 40px;
+
+		&__inside {
+			font-family: var(--font-act);
+			font-size: 14px;
+			line-height: 1.5;
+			letter-spacing: -0.04em;
+			color: #F0F3F7;
+		}
   }
 
   ul {
@@ -70,8 +84,18 @@
       font-size: 16px;
       color: #d0d0d0;
       list-style: disc;
+			font-family: var(--font-act);
+			font-size: 14px;
+			line-height: 1.5;
+			letter-spacing: -0.04em;
+			color: rgb(208, 208, 208);
     }
-  }
+
+	}
+}
+
+.modalButton {
+	margin-top: 40px;
 }
 
 // Кнопка закрытия модального окна

@@ -22,19 +22,32 @@
 
 .modal_content {
   background: #0A0C18;
-  padding: 20px;
+  padding: 45px 74px 50px 55px;
   border-radius: 8px;
   position: relative;
-  width: 400px;
-  max-width: 90%;
+  max-width: 786px;
+
+  font-family: var(--font-act);
+  font-size: 14px;
+  line-height: 1.5;
+  letter-spacing: -0.04em;
+  color: rgb(208, 208, 208);
 }
 
 .modal_close {
   position: absolute;
   top: 10px;
-  right: 10px;
+  right: 20px;
   background: none;
   border: none;
-  font-size: 16px;
+  font-size: 25px;
+  color: white;
   cursor: pointer;
+  opacity: 1;
+  transition: all 0.5s;
+
+  &:hover {
+    opacity: 0.5;
+    transition: all 0.5s;
+  }
 }
