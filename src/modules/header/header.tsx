@@ -9,20 +9,33 @@ import { HeaderProps } from './header.types';
 import Logo from './logo';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { useLanguage, Language } from '@/service/language';
+
+// Объект переводов
+const translations: Record<Language, { about: string }> = {
+  ru: {
+    about: 'О нас',
+  },
+  en: {
+    about: 'About us',
+  },
+};
 
 const Header: FC<HeaderProps> = ({ className }) => {
-  const [isLargeScreen, setIsLargeScreen] = useState<boolean>(typeof window !== 'undefined' && window.innerWidth >= 480);
+  const [isLargeScreen, setIsLargeScreen] = useState<boolean>(
+    typeof window !== 'undefined' && window.innerWidth >= 480
+  );
   const name = usePathname();
+  const { language } = useLanguage(); // Получаем текущий язык
+  const { about } = translations[language]; // Извлекаем перевод
 
   useEffect(() => {
-
     const handleResize = () => {
       setIsLargeScreen(window.innerWidth >= 480);
     };
 
     window.addEventListener('resize', handleResize);
 
-    // Убираем слушатель при размонтировании компонента
     return () => {
       window.removeEventListener('resize', handleResize);
     };
@@ -38,7 +51,7 @@ const Header: FC<HeaderProps> = ({ className }) => {
           {isLargeScreen && <TelegramLink className={styles.telegram} />}
           {name === '/vacancy' && window.innerWidth > 1199 && (
             <Link href={'/'}>
-              <p>О нас</p>
+              <p>{about}</p> {/* Используем переведенный текст */}
             </Link>
           )}
         </div>

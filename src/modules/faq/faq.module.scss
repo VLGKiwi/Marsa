@@ -18,5 +18,9 @@
 		font-family: var(--font-act);
 		font-size: 64px;
 		letter-spacing: 0.5em;
+
+		@include tablet-small {
+			left: 53%;
+		}
 	}
 }

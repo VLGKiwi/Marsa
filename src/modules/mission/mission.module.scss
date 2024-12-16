@@ -10,6 +10,10 @@
 	gap: 40px;
 	padding-top: 44px;
 
+	@include tablet-small {
+		gap: 0;
+	}
+
 	.title {
 		font-family: var(--font-act);
 		font-size: 64px;
@@ -17,7 +21,7 @@
 		word-spacing: 50%;
 
 		@include tablet-small {
-			font-size: 32px;
+			font-size: 40px;
 			line-height: 120%;
 		}
 	}
@@ -36,7 +40,8 @@
 		padding-top: 70px;
 
 		@include desktop {
-			background: center no-repeat url('../../../public/images/mission-background-desk1200.png');
+			height: 130vh;
+			background: top no-repeat url('../../../public/images/mission-background-desktop.png');
 			background-size: cover;
 		}
 

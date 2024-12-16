@@ -19,13 +19,13 @@ const LanguageLinks: FC<LanguageLinksProps> = ({ className }) => {
         onClick={() => handleLanguageChange('ru')}
         className={`${styles.link} ${styles.ru}`}
       >
-        RU
+        ru
       </button>
       <button
         onClick={() => handleLanguageChange('en')}
         className={`${styles.link} ${styles.en}`}
       >
-        EN
+        en
       </button>
     </div>
   );

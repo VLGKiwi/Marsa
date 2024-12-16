@@ -9,6 +9,67 @@ import styles from './gumbitCards.module.scss';
 import { GumbitCardsProps } from './gumbitCards.types';
 import { GumbitCard } from '@/ui';
 import { useGSAP } from '@gsap/react';
+import { useLanguage, Language } from '@/service/language';
+
+// Оригинальные массивы строк
+const originalRows = {
+  desktop: [
+    ['Фарм отдел', 'Production', 'HR-отдел', 'Финансовый отдел', 'Креативный отдел'],
+    ['SEO отдел', 'Отдел мобильной разработки', 'IT-отдел', 'Отдел Media buying FB'],
+    ['Отдел Media buying Google', 'АSO отдел', 'Юридический отдел'],
+    ['Sales отдел'],
+  ],
+  tablet: [
+    ['Фарм отдел', 'Production', 'HR-отдел'],
+    ['Финансовый отдел', 'Креативный отдел', 'SEO отдел'],
+    ['Отдел мобильной разработки', 'IT-отдел', 'Отдел Media buying FB'],
+    ['Отдел Media buying Google', 'АSO отдел', 'Юридический отдел'],
+    ['Sales отдел'],
+  ],
+  mobile: [
+    ['Фарм отдел', 'Production'],
+    ['HR-отдел', 'Финансовый отдел'],
+    ['Креативный отдел', 'SEO отдел'],
+    ['Отдел мобильной разработки', 'IT-отдел'],
+    ['Отдел Media buying FB', 'Отдел Media buying Google'],
+    ['АSO отдел', 'Юридический отдел'],
+    ['Sales отдел'],
+  ],
+};
+
+// Переводы
+const translations: Record<Language, Record<string, string>> = {
+  ru: {
+    'Фарм отдел': 'Фарм отдел',
+    'Production': 'Production',
+    'HR-отдел': 'HR-отдел',
+    'Финансовый отдел': 'Финансовый отдел',
+    'Креативный отдел': 'Креативный отдел',
+    'SEO отдел': 'SEO отдел',
+    'Отдел мобильной разработки': 'Отдел мобильной разработки',
+    'IT-отдел': 'IT-отдел',
+    'Отдел Media buying FB': 'Отдел Media buying FB',
+    'Отдел Media buying Google': 'Отдел Media buying Google',
+    'АSO отдел': 'АSO отдел',
+    'Юридический отдел': 'Юридический отдел',
+    'Sales отдел': 'Sales отдел',
+  },
+  en: {
+    'Фарм отдел': 'Farming Department',
+    'Production': 'Production',
+    'HR-отдел': 'HR Department',
+    'Финансовый отдел': 'Finance Department',
+    'Креативный отдел': 'Creative Department',
+    'SEO отдел': 'SEO Department',
+    'Отдел мобильной разработки': 'Mobile Development Department',
+    'IT-отдел': 'IT Department',
+    'Отдел Media buying FB': 'Media Buying Department (FB)',
+    'Отдел Media buying Google': 'Media Buying Department (Google)',
+    'АSO отдел': 'ASO Department',
+    'Юридический отдел': 'Legal Department',
+    'Sales отдел': 'Sales Department',
+  },
+};
 
 const GumbitCards: FC<GumbitCardsProps> = ({ className }) => {
   const rootClassName = classNames(styles.root, className);
@@ -16,37 +77,27 @@ const GumbitCards: FC<GumbitCardsProps> = ({ className }) => {
   const cardRefs = useRef<HTMLDivElement[][]>([]);
   const hasAnimatedRef = useRef(false);
 
-  const [rows, setRows] = useState([
-    ['Фарм отдел', 'Production', 'HR-отдел', 'Финансовый отдел', 'Креативный отдел'],
-    ['SEO отдел', 'Отдел мобильной разработки', 'IT-отдел', 'Отдел Media buying FB'],
-    ['Отдел Media buying Google', 'АSO отдел', 'Юридический отдел'],
-  ]);
+  const { language } = useLanguage();
+  const [rows, setRows] = useState(originalRows.desktop);
 
+  // Функция для перевода строки
+  const translateText = (text: string): string =>
+    translations[language][text] || text;
+
+  // Применяем перевод к исходным массивам
+  const applyTranslations = (original: string[][]) =>
+    original.map((row) => row.map((text) => translateText(text)));
+
+  // Обновляем массив строк в зависимости от разрешения экрана
   useEffect(() => {
     const handleResize = () => {
       const width = window.innerWidth;
       if (width < 768) {
-        setRows([
-          ['Фарм отдел', 'Production'],
-          ['HR-отдел', 'Финансовый отдел'],
-          ['Креативный отдел', 'SEO отдел'],
-          ['Отдел мобильной разработки', 'IT-отдел'],
-          ['Отдел Media buying FB', 'Отдел Media buying Google'],
-          ['АSO отдел', 'Юридический отдел'],
-        ]);
+        setRows(applyTranslations(originalRows.mobile));
       } else if (width < 1200) {
-        setRows([
-          ['Фарм отдел', 'Production', 'HR-отдел'],
-          ['Финансовый отдел', 'Креативный отдел', 'SEO отдел'],
-          ['Отдел мобильной разработки', 'IT-отдел', 'Отдел Media buying FB'],
-          ['Отдел Media buying Google', 'АSO отдел', 'Юридический отдел']
-        ]);
+        setRows(applyTranslations(originalRows.tablet));
       } else {
-        setRows([
-          ['Фарм отдел', 'Production', 'HR-отдел', 'Финансовый отдел', 'Креативный отдел'],
-          ['SEO отдел', 'Отдел мобильной разработки', 'IT-отдел', 'Отдел Media buying FB'],
-          ['Отдел Media buying Google', 'АSO отдел', 'Юридический отдел'],
-        ]);
+        setRows(applyTranslations(originalRows.desktop));
       }
     };
 
@@ -56,7 +107,7 @@ const GumbitCards: FC<GumbitCardsProps> = ({ className }) => {
     return () => {
       window.removeEventListener('resize', handleResize);
     };
-  }, []);
+  }, [language]); // Перевод обновляется при изменении языка
 
   useGSAP(() => {
     gsap.registerPlugin(ScrollTrigger);
@@ -89,12 +140,12 @@ const GumbitCards: FC<GumbitCardsProps> = ({ className }) => {
             if (hasAnimatedRef.current) return;
             hasAnimatedRef.current = true;
 
-            const isMobile = window.innerWidth < 768; // Проверка на мобильное устройство
+            const isMobile = window.innerWidth < 768;
 
             cardRefs.current.forEach((row, rowIndex) => {
               row.forEach((card, cardIndex) => {
                 if (card) {
-                  const yOffset = isMobile && card.classList.contains(styles.offsetCard) ? 60 : 0; // Смещение только для мобильных
+                  const yOffset = isMobile && card.classList.contains(styles.offsetCard) ? 60 : 0;
                   gsap.to(card, {
                     x: 0,
                     y: yOffset,
@@ -130,7 +181,7 @@ const GumbitCards: FC<GumbitCardsProps> = ({ className }) => {
               }}
               className={classNames(styles.card, {
                 [styles.evenCard]: index % 2 === 1,
-                [styles.offsetCard]: index % 2 === 1, // Добавляем класс смещения для каждой второй карточки
+                [styles.offsetCard]: index % 2 === 1,
               })}
             >
               <GumbitCard text={text} />
