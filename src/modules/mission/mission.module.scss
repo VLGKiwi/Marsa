@@ -36,7 +36,8 @@
 		padding-top: 70px;
 
 		@include desktop {
-			background: center no-repeat url('../../../public/images/mission-background-desk1200.png');
+			height: 130vh;
+			background: top no-repeat url('../../../public/images/mission-background-desktop.png');
 			background-size: cover;
 		}
 
