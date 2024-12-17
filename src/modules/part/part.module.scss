@@ -266,10 +266,15 @@
 	gap: 16px;
 
 	z-index: 21;
-	bottom: 600px;
+	top: 90px;
+
+	@include tablet {
+		top: 40px;
+	}
 
 	@include tablet-small {
 		max-width: 336px;
+		top: 50px;
 	}
 
 	div {

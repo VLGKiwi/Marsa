@@ -246,19 +246,19 @@ const Part: FC<PartProps> = ({ className }) => {
 
     return (
       <div>
+        <div className={styles.team} ref={teamRef}>
+          <h2>
+            <TitleGradient text={'Стань частью команды'} />
+          </h2>
+          <p>Хочешь работать плечом к плечу с ключевыми игроками рынка? Присоединяйся к нам</p>
+          <Link href='/vacancy'><ButtonTwo text={'вакансии'} /></Link>
+        </div>
         <div
           className={rootClassName}
           id='mascot'
           ref={mascotRef}
           style={{ height: `${10 / speedFactor}vh`, position: 'relative' }} // Установите высоту пропорционально speedFactor
           >
-          <div className={styles.team} ref={teamRef}>
-            <h2>
-              <TitleGradient text={'Стань частью команды'} />
-            </h2>
-            <p>Хочешь работать плечом к плечу с ключевыми игроками рынка? Присоединяйся к нам</p>
-            <Link href='/vacancy'><ButtonTwo text={'вакансии'} /></Link>
-          </div>
           <div className={styles.box} ref={box1Ref}>
             <div className={styles.box__content}>
               <h3>Обучение и наставничество</h3>
@@ -319,7 +319,7 @@ const Part: FC<PartProps> = ({ className }) => {
             <pointLight position={[-10, -10, -10]} intensity={0.5} />
 
             {/* Передача scrollProgressRef и position в Model */}
-            <Model scrollProgressRef={scrollProgressRef} position={[0, -0.2, 0]} />
+            <Model scrollProgressRef={scrollProgressRef} position={[0, -0.2, 0]} scrlProgress={isProgress} />
           </Canvas>
         </div>
       </div>
@@ -328,19 +328,19 @@ const Part: FC<PartProps> = ({ className }) => {
 
     return (
       <div>
+        <div className={styles.team} ref={teamRef}>
+          <h2>
+            <TitleGradient text={'Стань частью команды'} />
+          </h2>
+          <p>Хочешь работать плечом к плечу с ключевыми игроками рынка? Присоединяйся к нам</p>
+          <Link href='/vacancy'><ButtonTwo text={'вакансии'} /></Link>
+        </div>
         <div
           className={rootClassName}
           id='mascot'
           ref={mascotRef}
           style={{ height: `${10 / speedFactor}vh`, position: 'relative' }} // Установите высоту пропорционально speedFactor
         >
-          <div className={styles.team} ref={teamRef}>
-            <h2>
-              <TitleGradient text={'Стань частью команды'} />
-            </h2>
-            <p>Хочешь работать плечом к плечу с ключевыми игроками рынка? Присоединяйся к нам</p>
-            <Link href='/vacancy'><ButtonTwo text={'вакансии'} /></Link>
-          </div>
           <div className={styles.box} ref={box1Ref}>
             <div className={styles.box__content}>
               <h3>Обучение и наставничество</h3>
@@ -401,7 +401,7 @@ const Part: FC<PartProps> = ({ className }) => {
             <pointLight position={[-10, -10, -10]} intensity={0.5} />
 
             {/* Передача scrollProgressRef и position в Model */}
-            <Model scrollProgressRef={scrollProgressRef} position={[0, -0.2, 0]} />
+            <Model scrollProgressRef={scrollProgressRef} position={[0, -0.2, 0]} scrlProgress={isProgress} />
           </Canvas>
         </div>
       </div>
