@@ -62,9 +62,14 @@
 }
 
 .logo {
-  position: relative;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, 0);
 
   @include mobile-large {
+    position: relative;
+    left: auto;
+    transform: none;
     order: 0;
   }
 }
