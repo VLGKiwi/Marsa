@@ -137,43 +137,79 @@ const Company: FC<CompanyProps> = ({ className }) => {
     });
   };
 
-  return (
-    <div className={styles.company}>
-      <GradientBlur className={styles.gradient} />
-      <div className={rootClassName}>
-        <div className={styles.container__title} ref={container}>
-          <Disclose />
-          <div className={styles.title}>
-            <h2 ref={text}>
-              {generateRandomTextWithSpaces().map((char, index) => (
-                <span key={index} data-char={fullText[index]}>
-                  {char}
-                </span>
-              ))}
-            </h2>
+  if (window.innerWidth > 768) {
+    return (
+      <div className={styles.company}>
+        <GradientBlur className={styles.gradient} />
+        <div className={rootClassName}>
+          <div className={styles.container__title} ref={container}>
+            <Disclose />
+            <div className={styles.title}>
+              <h2 ref={text}>
+                {generateRandomTextWithSpaces().map((char, index) => (
+                  <span key={index} data-char={fullText[index]}>
+                    {char}
+                  </span>
+                ))}
+              </h2>
+            </div>
           </div>
         </div>
+        <div className={styles.text1} ref={text1}>
+          <p
+            className={styles.text1__company}
+            dangerouslySetInnerHTML={{ __html: localizedText1 }}
+          />
+        </div>
+        <div className={styles.text2} ref={text2}>
+          <p
+            className={styles.text2__company}
+            dangerouslySetInnerHTML={{ __html: localizedText2 }}
+          />
+        </div>
+        <div className={styles.text3} ref={text3}>
+          <p
+            className={styles.text3__company}
+            dangerouslySetInnerHTML={{ __html: localizedText3 }}
+          />
+        </div>
       </div>
-      <div className={styles.text1} ref={text1}>
-        <p
-          className={styles.text1__company}
-          dangerouslySetInnerHTML={{ __html: localizedText1 }}
-        />
+    );
+  } else {
+    return (
+      <div className={styles.company}>
+        <GradientBlur className={styles.gradient} />
+        <div className={rootClassName}>
+          <div className={styles.container__title} ref={container}>
+            <Disclose />
+            <div className={styles.title}>
+              <h2 ref={text}>
+              {fullText}
+              </h2>
+            </div>
+          </div>
+        </div>
+        <div className={styles.text1} ref={text1}>
+          <p
+            className={styles.text1__company}
+            dangerouslySetInnerHTML={{ __html: localizedText1 }}
+          />
+        </div>
+        <div className={styles.text2} ref={text2}>
+          <p
+            className={styles.text2__company}
+            dangerouslySetInnerHTML={{ __html: localizedText2 }}
+          />
+        </div>
+        <div className={styles.text3} ref={text3}>
+          <p
+            className={styles.text3__company}
+            dangerouslySetInnerHTML={{ __html: localizedText3 }}
+          />
+        </div>
       </div>
-      <div className={styles.text2} ref={text2}>
-        <p
-          className={styles.text2__company}
-          dangerouslySetInnerHTML={{ __html: localizedText2 }}
-        />
-      </div>
-      <div className={styles.text3} ref={text3}>
-        <p
-          className={styles.text3__company}
-          dangerouslySetInnerHTML={{ __html: localizedText3 }}
-        />
-      </div>
-    </div>
-  );
+    );
+  }
 };
 
 export default Company;

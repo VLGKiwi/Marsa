@@ -1,5 +1,6 @@
 export interface ButtonTwoProps {
   className?: string,
   text?: string,
-  big?: boolean
+  big?: boolean,
+  modal?: boolean
 }

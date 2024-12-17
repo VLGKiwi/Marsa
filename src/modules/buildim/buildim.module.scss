@@ -31,9 +31,10 @@
     line-height: 1.5;
     font-family: var(--font-esq);
     letter-spacing: 0;
-    max-width: 468px;
+    max-width: 500px;
     text-align: right;
 		font-weight: 400;
+		white-space: pre;
 
 		@include tablet {
 			margin-bottom: 223px;

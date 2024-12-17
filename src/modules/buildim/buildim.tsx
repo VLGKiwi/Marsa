@@ -12,10 +12,10 @@ import { useLanguage, Language } from '@/service/language';
 // Объект переводов
 const translations: Record<Language, { title: string }> = {
   ru: {
-    title: 'Собрали лучших и продолжаем искать',
+    title: 'Собрали лучших\nи продолжаем\nискать',
   },
   en: {
-    title: 'We’ve gathered the best and are continuing the search ',
+    title: 'We’ve gathered\nthe\u00A0best and are\ncontinuing the search',
   },
 };
 

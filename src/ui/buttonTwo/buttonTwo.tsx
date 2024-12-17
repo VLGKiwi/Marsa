@@ -14,30 +14,50 @@ import gsap from 'gsap'
 const Button: FC<ButtonTwoProps> = ({
   className,
   text,
-  big
+  big,
+  modal
 }) => {
   const rootClassName = classNames(styles.root, className)
   const btnRef = useRef(null)
   const textRef = useRef(null)
 
   useGSAP(() => {
-    const tl = gsap.timeline({
-      scrollTrigger: ({
-        trigger: btnRef.current,
-        start: 'top center'
+    if (modal) {
+      const tl = gsap.timeline({
+        scrollTrigger: ({
+          trigger: btnRef.current,
+        })
       })
-    })
-    tl.fromTo(btnRef.current, {
-      width: 49,
-      height: 48
-    }, {
-      width: '100%',
-      height: '100%',
-      duration: 2,
-    }).to(textRef.current, {
-      opacity: 1,
-      duration: 1
-    })
+      tl.fromTo(btnRef.current, {
+        width: 49,
+        height: 48
+      }, {
+        width: '100%',
+        height: '100%',
+        duration: 2,
+      }).to(textRef.current, {
+        opacity: 1,
+        duration: 1
+      })
+    } else {
+      const tl = gsap.timeline({
+        scrollTrigger: ({
+          trigger: btnRef.current,
+          start: 'top center'
+        })
+      })
+      tl.fromTo(btnRef.current, {
+        width: 49,
+        height: 48
+      }, {
+        width: '100%',
+        height: '100%',
+        duration: 2,
+      }).to(textRef.current, {
+        opacity: 1,
+        duration: 1
+      })
+    }
   })
 
   if (big) {
