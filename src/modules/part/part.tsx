@@ -21,28 +21,10 @@ import Line1 from '@icons/line1_part.svg'
 import Line2 from '@icons/line2_part.svg'
 import Line3 from '@icons/line3_part.svg'
 import Line from '@icons/linemob_part.svg'
+import Link from 'next/link'
 // import { Bloom, DepthOfField, EffectComposer, Noise, Vignette } from '@react-three/postprocessing'
 
 gsap.registerPlugin(ScrollTrigger)
-
-// const RotatingEnvironment = ({ targetRotation }: { targetRotation: [number, number, number] }) => {
-//   const [rotation, setRotation] = useState<[number, number, number]>([0, 0, 0]);
-
-//   // Плавное обновление вращения
-//   useFrame(() => {
-//     setRotation((prevRotation) => {
-//       const lerp = (start: number, end: number, alpha: number) => start + (end - start) * alpha;
-//       const smoothFactor = 0.01; // Уменьшенное значение для большей плавности
-//       return [
-//         lerp(prevRotation[0], targetRotation[0], smoothFactor),
-//         lerp(prevRotation[1], targetRotation[1], smoothFactor),
-//         lerp(prevRotation[2], targetRotation[2], smoothFactor),
-//       ];
-//     });
-//   });
-
-//   return <Environment files="/models/MARSA-team-logo.hdr" environmentRotation={rotation} />;
-// };
 
 const Part: FC<PartProps> = ({ className }) => {
   const rootClassName = classNames(styles.root, className)
@@ -67,6 +49,18 @@ const Part: FC<PartProps> = ({ className }) => {
       return
     }
 
+    gsap.fromTo(teamRef.current, {
+      opacity: 0,
+      duration: 0.3
+    }, {
+      opacity: 1,
+      duration: 0.3,
+      scrollTrigger: {
+        trigger: teamRef.current,
+        start: 'top center'
+      }
+    })
+
     function camMove(self: globalThis.ScrollTrigger) {
       scrollProgressRef.current = self.progress
       console.log('Scroll progress:', self.progress) // Для отладки
@@ -83,18 +77,6 @@ const Part: FC<PartProps> = ({ className }) => {
         gsap.to(friendRef.current, {
           opacity: 0,
           duration: 1,
-        })
-      }
-
-      if (self.progress <= 0.05) {
-        gsap.to(teamRef.current, {
-          opacity: 1,
-          duration: 0.3
-        })
-      } else {
-        gsap.to(teamRef.current, {
-          opacity: 0,
-          duration: 0.3
         })
       }
 
@@ -156,7 +138,7 @@ const Part: FC<PartProps> = ({ className }) => {
               x: 0, // Установите нужные значения для приближения
               y: 0.13,
               z: 0.25, // Приближение к космонавту
-              duration: 0.5,
+              duration: 1,
               ease: 'power2.inOut',
               onComplete: function () { hasCameraMoved.current = false }
             })
@@ -170,7 +152,7 @@ const Part: FC<PartProps> = ({ className }) => {
               x: -0.1, // Установите нужные значения для приближения
               y: 0,
               z: 0.5, // Приближение к космонавту
-              duration: 0.5,
+              duration: 1,
               ease: 'power2.inOut',
               onComplete: function () { hasCameraMoved.current = false }
             })
@@ -184,7 +166,7 @@ const Part: FC<PartProps> = ({ className }) => {
               x: -0.1, // Установите нужные значения для приближения
               y: 0,
               z: 0.5, // Приближение к космонавту
-              duration: 0.5,
+              duration: 1,
               ease: 'power2.inOut',
               onComplete: function () { hasCameraMoved.current = false }
             })
@@ -198,7 +180,7 @@ const Part: FC<PartProps> = ({ className }) => {
               x: 0.1, // Установите нужные значения для приближения
               y: 0,
               z: 0.5, // Приближение к космонавту
-              duration: 0.5,
+              duration: 1,
               ease: 'power2.inOut',
               onComplete: function () { hasCameraMoved.current = false }
             })
@@ -214,7 +196,7 @@ const Part: FC<PartProps> = ({ className }) => {
               x: 0, // Установите нужные значения для приближения
               y: 0.05,
               z: 0.5, // Приближение к космонавту
-              duration: 0.5,
+              duration: 1,
               ease: 'power2.inOut',
               onComplete: function () { hasCameraMoved.current = false }
             })
@@ -227,7 +209,7 @@ const Part: FC<PartProps> = ({ className }) => {
               x: 0, // Установите нужные значения для приближения
               y: 0.13,
               z: 0.25, // Приближение к космонавту
-              duration: 0.5,
+              duration: 1,
               ease: 'power2.inOut',
               onComplete: function () { hasCameraMoved.current = false }
             })
@@ -273,7 +255,7 @@ const Part: FC<PartProps> = ({ className }) => {
               <TitleGradient text={'Стань частью команды'} />
             </h2>
             <p>Хочешь работать плечом к плечу с ключевыми игроками рынка? Присоединяйся к нам</p>
-            <ButtonTwo text={'вакансии'} />
+            <Link href='/vacancy'><ButtonTwo text={'вакансии'} /></Link>
           </div>
           <div className={styles.box} ref={box1Ref}>
             <div className={styles.box__content}>
@@ -301,7 +283,7 @@ const Part: FC<PartProps> = ({ className }) => {
               <h2><TitleGradient text={'Отправь продуктивного друга к нам на MARS'} /></h2>
               <p>И получи бонусы</p>
             </div>
-            <ButtonTwo text={'Узнать подробности у HR'} big={true} />
+            <a href='https://t.me/marsateam'><ButtonTwo text={'Узнать подробности у HR'} big={true} /></a>
           </div>
           <Canvas
             style={{
@@ -355,7 +337,7 @@ const Part: FC<PartProps> = ({ className }) => {
               <TitleGradient text={'Стань частью команды'} />
             </h2>
             <p>Хочешь работать плечом к плечу с ключевыми игроками рынка? Присоединяйся к нам</p>
-            <ButtonTwo text={'вакансии'} />
+            <Link href='/vacancy'><ButtonTwo text={'вакансии'} /></Link>
           </div>
           <div className={styles.box} ref={box1Ref}>
             <div className={styles.box__content}>
@@ -383,7 +365,7 @@ const Part: FC<PartProps> = ({ className }) => {
               <h2><TitleGradient text={'Отправь продуктивного друга к нам на MARS'} /></h2>
               <p>И получи бонусы</p>
             </div>
-            <ButtonTwo text={'Узнать подробности у HR'} big={true} />
+            <a href='https://t.me/marsateam'><ButtonTwo text={'Узнать подробности у HR'} big={true} /></a>
           </div>
           <Canvas
             style={{
@@ -425,19 +407,19 @@ const Part: FC<PartProps> = ({ className }) => {
   } else {
     return (
       <div>
+        <div className={styles.team} ref={teamRef}>
+          <h2>
+            <TitleGradient text={'Стань частью команды'} />
+          </h2>
+          <p>Хочешь работать плечом к плечу с ключевыми игроками рынка? Присоединяйся к нам</p>
+          <Link href='/vacancy'><ButtonTwo text={'вакансии'} /></Link>
+        </div>
         <div
           className={rootClassName}
           id='mascot'
           ref={mascotRef}
           style={{ height: `${10 / speedFactor}vh`, position: 'relative' }} // Установите высоту пропорционально speedFactor
         >
-          <div className={styles.team} ref={teamRef}>
-            <h2>
-              <TitleGradient text={'Стань частью команды'} />
-            </h2>
-            <p>Хочешь работать плечом к плечу с ключевыми игроками рынка? Присоединяйся к нам</p>
-            <ButtonTwo text={'вакансии'} />
-          </div>
           <div className={styles.box} ref={box1Ref}>
             <div className={styles.box__content}>
               <h3>Обучение и наставничество</h3>
@@ -464,7 +446,7 @@ const Part: FC<PartProps> = ({ className }) => {
               <h2><TitleGradient text={'Отправь продуктивного друга к нам на MARS'} /></h2>
               <p>И получи бонусы</p>
             </div>
-            <ButtonTwo text={'Узнать подробности у HR'} big={true} />
+            <a href='https://t.me/marsateam'><ButtonTwo text={'Узнать подробности у HR'} big={true} /></a>
           </div>
           <Canvas
             style={{
@@ -474,8 +456,6 @@ const Part: FC<PartProps> = ({ className }) => {
             shadows
 
           >
-            {/* <axesHelper /> */}
-            {/* <ambientLight intensity={0.5} /> hj*/}
             <directionalLight
               position={[0, 1, 0.5]}
               intensity={1}
@@ -490,15 +470,10 @@ const Part: FC<PartProps> = ({ className }) => {
             />
             <PerspectiveCamera ref={cameraRef} makeDefault position={[-0.1, 0, 0.5]} fov={50} />
 
-            {/* <RotatingEnvironment targetRotation={targetRotation} /> */}
-
             <Environment files={'/models/outer-space-1.exr'} environmentRotation={[0, Math.PI, 0]}/>
-
-            {/* <Environment files="/models/MARSA-team-logo.hdr" environmentRotation={[rotation]} /> */}
 
             {/* <OrbitControls /> */}
 
-            {/* Передача scrollProgressRef и position в Model */}
             <Model scrollProgressRef={scrollProgressRef} position={[0, -0.2, 0]} />
           </Canvas>
         </div>

@@ -38,7 +38,9 @@ const Friend: FC<FriendProps> = ({ className }) => {
         </h2>
         <p className={styles.text}>{textBonus}</p> {/* Используем переведенный textBonus */}
       </div>
-      <ButtonTwo text={button} big={true} />
+      <a href='https://t.me/marsateam'>
+        <ButtonTwo text={button} big={true} />
+      </a>
       <Image
         src={Astronaut}
         alt="astronaut"

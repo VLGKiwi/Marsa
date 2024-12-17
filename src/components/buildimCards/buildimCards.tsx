@@ -16,11 +16,13 @@ import 'swiper/css';
 import 'swiper/css/scrollbar';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
-import { ButtonTwo, Modal } from '@/ui';
+import { ButtonTwo, Modal, TitleGradient } from '@/ui';
 import { useLanguage, Language } from '@/service/language';
 
 const translations: Record<Language, any> = {
   ru: {
+    subTitleFirst: 'Что вы будете делать:',
+    subTitleSecond: 'Что мы ждем от вас:',
     descriptions: {
       first: `Ищем проактивного медиабайера, готового принять вызов и стать частью лидирующей команды в медиабаинге в вертикале iGaming.
 
@@ -78,6 +80,8 @@ const translations: Record<Language, any> = {
     button: 'Написать HR',
   },
   en: {
+    subTitleFirst: 'What you will do:',
+    subTitleSecond: 'What we expect from you:',
     descriptions: {
       first: `We’re looking for a proactive media buyer ready to take on challenges and join the leading media buying team in the iGaming vertical.
       If you're seeking an environment where challenges turn into growth opportunities, ready to take responsibility, and able to find unique solutions to complex tasks – you’re the person we need.
@@ -247,9 +251,9 @@ const BuildimCards: FC<BuildimCardsProps> = ({ className, onHoverCard }) => {
           <div className={styles.modalHeader}>
             {/* Заголовок h2 */}
             <h2 className={styles.modalTitle}>
-              {selectedCard === 'first' && 'Media buyer'}
-              {selectedCard === 'second' && 'Team lead'}
-              {selectedCard === 'third' && 'Designer'}
+              {selectedCard === 'first' && (<TitleGradient text='Media buyer'/>)}
+              {selectedCard === 'second' && (<TitleGradient text='Team lead'/>)}
+              {selectedCard === 'third' && (<TitleGradient text='Designer'/>)}
             </h2>
 
             {/* Блок с SVG отображается только для первой и третьей карточки */}
@@ -278,7 +282,7 @@ const BuildimCards: FC<BuildimCardsProps> = ({ className, onHoverCard }) => {
 </div>
 
 <div className={styles.modalSection}>
-  <h3 className={styles.modalSubtitle}>What you will do:</h3>
+  <h3 className={styles.modalSubtitle}>{t.subTitleFirst}</h3>
   {selectedCard && (
     <ul className={styles.modalList}>
       {t.tasks[selectedCard]?.map((task: string, i: number) => (
@@ -289,7 +293,7 @@ const BuildimCards: FC<BuildimCardsProps> = ({ className, onHoverCard }) => {
 </div>
 
 <div className={styles.modalSection}>
-  <h3 className={styles.modalSubtitle}>What we expect from you:</h3>
+  <h3 className={styles.modalSubtitle}>{t.subTitleSecond}</h3>
   {selectedCard && (
     <ul className={styles.modalList}>
       {t.expectations[selectedCard]?.map((exp: string, i: number) => (
@@ -304,8 +308,9 @@ const BuildimCards: FC<BuildimCardsProps> = ({ className, onHoverCard }) => {
     <p className={styles.modalText__inside}>{t.hrMessages[selectedCard]}</p>
   )}
 </div>
-
-          <ButtonTwo className={styles.modalButton} text={t.button} big={false} />
+          <a href="https://t.me/marsateam">
+            <ButtonTwo className={styles.modalButton} text={t.button} big={false} modal={true} />
+          </a>
       </Modal>
 
     </div>
