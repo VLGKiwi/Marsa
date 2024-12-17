@@ -8,6 +8,7 @@ import React, { forwardRef, useRef, useEffect } from 'react'
 import { useGLTF, useAnimations } from '@react-three/drei'
 import { EXRLoader, GLTF, RGBELoader } from 'three-stdlib'
 import { useFrame, GroupProps, useThree } from '@react-three/fiber'
+import gsap from 'gsap'
 
 // Тип для имени анимации
 type ActionName = 'Action.001'
@@ -52,10 +53,11 @@ type GLTFResult = GLTF & {
 
 // Интерфейс ModelProps расширяет GroupProps и включает scrollProgressRef
 interface ModelProps extends GroupProps {
-  scrollProgressRef: React.MutableRefObject<number>
+  scrollProgressRef: React.MutableRefObject<number>,
+  scrlProgress?: boolean;
 }
 
-const Model = forwardRef<THREE.Group, ModelProps>(({ scrollProgressRef, ...props }, ref) => {
+const Model = forwardRef<THREE.Group, ModelProps>(({ scrollProgressRef, scrlProgress, ...props }, ref) => {
   const group = useRef<THREE.Group>(null)
 
   // Доступ к сцене и рендереру
@@ -64,7 +66,7 @@ const Model = forwardRef<THREE.Group, ModelProps>(({ scrollProgressRef, ...props
   // Настройка тонмаппинга и гамма-коррекции
   useEffect(() => {
     gl.toneMapping = THREE.ACESFilmicToneMapping
-    gl.toneMappingExposure = 2.0 // Сделаем немного ярче
+    gl.toneMappingExposure = 1.0 // Сделаем немного ярче
     gl.outputColorSpace = THREE.SRGBColorSpace;
   }, [gl])
 
@@ -72,30 +74,67 @@ const Model = forwardRef<THREE.Group, ModelProps>(({ scrollProgressRef, ...props
   const { nodes, materials, animations } = useGLTF('/models/Astronaut_Animation-transformed.glb') as GLTFResult
   const { actions, mixer } = useAnimations(animations, group)
 
+  const envScene = useRef(new THREE.Scene()) // Отдельная сцена для окружения
+  const envSphereRef = useRef<THREE.Mesh>()
+  const cubeCameraRef = useRef<THREE.CubeCamera>()
+
   useEffect(() => {
     const rgbeLoader = new RGBELoader()
     rgbeLoader.load('/models/MARSA-team-logo.hdr', (texture) => {
-      const pmremGenerator = new THREE.PMREMGenerator(gl)
-      pmremGenerator.compileEquirectangularShader()
+      texture.wrapS = THREE.ClampToEdgeWrapping;
+      texture.wrapT = THREE.ClampToEdgeWrapping;
+      texture.minFilter = THREE.LinearFilter;
+      texture.magFilter = THREE.LinearFilter;
 
-      const hdrEnvMap = pmremGenerator.fromEquirectangular(texture).texture
+      // Используем сферу в отдельной сцене
+      texture.mapping = THREE.EquirectangularReflectionMapping
+      const geometry = new THREE.SphereGeometry(100, 64, 64)
+      const material = new THREE.MeshBasicMaterial({
+        map: texture,
+        side: THREE.BackSide
+      })
+      const envSphere = new THREE.Mesh(geometry, material)
+      envScene.current.add(envSphere)
+      envSphere.position.set(0, 45, 0)
+      envScene.current.add(envSphere)
+      envSphereRef.current = envSphere
 
-      // Применяем HDR-карту только к материалам шлема
+      // Создаем рендертаргет и кубкамеру
+      const cubeRenderTarget = new THREE.WebGLCubeRenderTarget(512, {
+        format: THREE.RGBAFormat,
+        generateMipmaps: true
+      })
+      const cubeCamera = new THREE.CubeCamera(0.1, 1000, cubeRenderTarget)
+      cubeCamera.position.set(0, 0, 0)
+      scene.add(cubeCamera)
+      cubeCameraRef.current = cubeCamera
+
+      // Применяем кубмапу к шлему
       const helmetMaterials = [materials.Material]
-
       helmetMaterials.forEach((mat) => {
-        mat.envMap = hdrEnvMap
+        mat.envMap = cubeRenderTarget.texture
         mat.metalness = 0.5
         mat.roughness = 0.0
         mat.envMapIntensity = 2.0
         mat.needsUpdate = true
       })
 
-      // Если уверены, что ресурсы больше не нужны, можно освободить:
-      // texture.dispose()
-      // pmremGenerator.dispose()
+      // Обновляем кубкамеру первый раз
+      cubeCamera.update(gl, envScene.current)
+
+      if (scrlProgress) {
+        // Анимируем вращение куб-камеры вместо сферы
+        gsap.to(cubeCamera.rotation, {
+          duration: 5,
+          y: -Math.PI * 1.5,
+          ease: "linear",
+          onUpdate: () => {
+            cubeCamera.update(gl, envScene.current)
+          }
+        })
+      }
     })
-  }, [gl, materials])
+  }, [gl, materials, scene, scrlProgress])
 
 
   useEffect(() => {

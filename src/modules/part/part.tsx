@@ -38,6 +38,7 @@ const Part: FC<PartProps> = ({ className }) => {
   const box3Ref = useRef(null)
   const teamRef = useRef(null)
   const [targetRotation, setTargetRotation] = useState<[number, number, number]>([0, 0, 0]);
+  const [isProgress, setIsProgress] = useState<boolean>(false)
 
   // Определите коэффициент скорости
   const speedFactor = 0.1 // Меняйте значение для регулировки скорости (0.5 = вдвое медленнее)
@@ -71,6 +72,7 @@ const Part: FC<PartProps> = ({ className }) => {
           duration: 1,
         })
 
+        setIsProgress(true)
         const targetY = 0.9 * Math.PI * 2; // Преобразуем в радианы
         setTargetRotation([0, targetY, 0]);
       } else if (self.progress < 1) {
@@ -84,47 +86,47 @@ const Part: FC<PartProps> = ({ className }) => {
       if (self.progress >= 0.7) {
         gsap.to(box3Ref.current, {
           opacity: 0,
-          duration: 0.5
+          duration: 1
         })
       } else if (self.progress >= 0.5) {
         gsap.to(box2Ref.current, {
           opacity: 0,
-          duration: 0.5
+          duration: 1
         })
 
         gsap.to(box3Ref.current, {
           opacity: 1,
-          duration: 0.5
+          duration: 1
         })
       } else if (self.progress >= 0.2) {
         gsap.to(box1Ref.current, {
           opacity: 0,
-          duration: 0.5
+          duration: 1
         })
 
         gsap.to(box2Ref.current, {
           opacity: 1,
-          duration: 0.5
+          duration: 1
         })
 
         gsap.to(box3Ref.current, {
           opacity: 0,
-          duration: 0.5
+          duration: 1
         })
       } else if (self.progress <= 0.05) {
         gsap.to(box1Ref.current, {
           opacity: 0,
-          duration: 0.5
+          duration: 1
         })
       } else if ((self.progress < 0.15) || (self.progress > 0.05)) {
         gsap.to(box1Ref.current, {
           opacity: 1,
-          duration: 0.5
+          duration: 1
         })
 
         gsap.to(box2Ref.current, {
           opacity: 0,
-          duration: 0.5
+          duration: 1
         })
       }
 
@@ -474,7 +476,7 @@ const Part: FC<PartProps> = ({ className }) => {
 
             {/* <OrbitControls /> */}
 
-            <Model scrollProgressRef={scrollProgressRef} position={[0, -0.2, 0]} />
+            <Model scrollProgressRef={scrollProgressRef} position={[0, -0.2, 0]} scrlProgress={isProgress} />
           </Canvas>
         </div>
       </div>
