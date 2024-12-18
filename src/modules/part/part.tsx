@@ -42,7 +42,7 @@ const Part: FC<PartProps> = ({ className }) => {
   const canvasRef = useRef(null)
 
   // Определите коэффициент скорости
-  const speedFactor = 0.1 // Меняйте значение для регулировки скорости (0.5 = вдвое медленнее)
+  const speedFactor = 0.2 // Меняйте значение для регулировки скорости (0.5 = вдвое медленнее)
 
   useEffect(() => {
     const mascot = mascotRef.current
@@ -63,17 +63,28 @@ const Part: FC<PartProps> = ({ className }) => {
       }
     })
 
-    gsap.fromTo(canvasRef.current, {
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: teamRef.current,
+        start: 'top center',
+      }
+    })
+
+    tl.fromTo(canvasRef.current, {
       y: -1500
     }, {
       y: 0,
       delay: 3,
       duration: 1,
-      overflow: 'visible',
+      ease: 'power1.out',
       scrollTrigger: {
         trigger: teamRef.current,
         start: 'top center',
       }
+    }).to(box1Ref.current, {
+      opacity: 1,
+      duration: 1,
+      delay: 4
     })
 
     function camMove(self: globalThis.ScrollTrigger) {
@@ -127,12 +138,7 @@ const Part: FC<PartProps> = ({ className }) => {
           opacity: 0,
           duration: 1
         })
-      } else if (self.progress <= 0.05) {
-        gsap.to(box1Ref.current, {
-          opacity: 0,
-          duration: 1
-        })
-      } else if ((self.progress < 0.15) || (self.progress > 0.05)) {
+      } else if (self.progress < 0.15) {
         gsap.to(box1Ref.current, {
           opacity: 1,
           duration: 1
@@ -271,7 +277,7 @@ const Part: FC<PartProps> = ({ className }) => {
           className={rootClassName}
           id='mascot'
           ref={mascotRef}
-          style={{ height: `${10 / speedFactor}vh`, position: 'relative' }} // Установите высоту пропорционально speedFactor
+          style={{ height: `${20 / speedFactor}vh`, position: 'relative' }} // Установите высоту пропорционально speedFactor
           >
           <div className={styles.box} ref={box1Ref}>
             <div className={styles.box__content}>
@@ -353,7 +359,7 @@ const Part: FC<PartProps> = ({ className }) => {
           className={rootClassName}
           id='mascot'
           ref={mascotRef}
-          style={{ height: `${10 / speedFactor}vh`, position: 'relative' }} // Установите высоту пропорционально speedFactor
+          style={{ height: `${20 / speedFactor}vh`, position: 'relative' }} // Установите высоту пропорционально speedFactor
         >
           <div className={styles.box} ref={box1Ref}>
             <div className={styles.box__content}>
@@ -434,7 +440,7 @@ const Part: FC<PartProps> = ({ className }) => {
           className={rootClassName}
           id='mascot'
           ref={mascotRef}
-          style={{ height: `${10 / speedFactor}vh`, position: 'relative' }} // Установите высоту пропорционально speedFactor
+          style={{ height: `${20 / speedFactor}vh`, position: 'relative' }} // Установите высоту пропорционально speedFactor
         >
           <div className={styles.box} ref={box1Ref}>
             <div className={styles.box__content}>
