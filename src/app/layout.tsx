@@ -1,5 +1,5 @@
 'use client'
-import { ReactNode } from 'react'
+import { ReactNode, memo } from 'react'
 import { Footer } from '@modules/footer'
 import { Header } from '@modules/header'
 
@@ -31,6 +31,9 @@ const esqadero = localFont({
   variable: '--font-esq'
 })
 
+const MemoizedHeader = memo(Header)
+const MemoizedFooter = memo(Footer)
+
 export default function RootLayout({
   children
 }: Readonly<{
@@ -39,17 +42,19 @@ export default function RootLayout({
   return (
     <html lang="ru">
       <body className={`${actay.variable} ${esqadero.variable}`}>
+
         <Provider>
           <LanguageProvider>
             <div id="root">
-              <Header />
+              <MemoizedHeader />
               {children}
-              <Footer />
+              <MemoizedFooter />
             </div>
 
             <div id="modal-root" />
           </LanguageProvider>
         </Provider>
+
       </body>
     </html>
   )
