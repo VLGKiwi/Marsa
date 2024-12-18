@@ -39,6 +39,7 @@ const Part: FC<PartProps> = ({ className }) => {
   const teamRef = useRef(null)
   const [targetRotation, setTargetRotation] = useState<[number, number, number]>([0, 0, 0]);
   const [isProgress, setIsProgress] = useState<boolean>(false)
+  const canvasRef = useRef(null)
 
   // Определите коэффициент скорости
   const speedFactor = 0.1 // Меняйте значение для регулировки скорости (0.5 = вдвое медленнее)
@@ -50,6 +51,14 @@ const Part: FC<PartProps> = ({ className }) => {
       return
     }
 
+    // const tl = gsap.timeline({
+    //   scrollTrigger: {
+    //     trigger: teamRef.current,
+    //     start: 'top center',
+    //     markers: true
+    //   }
+    // })
+
     gsap.fromTo(teamRef.current, {
       opacity: 0,
       duration: 0.3
@@ -58,7 +67,21 @@ const Part: FC<PartProps> = ({ className }) => {
       duration: 0.3,
       scrollTrigger: {
         trigger: teamRef.current,
-        start: 'top center'
+        start: 'top center',
+      }
+    })
+
+    gsap.fromTo(canvasRef.current, {
+      y: -1500
+    }, {
+      y: 0,
+      delay: 3,
+      duration: 1,
+      overflow: 'visible',
+      scrollTrigger: {
+        trigger: teamRef.current,
+        start: 'top center',
+        markers: true
       }
     })
 
@@ -293,7 +316,6 @@ const Part: FC<PartProps> = ({ className }) => {
               height: '100vh',
             }}
             shadows
-
           >
             <ambientLight intensity={0.5} />
             <directionalLight
@@ -408,7 +430,7 @@ const Part: FC<PartProps> = ({ className }) => {
     )
   } else {
     return (
-      <div>
+      <div style={{ overflow: 'hidden' }}>
         <div className={styles.team} ref={teamRef}>
           <h2>
             <TitleGradient text={'Стань частью команды'} />
@@ -456,7 +478,7 @@ const Part: FC<PartProps> = ({ className }) => {
               height: '100vh',
             }}
             shadows
-
+            ref={canvasRef}
           >
             <directionalLight
               position={[0, 1, 0.5]}

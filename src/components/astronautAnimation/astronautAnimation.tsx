@@ -66,7 +66,7 @@ const Model = forwardRef<THREE.Group, ModelProps>(({ scrollProgressRef, scrlProg
   // Настройка тонмаппинга и гамма-коррекции
   useEffect(() => {
     gl.toneMapping = THREE.ACESFilmicToneMapping
-    gl.toneMappingExposure = 1.0 // Сделаем немного ярче
+    gl.toneMappingExposure = 1 // Сделаем немного ярче
     gl.outputColorSpace = THREE.SRGBColorSpace;
   }, [gl])
 
