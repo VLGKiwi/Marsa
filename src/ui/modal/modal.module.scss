@@ -1,8 +1,8 @@
-/* stylelint-disable block-no-empty */
 /* stylelint-disable color-function-notation */
+/* stylelint-disable block-no-empty */
 /* stylelint-disable selector-class-pattern */
 @use "@styles/func";
-@use "@styles/mixins";
+@use "@styles/mixins" as *;
 @use "@styles/variables";
 
 .root {}
@@ -27,12 +27,26 @@
   position: relative;
   max-width: 786px;
 
+
+  max-height: 80vh;
+  overflow: scroll;
+  scrollbar-width: none;
+
   font-family: var(--font-act);
   font-size: 14px;
   line-height: 1.5;
   letter-spacing: -0.04em;
   color: rgb(208, 208, 208);
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  @include tablet-small {
+    padding: 22px 37px 25px 27px;
+  }
 }
+
 
 .modal_close {
   position: absolute;
