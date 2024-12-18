@@ -268,7 +268,7 @@ const Part: FC<PartProps> = ({ className }) => {
   if (window.innerWidth < 768) {
 
     return (
-      <div>
+      <div style={{ overflow: 'hidden' }}>
         <div className={styles.team} ref={teamRef}>
           <h2>
             <TitleGradient text={'Стань частью команды'} />
@@ -316,6 +316,7 @@ const Part: FC<PartProps> = ({ className }) => {
               height: '100vh',
             }}
             shadows
+            ref={canvasRef}
           >
             <ambientLight intensity={0.5} />
             <directionalLight
@@ -349,7 +350,7 @@ const Part: FC<PartProps> = ({ className }) => {
   } else if (window.innerWidth < 1200) {
 
     return (
-      <div>
+      <div style={{ overflow: 'hidden' }}>
         <div className={styles.team} ref={teamRef}>
           <h2>
             <TitleGradient text={'Стань частью команды'} />
@@ -397,7 +398,7 @@ const Part: FC<PartProps> = ({ className }) => {
               height: '100vh',
             }}
             shadows
-
+            ref={canvasRef}
           >
             <ambientLight intensity={0.5} />
             <directionalLight
