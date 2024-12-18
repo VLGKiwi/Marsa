@@ -43,8 +43,8 @@ const translations: Translations = {
   },
 };
 
-const AUTO_CHANGE_INTERVAL = 7000; // Интервал смены карточек (мс)
-const START_DELAY = 8000; // Задержка перед стартом слайдера
+const AUTO_CHANGE_INTERVAL = 5000; // Интервал смены карточек (мс)
+const START_DELAY = 1500; // Задержка перед стартом слайдера
 
 const Principle: FC<PrincipleProps> = ({ className }) => {
   const rootClassName = classNames(styles.root, className);
@@ -54,47 +54,62 @@ const Principle: FC<PrincipleProps> = ({ className }) => {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const hasTriggered = useRef<boolean>(false);
 
+
   useEffect(() => {
-    let startTimeout: NodeJS.Timeout | null = null;
-    let interval: NodeJS.Timeout | null = null;
+    function startAnimation() {
+      return setInterval(() => {
+        setAnimationStage('exiting');
+        setTimeout(() => {
+          setCurrentIndex((prevIndex) => (prevIndex + 1) % translations[language].principles.length);
+          setAnimationStage('entering');
+        }, 500);
+      }, AUTO_CHANGE_INTERVAL);
+    };
 
-    ScrollTrigger.create({
+    const timers = {
+      start: null as NodeJS.Timeout | null,
+      interval: null as NodeJS.Timeout | null
+    };
+
+    const handleEnter = () => {
+      if (!hasTriggered.current) {
+        hasTriggered.current = true;
+        timers.start = setTimeout(() => {
+          timers.interval = startAnimation();
+        }, START_DELAY);
+      }
+    };
+
+    const clearTimers = () => {
+      hasTriggered.current = false;
+      if (timers.start) clearTimeout(timers.start);
+      if (timers.interval) clearInterval(timers.interval);
+    };
+
+    const trigger = ScrollTrigger.create({
       trigger: containerRef.current,
-      start: 'center center',
-      onEnter: () => {
-        if (!hasTriggered.current) {
-          hasTriggered.current = true;
-
-          startTimeout = setTimeout(() => {
-            interval = setInterval(() => {
-              setAnimationStage('exiting');
-              setTimeout(() => {
-                setCurrentIndex((prevIndex) => (prevIndex + 1) % translations[language].principles.length);
-                setAnimationStage('entering');
-              }, 500);
-            }, AUTO_CHANGE_INTERVAL);
-          }, START_DELAY);
-        }
-      },
-      onLeaveBack: () => {
-        hasTriggered.current = false;
-        if (startTimeout) clearTimeout(startTimeout);
-        if (interval) clearInterval(interval);
-      },
+      start: 'top center',
+      markers: process.env.NODE_ENV === 'development',
+      onEnter: handleEnter,
+      onLeave: clearTimers,
+      onEnterBack: handleEnter,
+      onLeaveBack: clearTimers
     });
 
     return () => {
-      if (startTimeout) clearTimeout(startTimeout);
-      if (interval) clearInterval(interval);
+      trigger.kill();
+      clearTimers();
     };
   }, [language]);
 
   return (
     <div className={rootClassName} ref={containerRef}>
       <GradientBlur className={styles.gradient} />
+
       <h2 className={styles.title}>
         <TitleGradient text={translations[language].title} />
       </h2>
+
       <div className={styles.principleCards}>
         {translations[language].principles.map((card, index) => (
           <div
