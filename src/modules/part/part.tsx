@@ -38,6 +38,8 @@ const Part: FC<PartProps> = ({ className }) => {
   const box3Ref = useRef(null)
   const teamRef = useRef(null)
   const [targetRotation, setTargetRotation] = useState<[number, number, number]>([0, 0, 0]);
+  const [isProgress, setIsProgress] = useState<boolean>(false)
+  const canvasRef = useRef(null)
 
   // Определите коэффициент скорости
   const speedFactor = 0.1 // Меняйте значение для регулировки скорости (0.5 = вдвое медленнее)
@@ -49,6 +51,14 @@ const Part: FC<PartProps> = ({ className }) => {
       return
     }
 
+    // const tl = gsap.timeline({
+    //   scrollTrigger: {
+    //     trigger: teamRef.current,
+    //     start: 'top center',
+    //     markers: true
+    //   }
+    // })
+
     gsap.fromTo(teamRef.current, {
       opacity: 0,
       duration: 0.3
@@ -57,7 +67,21 @@ const Part: FC<PartProps> = ({ className }) => {
       duration: 0.3,
       scrollTrigger: {
         trigger: teamRef.current,
-        start: 'top center'
+        start: 'top center',
+      }
+    })
+
+    gsap.fromTo(canvasRef.current, {
+      y: -1500
+    }, {
+      y: 0,
+      delay: 3,
+      duration: 1,
+      overflow: 'visible',
+      scrollTrigger: {
+        trigger: teamRef.current,
+        start: 'top center',
+        markers: true
       }
     })
 
@@ -71,6 +95,7 @@ const Part: FC<PartProps> = ({ className }) => {
           duration: 1,
         })
 
+        setIsProgress(true)
         const targetY = 0.9 * Math.PI * 2; // Преобразуем в радианы
         setTargetRotation([0, targetY, 0]);
       } else if (self.progress < 1) {
@@ -84,47 +109,47 @@ const Part: FC<PartProps> = ({ className }) => {
       if (self.progress >= 0.7) {
         gsap.to(box3Ref.current, {
           opacity: 0,
-          duration: 0.5
+          duration: 1
         })
       } else if (self.progress >= 0.5) {
         gsap.to(box2Ref.current, {
           opacity: 0,
-          duration: 0.5
+          duration: 1
         })
 
         gsap.to(box3Ref.current, {
           opacity: 1,
-          duration: 0.5
+          duration: 1
         })
       } else if (self.progress >= 0.2) {
         gsap.to(box1Ref.current, {
           opacity: 0,
-          duration: 0.5
+          duration: 1
         })
 
         gsap.to(box2Ref.current, {
           opacity: 1,
-          duration: 0.5
+          duration: 1
         })
 
         gsap.to(box3Ref.current, {
           opacity: 0,
-          duration: 0.5
+          duration: 1
         })
       } else if (self.progress <= 0.05) {
         gsap.to(box1Ref.current, {
           opacity: 0,
-          duration: 0.5
+          duration: 1
         })
       } else if ((self.progress < 0.15) || (self.progress > 0.05)) {
         gsap.to(box1Ref.current, {
           opacity: 1,
-          duration: 0.5
+          duration: 1
         })
 
         gsap.to(box2Ref.current, {
           opacity: 0,
-          duration: 0.5
+          duration: 1
         })
       }
 
@@ -243,20 +268,20 @@ const Part: FC<PartProps> = ({ className }) => {
   if (window.innerWidth < 768) {
 
     return (
-      <div>
+      <div style={{ overflow: 'hidden' }}>
+        <div className={styles.team} ref={teamRef}>
+          <h2>
+            <TitleGradient text={'Стань частью команды'} />
+          </h2>
+          <p>Хочешь работать плечом к плечу с ключевыми игроками рынка? Присоединяйся к нам</p>
+          <Link href='/vacancy'><ButtonTwo text={'вакансии'} /></Link>
+        </div>
         <div
           className={rootClassName}
           id='mascot'
           ref={mascotRef}
           style={{ height: `${10 / speedFactor}vh`, position: 'relative' }} // Установите высоту пропорционально speedFactor
           >
-          <div className={styles.team} ref={teamRef}>
-            <h2>
-              <TitleGradient text={'Стань частью команды'} />
-            </h2>
-            <p>Хочешь работать плечом к плечу с ключевыми игроками рынка? Присоединяйся к нам</p>
-            <Link href='/vacancy'><ButtonTwo text={'вакансии'} /></Link>
-          </div>
           <div className={styles.box} ref={box1Ref}>
             <div className={styles.box__content}>
               <h3>Обучение и наставничество</h3>
@@ -291,7 +316,7 @@ const Part: FC<PartProps> = ({ className }) => {
               height: '100vh',
             }}
             shadows
-
+            ref={canvasRef}
           >
             <ambientLight intensity={0.5} />
             <directionalLight
@@ -317,7 +342,7 @@ const Part: FC<PartProps> = ({ className }) => {
             <pointLight position={[-10, -10, -10]} intensity={0.5} />
 
             {/* Передача scrollProgressRef и position в Model */}
-            <Model scrollProgressRef={scrollProgressRef} position={[0, -0.2, 0]} />
+            <Model scrollProgressRef={scrollProgressRef} position={[0, -0.2, 0]} scrlProgress={isProgress} />
           </Canvas>
         </div>
       </div>
@@ -325,20 +350,20 @@ const Part: FC<PartProps> = ({ className }) => {
   } else if (window.innerWidth < 1200) {
 
     return (
-      <div>
+      <div style={{ overflow: 'hidden' }}>
+        <div className={styles.team} ref={teamRef}>
+          <h2>
+            <TitleGradient text={'Стань частью команды'} />
+          </h2>
+          <p>Хочешь работать плечом к плечу с ключевыми игроками рынка? Присоединяйся к нам</p>
+          <Link href='/vacancy'><ButtonTwo text={'вакансии'} /></Link>
+        </div>
         <div
           className={rootClassName}
           id='mascot'
           ref={mascotRef}
           style={{ height: `${10 / speedFactor}vh`, position: 'relative' }} // Установите высоту пропорционально speedFactor
         >
-          <div className={styles.team} ref={teamRef}>
-            <h2>
-              <TitleGradient text={'Стань частью команды'} />
-            </h2>
-            <p>Хочешь работать плечом к плечу с ключевыми игроками рынка? Присоединяйся к нам</p>
-            <Link href='/vacancy'><ButtonTwo text={'вакансии'} /></Link>
-          </div>
           <div className={styles.box} ref={box1Ref}>
             <div className={styles.box__content}>
               <h3>Обучение и наставничество</h3>
@@ -373,7 +398,7 @@ const Part: FC<PartProps> = ({ className }) => {
               height: '100vh',
             }}
             shadows
-
+            ref={canvasRef}
           >
             <ambientLight intensity={0.5} />
             <directionalLight
@@ -399,14 +424,14 @@ const Part: FC<PartProps> = ({ className }) => {
             <pointLight position={[-10, -10, -10]} intensity={0.5} />
 
             {/* Передача scrollProgressRef и position в Model */}
-            <Model scrollProgressRef={scrollProgressRef} position={[0, -0.2, 0]} />
+            <Model scrollProgressRef={scrollProgressRef} position={[0, -0.2, 0]} scrlProgress={isProgress} />
           </Canvas>
         </div>
       </div>
     )
   } else {
     return (
-      <div>
+      <div style={{ overflow: 'hidden' }}>
         <div className={styles.team} ref={teamRef}>
           <h2>
             <TitleGradient text={'Стань частью команды'} />
@@ -454,7 +479,7 @@ const Part: FC<PartProps> = ({ className }) => {
               height: '100vh',
             }}
             shadows
-
+            ref={canvasRef}
           >
             <directionalLight
               position={[0, 1, 0.5]}
@@ -474,7 +499,7 @@ const Part: FC<PartProps> = ({ className }) => {
 
             {/* <OrbitControls /> */}
 
-            <Model scrollProgressRef={scrollProgressRef} position={[0, -0.2, 0]} />
+            <Model scrollProgressRef={scrollProgressRef} position={[0, -0.2, 0]} scrlProgress={isProgress} />
           </Canvas>
         </div>
       </div>

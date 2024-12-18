@@ -10,6 +10,10 @@
 	height: 100vh;
 	width: 100vw;
 	background-image: radial-gradient(circle, #6DCEFF30);
+
+	div {
+		overflow: visible !important;
+	}
 }
 
 .box {
@@ -266,10 +270,15 @@
 	gap: 16px;
 
 	z-index: 21;
-	bottom: 600px;
+	top: 90px;
+
+	@include tablet {
+		top: 40px;
+	}
 
 	@include tablet-small {
 		max-width: 336px;
+		top: 50px;
 	}
 
 	div {
