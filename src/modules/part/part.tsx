@@ -51,14 +51,6 @@ const Part: FC<PartProps> = ({ className }) => {
       return
     }
 
-    // const tl = gsap.timeline({
-    //   scrollTrigger: {
-    //     trigger: teamRef.current,
-    //     start: 'top center',
-    //     markers: true
-    //   }
-    // })
-
     gsap.fromTo(teamRef.current, {
       opacity: 0,
       duration: 0.3
@@ -81,7 +73,6 @@ const Part: FC<PartProps> = ({ className }) => {
       scrollTrigger: {
         trigger: teamRef.current,
         start: 'top center',
-        markers: true
       }
     })
 
