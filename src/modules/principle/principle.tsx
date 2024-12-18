@@ -51,47 +51,32 @@ const Principle: FC<PrincipleProps> = ({ className }) => {
   const { language } = useLanguage();
   const [currentIndex, setCurrentIndex] = useState(0);
   const [animationStage, setAnimationStage] = useState<'entering' | 'exiting'>('entering');
-  const audioRef = useRef<HTMLAudioElement | null>(null);
   const containerRef = useRef<HTMLDivElement | null>(null);
   const hasTriggered = useRef<boolean>(false);
 
   useEffect(() => {
-    if (audioRef.current) {
-      audioRef.current.volume = 0.5;
-    }
-
     let startTimeout: NodeJS.Timeout | null = null;
     let interval: NodeJS.Timeout | null = null;
 
-    // GSAP ScrollTrigger для центра экрана
     ScrollTrigger.create({
       trigger: containerRef.current,
-      start: 'center center', // Триггер срабатывает, когда элемент достигает центра экрана
+      start: 'center center',
       onEnter: () => {
         if (!hasTriggered.current) {
           hasTriggered.current = true;
 
-          // Задержка перед стартом слайдера
           startTimeout = setTimeout(() => {
             interval = setInterval(() => {
               setAnimationStage('exiting');
               setTimeout(() => {
                 setCurrentIndex((prevIndex) => (prevIndex + 1) % translations[language].principles.length);
                 setAnimationStage('entering');
-
-                if (audioRef.current) {
-                  audioRef.current.currentTime = 0;
-                  audioRef.current.play().catch((err) => {
-                    console.error('Sound playback error:', err);
-                  });
-                }
               }, 500);
             }, AUTO_CHANGE_INTERVAL);
           }, START_DELAY);
         }
       },
       onLeaveBack: () => {
-        // Сбрасываем триггер, если пользователь прокручивает обратно
         hasTriggered.current = false;
         if (startTimeout) clearTimeout(startTimeout);
         if (interval) clearInterval(interval);
@@ -130,7 +115,6 @@ const Principle: FC<PrincipleProps> = ({ className }) => {
           </div>
         ))}
       </div>
-      <audio ref={audioRef} src="https://infodevelopmentpreview.ru/sword__sound.mp3" preload="auto" />
     </div>
   );
 };

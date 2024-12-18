@@ -45,13 +45,15 @@
 		text-align: center;
 		text-transform: uppercase;
 
-		@include tablet {
+		@include desktop {
 			font-size: 18px;
+		}
+
+		@include tablet {
 			line-height: 180%;
 		}
 
 		@include tablet-small {
-			max-width: 80%;
 			font-size: 14px;
 		}
 	}
@@ -65,6 +67,10 @@
 	width: 100%;
 	left: 0%;
 	z-index: 10;
+
+	@include desktop {
+		top: 52%;
+	}
 
 	@include tablet-small {
 		top: 48%;
