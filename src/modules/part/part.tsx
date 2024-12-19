@@ -387,7 +387,7 @@ const Part: FC<PartProps> = ({ className }) => {
               <h2><TitleGradient text={'Отправь продуктивного друга к нам на MARS'} /></h2>
               <p>И получи бонусы</p>
             </div>
-            <a href='https://t.me/marsateam'><ButtonTwo text={'Узнать подробности у HR'} big={true} /></a>
+            <a href='https://t.me/Var_marsa'><ButtonTwo text={'Узнать подробности у HR'} big={true} /></a>
           </div>
           <Canvas
             style={{
