@@ -50,7 +50,7 @@
     justify-content: center;
     align-items: center;
     color: #fff;
-		background: center no-repeat url('../../../public/images/cardBackMob.png');
+		background: center no-repeat url('../../../public/images/cardBackMob.webp');
     background-size: contain;
 		backdrop-filter: blur(10px);
 		border-radius: 25px 0;
@@ -59,7 +59,7 @@
     animation: fadeIn 0.3s ease;
 
     &:before {
-      content: url(/_next/static/media/left__angle.23339fd2.png);
+      content: url(/_next/static/media/left__angle.23339fd2.webp);
       top: 0;
       left: -3px;
       width: 44px;
@@ -68,7 +68,7 @@
     }
 
     &:after {
-      content: url(/_next/static/media/left__angle.23339fd2.png);
+      content: url(/_next/static/media/left__angle.23339fd2.webp);
       bottom: 0;
       right: -3px;
       width: 44px;

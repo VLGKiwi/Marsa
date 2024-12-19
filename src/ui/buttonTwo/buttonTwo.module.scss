@@ -27,12 +27,12 @@
 	overflow: hidden;
 	width: 100%;
 	height: 100%;
-	background: center no-repeat url('../../../public/images/background_btn_big.png');
+	background: center no-repeat url('../../../public/images/background_btn_big.webp');
   justify-content: center;
   align-items: center;
 
 	@include tablet-small {
-		background: center no-repeat url('../../../public/images/background_btn_big_mobile.png');
+		background: center no-repeat url('../../../public/images/background_btn_big_mobile.webp');
 	}
 
 	.right {
@@ -81,7 +81,7 @@
 	overflow: hidden;
 	width: 100%;
 	height: 100%;
-	background: center no-repeat url('../../../public/images/background_btn_small.png');
+	background: center no-repeat url('../../../public/images/background_btn_small.webp');
   justify-content: center;
   align-items: center;
 

@@ -11,8 +11,8 @@ import { TrafficGraphic } from '../trafficGraphic';
 import { TrafficRgb } from '../trafficRgb';
 import { TrafficCircle } from '../trafficCircle';
 import Image from 'next/image';
-import BackgroundStart from '@public/images/traffic__background__start.png';
-import BackgroundEnd from '@public/images/traffic__background__end.png';
+import BackgroundStart from '@public/images/traffic__background__start.webp';
+import BackgroundEnd from '@public/images/traffic__background__end.webp';
 
 const TrafficTv: FC<TrafficTvProps> = ({ className }) => {
   const rootClassName = classNames(styles.root, className);
