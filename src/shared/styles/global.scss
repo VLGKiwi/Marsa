@@ -93,3 +93,20 @@ button {
     flex-grow: 1;
   }
 }
+
+::-webkit-scrollbar {
+  width: 3px;
+  background: transparent;
+}
+
+::-webkit-scrollbar-track {
+  margin-right: 8px;
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 1.5px;
+}
+
+::-webkit-scrollbar-thumb {
+  margin-right: 8px;
+  background: var(--color-blue-main);
+  border-radius: 1.5px;
+}
