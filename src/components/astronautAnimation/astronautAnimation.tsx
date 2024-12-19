@@ -4,60 +4,15 @@
 'use client'
 
 import * as THREE from 'three'
-import React, { forwardRef, useRef, useEffect } from 'react'
+import React, { forwardRef, useRef, useEffect, useMemo, memo   } from 'react'
 import { useGLTF, useAnimations } from '@react-three/drei'
-import { EXRLoader, GLTF, RGBELoader } from 'three-stdlib'
-import { useFrame, GroupProps, useThree } from '@react-three/fiber'
+import { RGBELoader } from 'three-stdlib'
+import { useFrame, useThree, useLoader } from '@react-three/fiber'
 import gsap from 'gsap'
+import { ModelProps, GLTFResult } from './astronautAnimation.types'
+import Stats from 'stats-js'
 
-// Тип для имени анимации
-type ActionName = 'Action.001'
-
-// Расширение THREE.AnimationClip для дополнительной типизации
-interface GLTFAction extends THREE.AnimationClip {
-  name: ActionName
-}
-
-// Определение типа GLTFResult как type, а не interface
-type GLTFResult = GLTF & {
-  nodes: {
-    BOOT: THREE.SkinnedMesh
-    DETAILS: THREE.SkinnedMesh
-    GEARS_1: THREE.SkinnedMesh
-    GEARS_2: THREE.SkinnedMesh
-    GLOVES: THREE.SkinnedMesh
-    HELMET_1: THREE.SkinnedMesh
-    HELMET_2: THREE.SkinnedMesh
-    HELMET_3: THREE.SkinnedMesh
-    PANTS: THREE.SkinnedMesh
-    mesh001: THREE.SkinnedMesh
-    mesh001_1: THREE.SkinnedMesh
-    TORSO: THREE.SkinnedMesh
-    mixamorigHips: THREE.Bone
-  }
-  materials: {
-    BOOT: THREE.MeshStandardMaterial
-    DETAILS: THREE.MeshStandardMaterial
-    GEARS: THREE.MeshStandardMaterial
-    ['Material.001']: THREE.MeshStandardMaterial
-    GLOVES: THREE.MeshStandardMaterial
-    HELMET: THREE.MeshStandardMaterial
-    Material: THREE.MeshStandardMaterial
-    PANTS: THREE.MeshStandardMaterial
-    ['Material.005']: THREE.MeshStandardMaterial
-    ['Fabric Pattern 06']: THREE.MeshStandardMaterial
-    TORSO: THREE.MeshStandardMaterial
-  }
-  animations: GLTFAction[]
-}
-
-// Интерфейс ModelProps расширяет GroupProps и включает scrollProgressRef
-interface ModelProps extends GroupProps {
-  scrollProgressRef: React.MutableRefObject<number>,
-  scrlProgress?: boolean;
-}
-
-const Model = forwardRef<THREE.Group, ModelProps>(({ scrollProgressRef, scrlProgress, ...props }, ref) => {
+const AstronautModel = memo(({ scrollProgressRef, scrlProgress, ...props }: ModelProps) => {
   const group = useRef<THREE.Group>(null)
 
   // Доступ к сцене и рендереру
@@ -72,11 +27,14 @@ const Model = forwardRef<THREE.Group, ModelProps>(({ scrollProgressRef, scrlProg
 
   // Загружаем модель
   const { nodes, materials, animations } = useGLTF('/models/Astronaut_Animation-transformed.glb') as GLTFResult
-  const { actions, mixer } = useAnimations(animations, group)
+  const { actions: { 'Action.001': mainAction }, mixer } = useAnimations(animations, group)
 
   const envScene = useRef(new THREE.Scene()) // Отдельная сцена для окружения
   const envSphereRef = useRef<THREE.Mesh>()
   const cubeCameraRef = useRef<THREE.CubeCamera>()
+
+  const textureLoader = useMemo(() => new RGBELoader(), [])
+  const texture = useLoader(RGBELoader, '/models/MARSA-team-logo.hdr')
 
   useEffect(() => {
     const rgbeLoader = new RGBELoader()
@@ -136,35 +94,39 @@ const Model = forwardRef<THREE.Group, ModelProps>(({ scrollProgressRef, scrlProg
     })
   }, [gl, materials, scene, scrlProgress])
 
-
   useEffect(() => {
-    // Проверяем наличие анимации
-    const action = actions['Action.001']
+    if (process.env.NODE_ENV === 'development') {
+      const stats = new Stats()
+      document.body.appendChild(stats.dom)
 
-    if (!action) {
-      console.warn('Действие "Action.001" не найдено')
-      return
+      return () => {
+        document.body.removeChild(stats.dom)
+      }
     }
+  }, [])
 
-    // Настройка анимации
-    action.setLoop(THREE.LoopOnce, 0) // Второй аргумент - количество повторений
-    action.clampWhenFinished = true
-    action.play()
-
-    console.log('Анимация "Action.001" загружена и настроена')
-  }, [actions])
+  if (mainAction) {
+    mainAction.setLoop(THREE.LoopOnce, 0).play().clampWhenFinished = true
+  } else {
+    console.warn('Action.001 not found')
+  }
 
   useFrame(() => {
-    if (actions['Action.001'] && mixer) {
-      const action = actions['Action.001']
-      const progress = scrollProgressRef.current // от 0 до1
-      const duration = action.getClip().duration
+    if (!mainAction || !mixer) return
 
-      // Устанавливаем время анимации на основе прогресса прокрутки
-      action.time = progress * duration
+    const animationId = requestAnimationFrame(() => {
+      const duration = mainAction.getClip().duration
 
-      // Не вызываем mixer.update вручную, useAnimations это делает автоматически
-    }
+      const smoothProgress = THREE.MathUtils.lerp(
+        mainAction.time / duration,
+        Number(scrlProgress ?? 0),
+        0.1
+      )
+
+      mainAction.time = smoothProgress * duration
+    })
+
+    return () => cancelAnimationFrame(animationId)
   })
 
   return (
@@ -258,4 +220,4 @@ const Model = forwardRef<THREE.Group, ModelProps>(({ scrollProgressRef, scrlProg
 
 useGLTF.preload('/models/Astronaut_Animation-transformed.glb')
 
-export default Model
+export default AstronautModel
