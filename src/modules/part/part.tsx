@@ -22,9 +22,57 @@ import Line2 from '@icons/line2_part.svg'
 import Line3 from '@icons/line3_part.svg'
 import Line from '@icons/linemob_part.svg'
 import Link from 'next/link'
+import { Language, useLanguage } from '@/service/language'
 // import { Bloom, DepthOfField, EffectComposer, Noise, Vignette } from '@react-three/postprocessing'
 
 gsap.registerPlugin(ScrollTrigger)
+
+const translations: Record<
+  Language,
+  {
+    teamTitle: string;
+    teamPar: string;
+    teamButton: string;
+    box1Title: string;
+    box1Par: string;
+    box2Title: string;
+    box2Par: string;
+    box3Title: string;
+    box3Par: string;
+    friendTitle: string;
+    friendPar: string;
+    friendButton: string;
+  }
+> = {
+  ru: {
+    teamTitle: 'Стань частью команды',
+    teamPar: 'Хочешь работать плечом к плечу с ключевыми игроками рынка?\nПрисоединяйся к нам',
+    teamButton: 'вакансии',
+    box1Title: 'Обучение и наставничество',
+    box1Par: 'Учим считать математику заливов, чтобы быть всегда в плюсе.',
+    box2Title: 'Мотивация от основателей',
+    box2Par: 'Лучшие сотрудники регулярно ездят в общее путешествие с основателями.',
+    box3Title: 'Обучение и наставничество',
+    box3Par: 'Учим считать математику заливов, чтобы быть всегда в плюсе.',
+    friendTitle: 'Отправь продуктивного друга к нам на MARS',
+    friendPar: 'И получи бонусы',
+    friendButton: 'Узнать подробности у HR',
+  },
+  en: {
+    teamTitle: 'Join the team',
+    teamPar: 'Want to work side by side with key players in the industry?\nJoin us!',
+    teamButton: 'vacancy',
+    box1Title: 'Training and Mentorship',
+    box1Par: 'We teach the math of funnel economics to stay profitable.',
+    box2Title: 'Founder-Driven Motivation',
+    box2Par: 'Top employees regularly go on team trips with the founders.',
+    box3Title: 'Continuous Growth',
+    box3Par: 'Income growth, quality of life, aspirations, and skills—are you ready to level up?',
+    friendTitle: 'Send a productive friend to MARS',
+    friendPar: 'And earn bonuses',
+    friendButton: 'Contact HR for details',
+  },
+};
 
 const Part: FC<PartProps> = ({ className }) => {
   const rootClassName = classNames(styles.root, className)
@@ -40,6 +88,8 @@ const Part: FC<PartProps> = ({ className }) => {
   const [targetRotation, setTargetRotation] = useState<[number, number, number]>([0, 0, 0]);
   const [isProgress, setIsProgress] = useState<boolean>(false)
   const canvasRef = useRef(null)
+  const { language } = useLanguage(); // Получаем текущий язык
+  // const { teamTitle, teamPar, teamButton, box1Title, box1Par, box2Title, box2Par, box3Title, box3Par, friendTitle, friendPar, friendButton } = translations[language]; // Получаем переведённые строки
 
   // Определите коэффициент скорости
   const speedFactor = 0.2 // Меняйте значение для регулировки скорости (0.5 = вдвое медленнее)
@@ -268,10 +318,10 @@ const Part: FC<PartProps> = ({ className }) => {
       <div style={{ overflow: 'hidden' }}>
         <div className={styles.team} ref={teamRef}>
           <h2>
-            <TitleGradient text={'Стань частью команды'} />
+            <TitleGradient text={translations[language].teamTitle} />
           </h2>
-          <p>Хочешь работать плечом к плечу с ключевыми игроками рынка? Присоединяйся к нам</p>
-          <Link href='/vacancy'><ButtonTwo text={'вакансии'} /></Link>
+          <p>{translations[language].teamPar}</p>
+          <Link href='/vacancy'><ButtonTwo text={translations[language].teamButton} /></Link>
         </div>
         <div
           className={rootClassName}
@@ -281,31 +331,31 @@ const Part: FC<PartProps> = ({ className }) => {
         >
           <div className={styles.box} ref={box1Ref}>
             <div className={styles.box__content}>
-              <h3>Обучение и наставничество</h3>
-              <p>Учим считать математику заливов, чтобы быть всегда в плюсе.</p>
+              <h3>{translations[language].box1Title}</h3>
+              <p>{translations[language].box1Par}</p>
             </div>
             <Line />
           </div>
           <div className={styles.box2} ref={box2Ref}>
             <div className={styles.box2__content}>
-              <h3>Мотивация от основателей</h3>
-              <p>Лучшие сотрудники регулярно ездят в общее путешествие с основателями.</p>
+              <h3>{translations[language].box2Title}</h3>
+              <p>{translations[language].box2Par}</p>
             </div>
             <Line />
           </div>
           <div className={styles.box3} ref={box3Ref}>
             <div className={styles.box3__content}>
-              <h3>Обучение и наставничество</h3>
-              <p>Учим считать математику заливов, чтобы быть всегда в плюсе.</p>
+              <h3>{translations[language].box3Title}</h3>
+              <p>{translations[language].box3Par}</p>
             </div>
             <Line />
           </div>
           <div className={styles.friend} ref={friendRef}>
             <div>
-              <h2><TitleGradient text={'Отправь продуктивного друга к нам на MARS'} /></h2>
-              <p>И получи бонусы</p>
+              <h2><TitleGradient text={translations[language].friendTitle} /></h2>
+              <p>{translations[language].friendPar}</p>
             </div>
-            <a href='https://t.me/Var_marsa'><ButtonTwo text={'Узнать подробности у HR'} big={true} /></a>
+            <a href='https://t.me/Var_marsa'><ButtonTwo text={translations[language].friendButton} big={true} /></a>
           </div>
           <Canvas
             style={{
@@ -350,10 +400,10 @@ const Part: FC<PartProps> = ({ className }) => {
       <div style={{ overflow: 'hidden' }}>
         <div className={styles.team} ref={teamRef}>
           <h2>
-            <TitleGradient text={'Стань частью команды'} />
+            <TitleGradient text={translations[language].teamTitle} />
           </h2>
-          <p>Хочешь работать плечом к плечу с ключевыми игроками рынка? Присоединяйся к нам</p>
-          <Link href='/vacancy'><ButtonTwo text={'вакансии'} /></Link>
+          <p>{translations[language].teamPar}</p>
+          <Link href='/vacancy'><ButtonTwo text={translations[language].teamButton} /></Link>
         </div>
         <div
           className={rootClassName}
@@ -363,31 +413,31 @@ const Part: FC<PartProps> = ({ className }) => {
         >
           <div className={styles.box} ref={box1Ref}>
             <div className={styles.box__content}>
-              <h3>Обучение и наставничество</h3>
-              <p>Учим считать математику заливов, чтобы быть всегда в плюсе.</p>
+              <h3>{translations[language].box1Title}</h3>
+              <p>{translations[language].box1Par}</p>
             </div>
             <Line1 />
           </div>
           <div className={styles.box2} ref={box2Ref}>
             <Line2 />
             <div className={styles.box2__content}>
-              <h3>Мотивация от основателей</h3>
-              <p>Лучшие сотрудники регулярно ездят в общее путешествие с основателями.</p>
+              <h3>{translations[language].box2Title}</h3>
+              <p>{translations[language].box2Par}</p>
             </div>
           </div>
           <div className={styles.box3} ref={box3Ref}>
             <div className={styles.box3__content}>
-              <h3>Обучение и наставничество</h3>
-              <p>Учим считать математику заливов, чтобы быть всегда в плюсе.</p>
+              <h3>{translations[language].box3Title}</h3>
+              <p>{translations[language].box3Par}</p>
             </div>
             <Line1 />
           </div>
           <div className={styles.friend} ref={friendRef}>
             <div>
-              <h2><TitleGradient text={'Отправь продуктивного друга к нам на MARS'} /></h2>
-              <p>И получи бонусы</p>
+              <h2><TitleGradient text={translations[language].friendTitle} /></h2>
+              <p>{translations[language].friendPar}</p>
             </div>
-            <a href='https://t.me/marsateam'><ButtonTwo text={'Узнать подробности у HR'} big={true} /></a>
+            <a href='https://t.me/marsateam'><ButtonTwo text={translations[language].friendButton} big={true} /></a>
           </div>
           <Canvas
             style={{
@@ -431,10 +481,10 @@ const Part: FC<PartProps> = ({ className }) => {
       <div style={{ overflow: 'hidden' }}>
         <div className={styles.team} ref={teamRef}>
           <h2>
-            <TitleGradient text={'Стань частью команды'} />
+            <TitleGradient text={translations[language].teamTitle} />
           </h2>
-          <p>Хочешь работать плечом к плечу с ключевыми игроками рынка? Присоединяйся к нам</p>
-          <Link href='/vacancy'><ButtonTwo text={'вакансии'} /></Link>
+          <p>{translations[language].teamPar}</p>
+          <Link href='/vacancy'><ButtonTwo text={translations[language].teamButton} /></Link>
         </div>
         <div
           className={rootClassName}
@@ -444,31 +494,31 @@ const Part: FC<PartProps> = ({ className }) => {
         >
           <div className={styles.box} ref={box1Ref}>
             <div className={styles.box__content}>
-              <h3>Обучение и наставничество</h3>
-              <p>Учим считать математику заливов, чтобы быть всегда в плюсе.</p>
+              <h3>{translations[language].box1Title}</h3>
+              <p>{translations[language].box1Par}</p>
             </div>
             <Line1 />
           </div>
           <div className={styles.box2} ref={box2Ref}>
             <Line2 />
             <div className={styles.box2__content}>
-              <h3>Мотивация от основателей</h3>
-              <p>Лучшие сотрудники регулярно ездят в общее путешествие с основателями.</p>
+              <h3>{translations[language].box2Title}</h3>
+              <p>{translations[language].box2Par}</p>
             </div>
           </div>
           <div className={styles.box3} ref={box3Ref}>
             <div className={styles.box3__content}>
-              <h3>Обучение и наставничество</h3>
-              <p>Учим считать математику заливов, чтобы быть всегда в плюсе.</p>
+              <h3>{translations[language].box3Title}</h3>
+              <p>{translations[language].box3Par}</p>
             </div>
             <Line3 />
           </div>
           <div className={styles.friend} ref={friendRef}>
             <div>
-              <h2><TitleGradient text={'Отправь продуктивного друга к нам на MARS'} /></h2>
-              <p>И получи бонусы</p>
+              <h2><TitleGradient text={translations[language].friendTitle} /></h2>
+              <p>{translations[language].friendPar}</p>
             </div>
-            <a href='https://t.me/marsateam'><ButtonTwo text={'Узнать подробности у HR'} big={true} /></a>
+            <a href='https://t.me/marsateam'><ButtonTwo text={translations[language].friendButton} big={true} /></a>
           </div>
           <Canvas
             style={{
