@@ -22,43 +22,36 @@ const Button: FC<ButtonTwoProps> = ({
   const textRef = useRef(null)
 
   useGSAP(() => {
-    if (modal) {
-      const tl = gsap.timeline({
-        scrollTrigger: ({
-          trigger: btnRef.current,
-        })
-      })
-      tl.fromTo(btnRef.current, {
+    if (!btnRef.current) return;
+
+    const tl = gsap.timeline({ paused: true })
+      .fromTo(btnRef.current, {
         width: 49,
         height: 48
       }, {
         width: '100%',
         height: '100%',
         duration: 2,
-      }).to(textRef.current, {
+      })
+      .to(textRef.current, {
         opacity: 1,
         duration: 1
-      })
-    } else {
-      const tl = gsap.timeline({
-        scrollTrigger: ({
-          trigger: btnRef.current,
-          start: 'bottom bottom'
-        })
-      })
-      tl.fromTo(btnRef.current, {
-        width: 49,
-        height: 48
-      }, {
-        width: '100%',
-        height: '100%',
-        duration: 2,
-      }).to(textRef.current, {
-        opacity: 1,
-        duration: 1
-      })
-    }
-  })
+      });
+
+    // Создаем IntersectionObserver
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          tl.play();
+          observer.disconnect(); // Отключаем после первого срабатывания
+        }
+      });
+    }, { threshold: 0.1 }); // Триггер при 10% видимости элемента
+
+    observer.observe(btnRef.current);
+
+    return () => observer.disconnect(); // Очистка при размонтировании
+  }, []);
 
   if (big) {
     return (
