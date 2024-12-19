@@ -1,6 +1,6 @@
 'use client'
 
-import { FC, useEffect, useState } from 'react';
+import { FC, useEffect, useState, useRef } from 'react';
 import classNames from 'classnames';
 import styles from './trafficSound.module.scss';
 import { TrafficSoundProps } from './trafficSound.types';
@@ -13,8 +13,27 @@ const TrafficSound: FC<TrafficSoundProps> = ({ className }) => {
   const [activeLevels, setActiveLevels] = useState<number[]>(
     Array(NUM_COLUMNS).fill(0) // Изначально уровни в каждой колонке равны 0
   );
+  const [isVisible, setIsVisible] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsVisible(entry.isIntersecting);
+      },
+      { threshold: 0.1 } // Триггер когда хотя бы 10% компонента видно
+    );
+
+    if (containerRef.current) {
+      observer.observe(containerRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    if (!isVisible) return; // Останавливаем анимацию, если компонент не виден
+
     const interval = setInterval(() => {
       const newLevels = activeLevels.map((currentLevel) => {
         const change = Math.random() > 0.5 ? 1 : -1; // Случайное изменение: вверх или вниз
@@ -25,10 +44,10 @@ const TrafficSound: FC<TrafficSoundProps> = ({ className }) => {
     }, 500); // Интервал обновления
 
     return () => clearInterval(interval);
-  }, [activeLevels]);
+  }, [activeLevels, isVisible]);
 
   return (
-    <div className={rootClassName}>
+    <div className={rootClassName} ref={containerRef}>
       {activeLevels.map((level, columnIndex) => (
         <div className={styles.column} key={columnIndex}>
           {Array(NUM_SQUARES)
