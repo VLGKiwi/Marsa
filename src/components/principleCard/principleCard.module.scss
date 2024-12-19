@@ -1,3 +1,6 @@
+/* stylelint-disable declaration-block-no-redundant-longhand-properties */
+/* stylelint-disable selector-class-pattern */
+/* stylelint-disable media-feature-range-notation */
 @use "@styles/func";
 @use "@styles/mixins" as *;
 @use "@styles/variables";
@@ -30,24 +33,31 @@
 			height: 100%;
 		}
 	}
-}
 
-.content {
-	position: absolute;
-	top: 102px;
-	left: 130px;
-	max-width: 534px;
-	display: flex;
-	justify-content: space-between;
-	flex-wrap: wrap;
-	gap: 12px 32px;
+	.content {
+		position: absolute;
+		top: 102px;
+		left: 130px;
+		max-width: 534px;
+		display: flex;
+		justify-content: space-between;
+		flex-wrap: wrap;
+		gap: 12px 32px;
 
-	@include tablet-small {
-		max-width: 80vw;
-		left: 10%;
-		top: 25%;
-		flex-direction: column;
-		flex-wrap: nowrap;
+		@include tablet-small {
+			max-width: 80vw;
+			left: 10%;
+			top: 25%;
+			flex-direction: column;
+			flex-wrap: nowrap;
+		}
+
+		// Добавьте CSS-фильтры для кросс-браузерной совместимости
+		filter: blur(0);
+		-webkit-filter: blur(0);
+		-moz-filter: blur(0);
+		-ms-filter: blur(0);
+		-o-filter: blur(0);
 	}
 }
 

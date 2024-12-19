@@ -47,15 +47,6 @@ const Company: FC<CompanyProps> = ({ className }) => {
   const { language } = useLanguage();
   const { fullText, text1: localizedText1, text2: localizedText2, text3: localizedText3 } = translations[language];
 
-  // const randomChars = "_{}#.&@!$%^*()-+=<>?/[]|~`";
-
-  // const getRandomChar = () =>
-  //   randomChars.charAt(Math.floor(Math.random() * randomChars.length));
-
-  // const generateRandomTextWithSpaces = () => {
-  //   return fullText.split('').map((char) => (char === ' ' ? ' ' : getRandomChar()));
-  // };
-
   useGSAP(() => {
     const cont = container.current;
     const txt = text.current;
@@ -76,7 +67,7 @@ const Company: FC<CompanyProps> = ({ className }) => {
     tl.fromTo(
       cont,
       { width: 43, height: 46 },
-      { width: '100%', height: '100%', duration: 1.5, ease: 'power2.out' }
+      { width: '100%', height: '100%', duration: 0.4, ease: 'power2.out' }
     );
 
     tl.fromTo(
@@ -86,9 +77,6 @@ const Company: FC<CompanyProps> = ({ className }) => {
         opacity: 1,
         duration: 1,
         ease: 'power2.out',
-        onComplete: () => {
-          typewriterEffect(txt);
-        },
       }
     );
 
@@ -101,41 +89,6 @@ const Company: FC<CompanyProps> = ({ className }) => {
       );
     });
   });
-
-  const typewriterEffect = (element: HTMLElement) => {
-    const spans = Array.from(element.querySelectorAll('span'));
-
-    const shuffledSpans = spans
-      .filter((span) => span.getAttribute('data-char') !== ' ') // Игнорируем пробелы
-      .sort(() => Math.random() - 0.5);
-
-    shuffledSpans.forEach((span, index) => {
-      const correctChar = span.getAttribute('data-char') || '';
-      const randomIterations = 2; // Быстрее приходим к правильным символам
-      const randomInterval = 0.2; // Плавная смена символов
-      const delay = index * 0.02; // Минимальная задержка
-
-      const tl = gsap.timeline({ delay });
-
-      for (let i = 0; i < randomIterations; i++) {
-        tl.to(span, {
-          duration: randomInterval,
-          onUpdate: () => {
-            // span.innerText = getRandomChar();
-          },
-          ease: 'none',
-        });
-      }
-
-      tl.to(span, {
-        duration: randomInterval,
-        onUpdate: () => {
-          span.innerText = correctChar;
-        },
-        ease: 'power1.out',
-      });
-    });
-  };
 
   if (window.innerWidth > 768) {
     return (

@@ -137,9 +137,7 @@ const PrincipleCard: FC<PrincipleCardProps> = ({
         xmlns="http://www.w3.org/2000/svg"
       >
 
-
         {/* <!-- Верхние палочки начало --> */}
-
 
         <path d="M298.569 1H288.592H288.005L317.351 30.3292H327.916L298.569 1Z" fill="#6DCEFF" fill-opacity="0.3" />
         <path d="M319.112 1H309.134H308.547L337.893 30.3292H348.458L319.112 1Z" fill="#6DCEFF" fill-opacity="0.3" />
@@ -148,100 +146,66 @@ const PrincipleCard: FC<PrincipleCardProps> = ({
         <path d="M380.738 1H370.761H370.174L399.52 30.3292H410.085L380.738 1Z" fill="#6DCEFF" fill-opacity="0.3" />
         <path d="M401.281 1H391.303H390.716L420.062 30.3292H430.627L401.281 1Z" fill="#6DCEFF" fill-opacity="0.3" />
 
-
         {/* <!-- Верхние палочки конец --> */}
 
-
-        <g filter="url(#filter0_b_862_97)">
-
+        <g style={{ filter: 'blur(0px)' }}>
 
           {/* <!-- Фон начало--> */}
 
-
-          <defs>
-            <filter id="blurFilter" x="0" y="0" width="100%" height="100%">
-              <feGaussianBlur stdDeviation="0" />
-            </filter>
-          </defs>
           <path
             d="M63.8006 84.8814H1V242.672L24.4769 266.136V337.699L63.8006 377H209.944L265.702 322.448H474.646H700.611L737 285.493V66.6973L700.611 30.3292H308.547L279.201 1H117.211L63.8006 84.8814Z"
             fill="#031A2A"
             fill-opacity="0.3"
-            filter="url(#blurFilter)"
           />
-
 
           {/* <!-- Фон конец--> */}
 
-
           {/* <!-- Контур начало --> */}
-
 
           <path d="M63.8006 84.8814H1V242.672L24.4769 266.136V337.699L63.8006 377H209.944L265.702 322.448H474.646H700.611L737 285.493V66.6973L700.611 30.3292H308.547L279.201 1H117.211L63.8006 84.8814Z" stroke="#6DCEFF" stroke-opacity="0.7" stroke-width="1.1745" />
 
-
           {/* <!-- Контур конец --> */}
-
 
         </g>
 
-
         {/* <!-- Левая полоска начало --> */}
-
 
         <path d="M25.6506 98.9594V225.661L52.0621 252.058V328.9" stroke="#6DCEFF" stroke-opacity="0.3" stroke-width="1.1745" />
 
-
         {/* <!-- Левая полоска конец --> */}
 
-
-        <g filter="url(#filter1_d_862_97)">
-
+        <g style={{ filter: 'drop-shadow(0px 0px 3.58223px rgba(240, 243, 247, 1))' }}>
 
           {/* <!-- Правый треугольник начало --> */}
 
-
           <path d="M730.544 261.443L713.523 278.454H730.544V261.443Z" fill="#F0F3F7" />
-
 
           {/* <!-- Правый треугольник конец --> */}
 
-
-
-
           {/* <!-- Верхняя полоса начало --> */}
-
 
         </g>
         <path d="M252.79 22.7036L286.244 56.1388H702.372" stroke="#6DCEFF" stroke-opacity="0.3" stroke-width="1.1745" />
 
-
         {/* <!-- Верхняя полоса конец --> */}
 
-
-        <g filter="url(#filter2_d_862_97)">
-
+        <g style={{ filter: 'drop-shadow(0px 0px 3.58223px rgba(240, 243, 247, 1))' }}>
 
           {/* <!-- Кружки начало --> */}
 
-
           <ellipse cx="104.885" cy="359.989" rx="6.45614" ry="6.45242" fill="#F0F3F7" />
         </g>
-        <g filter="url(#filter3_d_862_97)">
+        <g style={{ filter: 'drop-shadow(0px 0px 3.58223px rgba(240, 243, 247, 1))' }}>
           <ellipse cx="127.188" cy="359.989" rx="6.45614" ry="6.45242" fill="#F0F3F7" />
         </g>
-        <g filter="url(#filter4_d_862_97)">
+        <g style={{ filter: 'drop-shadow(0px 0px 3.58223px rgba(240, 243, 247, 1))' }}>
           <ellipse cx="149.491" cy="359.989" rx="6.45614" ry="6.45242" fill="#F0F3F7" />
-
 
           {/* <!-- Кружки конец --> */}
 
-
         </g>
 
-
         {/* <!-- Квадраты начало --> */}
-
 
         <rect x="5.10874" y="90.1613" width="8.21625" height="8.21083" fill="#F0F3F7" stroke="#F0F3F7" stroke-width="1.1745" />
         <rect x="5.10874" y="119.491" width="8.21625" height="8.21083" fill="#F0F3F7" stroke="#F0F3F7" stroke-width="1.1745" />
@@ -250,9 +214,7 @@ const PrincipleCard: FC<PrincipleCardProps> = ({
         <rect x="5.10874" y="104.239" width="8.21625" height="8.21083" stroke="#F0F3F7" stroke-width="1.1745" />
         <rect x="5.10874" y="164.071" width="8.21625" height="8.21083" fill="#F0F3F7" stroke="#F0F3F7" stroke-width="1.1745" />
 
-
         {/* <!-- Квадраты конец --> */}
-
 
         <defs>
           <filter id="filter0_b_862_97" x="-11.5873" y="-11.5873" width="761.175" height="401.174" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
@@ -314,7 +276,7 @@ const PrincipleCard: FC<PrincipleCardProps> = ({
         <path d="M163.517 1H159.002H158.737L172.014 14.2699H176.794L163.517 1Z" fill="#6DCEFF" fill-opacity="0.3" />
         <path d="M172.811 1H168.297H168.031L181.309 14.2699H186.088L172.811 1Z" fill="#6DCEFF" fill-opacity="0.3" />
         <path d="M182.105 1H177.591H177.325L190.603 14.2699H195.383L182.105 1Z" fill="#6DCEFF" fill-opacity="0.3" />
-        <g filter="url(#filter0_b_941_1873)">
+        <g style={{ filter: 'blur(0px)' }}>
           <path d="M29.4139 38.9518H1V225.224L11.622 235.84V268.218L29.4139 286H95.5359L120.763 261.318H215.299H320.5L336.964 244.598V30.7245L320.5 14.2699H140.148L126.871 1H53.5789L29.4139 38.9518Z" fill="#031A2A" fill-opacity="0.3" />
           <path d="M29.4139 38.9518H1V225.224L11.622 235.84V268.218L29.4139 286H95.5359L120.763 261.318H215.299H320.5L336.964 244.598V30.7245L320.5 14.2699H140.148L126.871 1H53.5789L29.4139 38.9518Z" stroke="#6DCEFF" stroke-opacity="0.7" stroke-width="0.531398" />
         </g>
@@ -326,16 +288,16 @@ const PrincipleCard: FC<PrincipleCardProps> = ({
         <rect x="2.85896" y="60.9801" width="3.7179" height="3.71545" stroke="#F0F3F7" stroke-width="0.531398" />
         <rect x="2.85896" y="47.7102" width="3.7179" height="3.71545" stroke="#F0F3F7" stroke-width="0.531398" />
         <rect x="2.85896" y="74.7807" width="3.7179" height="3.71545" fill="#F0F3F7" stroke="#F0F3F7" stroke-width="0.531398" />
-        <g filter="url(#filter1_d_941_1873)">
+        <g style={{ filter: 'drop-shadow(0px 0px 1.62076px rgba(240, 243, 247, 1))' }}>
           <path d="M331.08 231L323.378 238.697H331.08V231Z" fill="#F0F3F7" />
         </g>
-        <g filter="url(#filter2_d_941_1873)">
+        <g style={{ filter: 'drop-shadow(0px 0px 1.62076px rgba(240, 243, 247, 1))' }}>
           <ellipse cx="48.0027" cy="271.92" rx="2.92139" ry="2.91971" fill="#F0F3F7" />
         </g>
-        <g filter="url(#filter3_d_941_1873)">
+        <g style={{ filter: 'drop-shadow(0px 0px 1.62076px rgba(240, 243, 247, 1))' }}>
           <ellipse cx="58.0938" cy="271.92" rx="2.92139" ry="2.91971" fill="#F0F3F7" />
         </g>
-        <g filter="url(#filter4_d_941_1873)">
+        <g style={{ filter: 'drop-shadow(0px 0px 1.62076px rgba(240, 243, 247, 1))' }}>
           <ellipse cx="68.1846" cy="271.92" rx="2.92139" ry="2.91971" fill="#F0F3F7" />
         </g>
         <defs>
