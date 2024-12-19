@@ -89,7 +89,6 @@ const Principle: FC<PrincipleProps> = ({ className }) => {
     const trigger = ScrollTrigger.create({
       trigger: containerRef.current,
       start: 'top center',
-      markers: process.env.NODE_ENV === 'development',
       onEnter: handleEnter,
       onLeave: clearTimers,
       onEnterBack: handleEnter,
