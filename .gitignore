@@ -40,3 +40,7 @@ next-env.d.ts
 
 # webstorm
 .idea/
+
+# lock files
+package-lock.json
+yarn.lock
