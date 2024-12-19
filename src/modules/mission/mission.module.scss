@@ -40,9 +40,9 @@
 		padding-top: 70px;
 
 		@include desktop {
-			height: 130vh;
+			height: 100vh;
 			background: top no-repeat url('../../../public/images/mission-background-desktop.png');
-			background-size: cover;
+			background-size: contain;
 		}
 
 		@include tablet-small {
