@@ -43,7 +43,7 @@ const Button: FC<ButtonTwoProps> = ({
       const tl = gsap.timeline({
         scrollTrigger: ({
           trigger: btnRef.current,
-          start: 'top center'
+          start: 'bottom bottom'
         })
       })
       tl.fromTo(btnRef.current, {
