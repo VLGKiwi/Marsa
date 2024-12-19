@@ -3,8 +3,8 @@
 import { FC, useState } from 'react';
 import styles from './pointTab.module.scss';
 import Image from 'next/image';
-import Left from '@public/images/left__angle.png'
-import Right from '@public/images/right__angle.png'
+import Left from '@public/images/left__angle.webp'
+import Right from '@public/images/right__angle.webp'
 
 const CirclePoints: FC = () => {
   const points = [
@@ -85,8 +85,8 @@ const CirclePoints: FC = () => {
                 viewBox="0 0 27 27"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg">
-                <path d="M2.21775 6.98619L13.5 0.472377L24.7823 6.98619V20.0138L13.5 26.5276L2.21775 20.0138V6.98619Z" stroke="#F0F3F7" stroke-width="0.818182"/>
-                <path d="M13.5 4.90918L20.9399 9.20463V17.7955L13.5 22.091L6.06002 17.7955V9.20463L13.5 4.90918Z" fill="#F0F3F7"/>
+                <path d="M2.21775 6.98619L13.5 0.472377L24.7823 6.98619V20.0138L13.5 26.5276L2.21775 20.0138V6.98619Z" stroke="#F0F3F7" stroke-width="0.818182" />
+                <path d="M13.5 4.90918L20.9399 9.20463V17.7955L13.5 22.091L6.06002 17.7955V9.20463L13.5 4.90918Z" fill="#F0F3F7" />
               </svg>
             </div>
           );

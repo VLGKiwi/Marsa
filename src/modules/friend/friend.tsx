@@ -4,7 +4,7 @@
 import { FC } from 'react';
 import classNames from 'classnames';
 
-import Astronaut from '@public/images/astrounaut__vacancy.png';
+import Astronaut from '@public/images/astrounaut__vacancy.webp';
 import styles from './friend.module.scss';
 import { FriendProps } from './friend.types';
 import { ButtonTwo, TitleGradient } from '@/ui';

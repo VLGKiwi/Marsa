@@ -39,12 +39,22 @@
 		position: absolute;
 		top: 0;
 		right: 0;
+
+		@include tablet-small {
+			width: 25px;
+			height: 25px;
+		}
 	}
 
 	.left {
 		position: absolute;
 		bottom: 0;
 		left: 0;
+
+		@include tablet-small {
+			width: 25px;
+			height: 25px;
+		}
 	}
 
 	.text {

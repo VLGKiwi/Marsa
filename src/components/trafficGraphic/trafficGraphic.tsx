@@ -1,6 +1,6 @@
 'use client';
 
-import { FC, useEffect, useState } from 'react';
+import { FC, useEffect, useState, useRef } from 'react';
 import { Line } from 'react-chartjs-2';
 import { Chart as ChartJS, LineElement, PointElement, LinearScale, CategoryScale, Tooltip } from 'chart.js';
 import styles from './trafficGraphic.module.scss';
@@ -25,9 +25,28 @@ const translations: Record<Language, { whiteText: string; regularText: string }>
 
 const TrafficGraphic: FC = () => {
   const [data, setData] = useState<number[]>([150]); // Начальное значение Y = 150
+  const [isVisible, setIsVisible] = useState(false);
   const { language } = useLanguage(); // Получение текущего языка
+  const graphRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsVisible(entry.isIntersecting);
+      },
+      { threshold: 0.1 }
+    );
+
+    if (graphRef.current) {
+      observer.observe(graphRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    if (!isVisible) return;
+
     const interval = setInterval(() => {
       setData((prevData) => {
         const lastValue = prevData[prevData.length - 1] || 150; // Начальное значение 150
@@ -38,7 +57,7 @@ const TrafficGraphic: FC = () => {
     }, UPDATE_INTERVAL);
 
     return () => clearInterval(interval);
-  }, []);
+  }, [isVisible]);
 
   const visibleData = data.slice(-NUM_VISIBLE_POINTS);
 
@@ -98,7 +117,7 @@ const TrafficGraphic: FC = () => {
   const { whiteText, regularText } = translations[language];
 
   return (
-    <div className={styles.root}>
+    <div className={styles.root} ref={graphRef}>
       <Line data={chartData} options={options} />
       <div className={styles.textcontainer}>
         <p className={styles.text}>

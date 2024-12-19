@@ -33,16 +33,16 @@ const TrafficRows: FC<TrafficRowsProps> = ({ className }) => {
   useGSAP(() => {
     const sliders = slidersRefs.current;
 
-    sliders.forEach((slider, index) => {
-      const duration = 2 + Math.random(); // Увеличиваем длительность для более плавной анимации
-      const delay = Math.random() * 0.5; // Случайная задержка
-      const maxValue = 500 + Math.random() * 500; // Новый максимум
-      const minValue = Math.random() * 500; // Новый минимум
+    const animations = sliders.map((slider, index) => {
+      const duration = 2 + Math.random();
+      const delay = Math.random() * 0.5;
+      const maxValue = 500 + Math.random() * 500;
+      const minValue = Math.random() * 500;
 
-      gsap.to(slider, {
-        value: Math.random() > 0.5 ? maxValue : minValue, // Случайное направление движения
+      return gsap.to(slider, {
+        value: Math.random() > 0.5 ? maxValue : minValue,
         duration,
-        ease: ['power1.inOut', 'power2.inOut', 'elastic.out'][Math.floor(Math.random() * 3)], // Случайная функция ease
+        ease: ['power1.inOut', 'power2.inOut', 'elastic.out'][Math.floor(Math.random() * 3)],
         repeat: -1,
         yoyo: true,
         delay,
@@ -52,12 +52,16 @@ const TrafficRows: FC<TrafficRowsProps> = ({ className }) => {
         },
         scrollTrigger: {
           trigger: containerRef.current,
-          start: 'center center',
-          toggleActions: 'play none none none',
+          start: 'top bottom',
+          end: 'bottom top',
+          toggleActions: 'play pause resume reset',
           markers: false,
         },
+        paused: true,
       });
     });
+
+    return () => animations.forEach(anim => anim.kill());
   }, []);
 
   return (
