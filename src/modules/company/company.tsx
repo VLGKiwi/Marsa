@@ -47,14 +47,14 @@ const Company: FC<CompanyProps> = ({ className }) => {
   const { language } = useLanguage();
   const { fullText, text1: localizedText1, text2: localizedText2, text3: localizedText3 } = translations[language];
 
-  const randomChars = "_{}#.&@!$%^*()-+=<>?/[]|~`";
+  // const randomChars = "_{}#.&@!$%^*()-+=<>?/[]|~`";
 
-  const getRandomChar = () =>
-    randomChars.charAt(Math.floor(Math.random() * randomChars.length));
+  // const getRandomChar = () =>
+  //   randomChars.charAt(Math.floor(Math.random() * randomChars.length));
 
-  const generateRandomTextWithSpaces = () => {
-    return fullText.split('').map((char) => (char === ' ' ? ' ' : getRandomChar()));
-  };
+  // const generateRandomTextWithSpaces = () => {
+  //   return fullText.split('').map((char) => (char === ' ' ? ' ' : getRandomChar()));
+  // };
 
   useGSAP(() => {
     const cont = container.current;
@@ -121,7 +121,7 @@ const Company: FC<CompanyProps> = ({ className }) => {
         tl.to(span, {
           duration: randomInterval,
           onUpdate: () => {
-            span.innerText = getRandomChar();
+            // span.innerText = getRandomChar();
           },
           ease: 'none',
         });
@@ -146,11 +146,7 @@ const Company: FC<CompanyProps> = ({ className }) => {
             <Disclose />
             <div className={styles.title}>
               <h2 ref={text}>
-                {generateRandomTextWithSpaces().map((char, index) => (
-                  <span key={index} data-char={fullText[index]}>
-                    {char}
-                  </span>
-                ))}
+                {fullText}
               </h2>
             </div>
           </div>
