@@ -1,6 +1,6 @@
 'use client'
 
-import { FC } from 'react'
+import { FC, useState, useEffect } from 'react'
 import classNames from 'classnames'
 
 import styles from './faq.module.scss'
@@ -12,6 +12,39 @@ import { useLanguage, Language } from '@/service/language' // Хук для см
 const Faq: FC<FaqProps> = ({ className }) => {
   const rootClassName = classNames(styles.root, className);
   const { language } = useLanguage();
+  const [isUserInteracted, setIsUserInteracted] = useState(false);
+  const [activePointIndex, setActivePointIndex] = useState(0);
+
+  // Отслеживание взаимодействия пользователя
+  useEffect(() => {
+    const handleInteraction = () => {
+      setIsUserInteracted(true);
+      setActivePointIndex(-1); // Отключаем активную точку при взаимодействии
+    };
+
+    window.addEventListener('mousemove', handleInteraction);
+    window.addEventListener('touchstart', handleInteraction);
+
+    return () => {
+      window.removeEventListener('mousemove', handleInteraction);
+      window.removeEventListener('touchstart', handleInteraction);
+    };
+  }, []);
+
+  // Эффект для циклической анимации точек
+  useEffect(() => {
+    if (!isUserInteracted) {
+      const points = translations[language];
+      const interval = setInterval(() => {
+        setActivePointIndex((prevIndex) => {
+          // Переходим к следующей точке или возвращаемся к первой
+          return prevIndex >= points.length - 1 ? 0 : prevIndex + 1;
+        });
+      }, 4000); // Интервал между сменой точек (4 секунды)
+
+      return () => clearInterval(interval);
+    }
+  }, [isUserInteracted, language]);
 
   // Объект переводов
   const translations: Record<Language, { title: string; text: string; leftP: string; topP: string }[]> = {
@@ -20,7 +53,7 @@ const Faq: FC<FaqProps> = ({ className }) => {
       { title: 'Есть ли у вас дизайнеры, как быстро выдаются крео?', text: 'Есть команда штатных моушен-дизайнеров (4 человека), готовые крео выдаются от пары часов до 2-х дней', leftP: '15%', topP: '0%' },
       { title: 'Кто ищет офферы?', text: 'В штате компании есть опытный Bizdev, который помогает найти любой оффер и увеличить ставку по нему', leftP: '70%', topP: '10%' },
       { title: 'Кто занимается техническим сопровождением?', text: 'Опытный IT-интегратор сопровождает технический процесс запуска РК на всех этапах', leftP: '30%', topP: '35%' },
-      { title: 'Кто руководит баингом?', text: 'Каждый источник имеет Head и Team Lead, координирующих команды и процессы', leftP: '60%', topP: '0%' },
+      { title: 'Кто руководит баингом?', text: 'Каждый источн��к имеет Head и Team Lead, координирующих команды и процессы', leftP: '60%', topP: '0%' },
       { title: 'Что необходимо, чтобы попасть к вам в команду?', text: 'Напиши нашему HR Варваре @var_marsa для собеседования и тестового задания', leftP: '25%', topP: '5%' },
     ],
     en: [
@@ -45,6 +78,7 @@ const Faq: FC<FaqProps> = ({ className }) => {
             text={point.text}
             leftP={point.leftP}
             topP={point.topP}
+            isAutoAnimating={!isUserInteracted && index === activePointIndex}
           />
         ))}
         <h2>

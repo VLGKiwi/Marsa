@@ -3,5 +3,6 @@ export interface PointProps {
   title?: string,
   text?: string,
   topP?: string,
-  leftP?: string
+  leftP?: string,
+  isAutoAnimating?: boolean
 }

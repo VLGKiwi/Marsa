@@ -19,7 +19,8 @@ const Point: FC<PointProps> = ({
   title,
   text,
   topP,
-  leftP
+  leftP,
+  isAutoAnimating
 }) => {
   const rootClassName = classNames(styles.root, className);
 
@@ -117,6 +118,18 @@ const Point: FC<PointProps> = ({
       })
     }
   };
+
+  useEffect(() => {
+    if (isAutoAnimating) {
+      // Запускаем анимацию появления
+      handleMouseEnter();
+
+      // Очистка при деактивации точки
+      return () => {
+        handleMouseLeave();
+      };
+    }
+  }, [isAutoAnimating]);
 
   return (
     <div className={rootClassName} style={{top: topP, left: leftP}}>
