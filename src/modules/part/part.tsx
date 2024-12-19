@@ -532,8 +532,8 @@ const Part: FC<PartProps> = ({ className }) => {
               position={[0, 1, 0.5]}
               intensity={1}
               castShadow
-              shadow-mapSize-width={1024}
-              shadow-mapSize-height={1024}
+              shadow-mapSize-width={512}
+              shadow-mapSize-height={512}
               shadow-camera-far={50}
               shadow-camera-left={-1}
               shadow-camera-right={1}
