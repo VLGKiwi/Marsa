@@ -15,7 +15,6 @@ const Button: FC<ButtonTwoProps> = ({
   className,
   text,
   big,
-  modal
 }) => {
   const rootClassName = classNames(styles.root, className)
   const btnRef = useRef(null)
