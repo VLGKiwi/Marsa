@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 'use client'
 
 import { FC, useRef } from 'react'
@@ -15,6 +16,7 @@ const Button: FC<ButtonTwoProps> = ({
   className,
   text,
   big,
+  modal
 }) => {
   const rootClassName = classNames(styles.root, className)
   const btnRef = useRef(null)

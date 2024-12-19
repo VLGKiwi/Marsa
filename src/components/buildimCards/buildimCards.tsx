@@ -309,7 +309,7 @@ const BuildimCards: FC<BuildimCardsProps> = ({ className, onHoverCard }) => {
           )}
         </div>
         <a href="https://t.me/Var_marsa">
-          <ButtonTwo className={styles.modalButton} text={t.button} big={false} />
+          <ButtonTwo className={styles.modalButton} text={t.button} big={false} modal={true} />
         </a>
       </Modal>
 

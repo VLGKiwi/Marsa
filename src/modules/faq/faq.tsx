@@ -22,11 +22,11 @@ const Faq: FC<FaqProps> = ({ className }) => {
       setActivePointIndex(-1); // Отключаем активную точку при взаимодействии
     };
 
-    window.addEventListener('mousemove', handleInteraction);
+    window.addEventListener('onhover', handleInteraction);
     window.addEventListener('touchstart', handleInteraction);
 
     return () => {
-      window.removeEventListener('mousemove', handleInteraction);
+      window.removeEventListener('onhover', handleInteraction);
       window.removeEventListener('touchstart', handleInteraction);
     };
   }, []);
