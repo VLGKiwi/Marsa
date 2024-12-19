@@ -42,7 +42,7 @@
 		@include desktop {
 			height: 100vh;
 			background: top no-repeat url('../../../public/images/mission-background-desktop.png');
-			background-size: contain;
+			background-size: cover;
 		}
 
 		@include tablet-small {

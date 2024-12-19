@@ -437,7 +437,7 @@ const Part: FC<PartProps> = ({ className }) => {
               <h2><TitleGradient text={translations[language].friendTitle} /></h2>
               <p>{translations[language].friendPar}</p>
             </div>
-            <a href='https://t.me/marsateam'><ButtonTwo text={translations[language].friendButton} big={true} /></a>
+            <a href='https://t.me/Var_marsa'><ButtonTwo text={translations[language].friendButton} big={true} /></a>
           </div>
           <Canvas
             style={{
