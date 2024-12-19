@@ -45,7 +45,7 @@
 		@include tablet-small {
 			background: center no-repeat url('../../shared/assets/icons/line1-m.svg');
 
-			padding: 10px 33px 30px 15px;
+			padding: 10px 50px 30px 15px;
 			top: 17%;
 			left: 3%;
 		}
@@ -84,9 +84,9 @@
 		}
 
 		@include tablet-small {
-			background: center no-repeat url('../../shared/assets/icons/line2-m.svg');
+			background: right no-repeat url('../../shared/assets/icons/line2-m.svg');
 
-			padding: 12px 0 90px 40px;
+			padding: 12px 0 90px 90px;
 			top: 5%;
 		}
 
