@@ -1,3 +1,4 @@
+/* stylelint-disable CssSyntaxError */
 /* stylelint-disable alpha-value-notation */
 /* stylelint-disable keyframes-name-pattern */
 /* stylelint-disable color-function-notation */
@@ -36,7 +37,11 @@
       }
 
       &:hover svg {
-        transform: scale(1.2);
+        transform: scale(0.6);
+      }
+
+      &.hover svg {
+        transform: scale(0.6);
       }
     }
   }

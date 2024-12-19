@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 'use client';
 
 import { FC, useState, useEffect, useRef } from 'react';
@@ -65,16 +64,39 @@ const Point: FC = () => {
       resetInactivityTimer();
     };
 
-    window.addEventListener('mousemove', handleUserActivity);
+    // window.addEventListener('mousemove', handleUserActivity);
     window.addEventListener('keydown', handleUserActivity);
     window.addEventListener('click', handleUserActivity);
 
     return () => {
       if (inactivityTimer.current) clearTimeout(inactivityTimer.current);
-      window.removeEventListener('mousemove', handleUserActivity);
+      // window.removeEventListener('mousemove', handleUserActivity);
       window.removeEventListener('keydown', handleUserActivity);
       window.removeEventListener('click', handleUserActivity);
     };
+  }, [activateNextPoint]);
+
+  // Эффект для анимации при изменении activePoint
+  useEffect(() => {
+    if (activePoint !== null) {
+      const card = document.querySelector(`.${styles.cardContent}`);
+      if (card) {
+        card.classList.remove(styles.fadeIn);
+        void (card as HTMLElement).offsetWidth; // Trigger reflow
+        card.classList.add(styles.fadeIn);
+      }
+    }
+  }, [activePoint]);
+
+  // Эффект для авто-активации точек
+  useEffect(() => {
+    const interval = setInterval(() => {
+      if (!isUserActive.current) {
+        activateNextPoint();
+      }
+    }, 3000);
+
+    return () => clearInterval(interval);
   }, []);
 
   return (
@@ -84,7 +106,7 @@ const Point: FC = () => {
         {points.map((_, index) => (
           <div
             key={index}
-            className={`${styles.point} ${activePoint === index ? styles.active : ''}`}
+            className={`${styles.point} ${activePoint === index ? styles.active : ''} ${activePoint === index ? styles.hover : ''}`}
             onClick={() => handlePointClick(index)}
           >
             <svg width="27" height="27" viewBox="0 0 27 27" fill="none" xmlns="http://www.w3.org/2000/svg">
