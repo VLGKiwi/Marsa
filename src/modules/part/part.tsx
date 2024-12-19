@@ -278,7 +278,7 @@ const Part: FC<PartProps> = ({ className }) => {
           id='mascot'
           ref={mascotRef}
           style={{ height: `${20 / speedFactor}vh`, position: 'relative' }} // Установите высоту пропорционально speedFactor
-          >
+        >
           <div className={styles.box} ref={box1Ref}>
             <div className={styles.box__content}>
               <h3>Обучение и наставничество</h3>
@@ -305,7 +305,7 @@ const Part: FC<PartProps> = ({ className }) => {
               <h2><TitleGradient text={'Отправь продуктивного друга к нам на MARS'} /></h2>
               <p>И получи бонусы</p>
             </div>
-            <a href='https://t.me/marsateam'><ButtonTwo text={'Узнать подробности у HR'} big={true} /></a>
+            <a href='https://t.me/Var_marsa'><ButtonTwo text={'Узнать подробности у HR'} big={true} /></a>
           </div>
           <Canvas
             style={{
@@ -383,7 +383,7 @@ const Part: FC<PartProps> = ({ className }) => {
             <Line1 />
           </div>
           <div className={styles.friend} ref={friendRef}>
-          <div>
+            <div>
               <h2><TitleGradient text={'Отправь продуктивного друга к нам на MARS'} /></h2>
               <p>И получи бонусы</p>
             </div>
@@ -492,7 +492,7 @@ const Part: FC<PartProps> = ({ className }) => {
             />
             <PerspectiveCamera ref={cameraRef} makeDefault position={[-0.1, 0, 0.5]} fov={50} />
 
-            <Environment files={'/models/outer-space-1.exr'} environmentRotation={[0, Math.PI, 0]}/>
+            <Environment files={'/models/outer-space-1.exr'} environmentRotation={[0, Math.PI, 0]} />
 
             {/* <OrbitControls /> */}
 
