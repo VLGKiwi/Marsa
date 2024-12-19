@@ -239,9 +239,14 @@
 
 		@include tablet-small {
 			font-size: 32px;
+			text-align: left;
+
+			span {
+				text-align: left;
+			}
 		}
 
-		div {
+		span {
 			text-align: left;
 		}
 	}
@@ -256,6 +261,10 @@
 		@include tablet-small {
 			font-size: 12px;
 		}
+	}
+
+	a {
+		width: max-content;
 	}
 }
 
@@ -289,6 +298,10 @@
 		flex-direction: column;
 		gap: 32px;
 
+		@include tablet-small {
+			gap: 12px;
+		}
+
 		h2 {
 			font-family: var(--font-act);
 			font-size: 42px;
@@ -317,6 +330,8 @@
 
 			@include tablet-small {
 				font-size: 16px;
+
+				text-align: left;
 			}
 		}
 	}
