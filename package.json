@@ -52,6 +52,7 @@
     "inquirer-file-tree-selection-prompt": "^2.0.5",
     "prettier": "^3.2.5",
     "sass": "^1.77.2",
+    "stats-js": "^1.0.1",
     "stylelint": "^16.5.0",
     "stylelint-config-standard-scss": "^13.1.0",
     "stylelint-scss": "^6.3.0",
