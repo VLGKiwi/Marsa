@@ -263,8 +263,15 @@
 		}
 	}
 
-	a {
+	> a {
+		align-self: flex-end;
 		width: max-content;
+		transform: translateX(100%);
+
+		@include tablet {
+			align-self: normal;
+			transform: translateX(0);
+		}
 	}
 }
 
