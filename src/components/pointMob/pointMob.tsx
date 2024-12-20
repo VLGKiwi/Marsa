@@ -59,20 +59,8 @@ const Point: FC = () => {
   // Эффект для таймера
   useEffect(() => {
     resetInactivityTimer();
-    const handleUserActivity = () => {
-      isUserActive.current = true;
-      resetInactivityTimer();
-    };
-
-    window.addEventListener('mousemove', handleUserActivity);
-    window.addEventListener('keydown', handleUserActivity);
-    window.addEventListener('click', handleUserActivity);
-
     return () => {
       if (inactivityTimer.current) clearTimeout(inactivityTimer.current);
-      window.removeEventListener('mousemove', handleUserActivity);
-      window.removeEventListener('keydown', handleUserActivity);
-      window.removeEventListener('click', handleUserActivity);
     };
   }, []);
 
