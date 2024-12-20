@@ -64,7 +64,7 @@
     animation: fadeIn 0.3s ease;
 
     &:before {
-      content: url(/_next/static/media/left__angle.23339fd2.webp);
+      content: url('../../../public/images/left__angle.webp');
       top: 0;
       left: -3px;
       width: 44px;
@@ -73,7 +73,7 @@
     }
 
     &:after {
-      content: url(/_next/static/media/left__angle.23339fd2.webp);
+      content: url('../../../public/images/left__angle.webp');
       bottom: 0;
       right: -3px;
       width: 44px;
