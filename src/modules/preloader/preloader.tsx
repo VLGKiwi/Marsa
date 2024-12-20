@@ -9,7 +9,6 @@ const Preloader: FC<PreloaderProps> = ({
   className
 }) => {
   const [isVisible, setIsVisible] = useState(true)
-  const [isRendered, setIsRendered] = useState(true)
 
   useEffect(() => {
     const timer = setTimeout(() => {
