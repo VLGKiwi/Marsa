@@ -219,6 +219,7 @@
 
 	padding-top: 65px;
 	padding-bottom: 0;
+	transform: translateX(-30%);
 
 	@include desktop {
 		top: 20px;
@@ -229,6 +230,7 @@
 
 		padding-top: 72px;
 		padding-bottom: 72px;
+		transform: translateX(0);
 	}
 
 	h2 {
