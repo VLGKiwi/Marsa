@@ -1,6 +1,6 @@
 'use client';
 
-import { FC, useEffect, useRef } from 'react';
+import { FC, useEffect, useRef, useState } from 'react';
 import classNames from 'classnames';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -13,11 +13,31 @@ gsap.registerPlugin(ScrollTrigger);
 const AnimatedImage: FC<AnimatedImageProps> = ({ className }) => {
   const rootClassName = classNames(styles.root, className);
   const svgRef = useRef<SVGSVGElement>(null);
+  const [isInView, setIsInView] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsInView(true);
+          observer.disconnect(); // Отключаем observer после первого появления
+        }
+      },
+      {
+        threshold: 0.1 // Триггер когда хотя бы 10% компонента видно
+      }
+    );
+
+    if (svgRef.current) {
+      observer.observe(svgRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
 
   useEffect(() => {
     const svgElement = svgRef.current;
-    if (!svgElement) {
-      console.error('SVG element not found.');
+    if (!svgElement || !isInView) {
       return;
     }
 
@@ -25,7 +45,7 @@ const AnimatedImage: FC<AnimatedImageProps> = ({ className }) => {
     const timeline = gsap.timeline({
       scrollTrigger: {
         trigger: svgElement,
-        start: 'top 75%', // Начало анимации, когда SVG на 75% входит в зону видимости
+        start: 'top 75%',
         toggleActions: 'play none none none',
       },
     });
@@ -59,7 +79,7 @@ const AnimatedImage: FC<AnimatedImageProps> = ({ className }) => {
       console.error('No <path> elements found for animation.');
     }
 
-    // Выбираем все <circle> элементы
+    // Выбир��ем все <circle> элементы
     const circles = svgElement.querySelectorAll('circle');
     if (circles && circles.length > 0) {
       // Добавляем анимацию для <circle> элементов после завершения анимации <path>
@@ -76,7 +96,7 @@ const AnimatedImage: FC<AnimatedImageProps> = ({ className }) => {
     } else {
       console.error('No <circle> elements found for animation.');
     }
-  }, []);
+  }, [isInView]);
 
   return (
     <div className={rootClassName}>

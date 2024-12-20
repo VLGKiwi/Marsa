@@ -25,12 +25,13 @@ const translations: Translations = {
 };
 
 const Introduce: FC<IntroduceProps> = ({ className }) => {
-  const [imageSrc, setImageSrc] = useState('/images/introduce.png');
+  const [imageSrc, setImageSrc] = useState('/images/introduce.webp');
   const [isMobile, setIsMobile] = useState(false); // Для отслеживания ширины экрана
   const rootClassName = classNames(styles.root, className);
   const { language } = useLanguage();
 
   const [isVisible, setIsVisible] = useState(true);
+  const [isInView, setIsInView] = useState(false);
 
   useEffect(() => {
     const checkWidth = () => {
@@ -73,13 +74,36 @@ const Introduce: FC<IntroduceProps> = ({ className }) => {
   }, []);
 
   useEffect(() => {
-    const tl = gsap.timeline({ repeat: -1, yoyo: true });
-    tl.to('#paint0_linear_252_1251', {
-      attr: { x1: '50', y1: '50', x2: '200', y2: '200' },
-      duration: 3,
-      ease: 'linear',
-    });
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsInView(true);
+          observer.disconnect(); // Отключаем observer после первого появления
+        }
+      },
+      {
+        threshold: 0.1 // Триггер когда хотя бы 10% компонента видно
+      }
+    );
+
+    const element = document.querySelector(`.${styles.root}`);
+    if (element) {
+      observer.observe(element);
+    }
+
+    return () => observer.disconnect();
   }, []);
+
+  useEffect(() => {
+    if (isInView) {
+      const tl = gsap.timeline({ repeat: -1, yoyo: true });
+      tl.to('#paint0_linear_252_1251', {
+        attr: { x1: '50', y1: '50', x2: '200', y2: '200' },
+        duration: 3,
+        ease: 'linear',
+      });
+    }
+  }, [isInView]);
 
   return (
     <div className={rootClassName}>
