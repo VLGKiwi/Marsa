@@ -26,6 +26,31 @@ const nextConfig = {
   },
   images: {
     unoptimized: false,
+  },
+  async headers() {
+    return [
+      {
+        // Добавляем 3D модели в список кешируемых форматов
+        source: '/:all*(svg|jpg|png|webp|gltf|glb|fbx|obj|mtl|3ds|dae)',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=31536000, immutable',
+          }
+        ],
+      },
+      // Отдельное правило для папки с 3D моделями, если они хранятся отдельно
+      {
+        source: '/models/:all*',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=31536000, immutable',
+          }
+        ],
+      },
+      // ... остальные существующие правила ...
+    ]
   }
 };
 
