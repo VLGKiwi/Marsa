@@ -58,7 +58,7 @@ const PrincipleCard: FC<PrincipleCardProps> = ({
       timeline.fromTo(
         lines,
         { fillOpacity: 0 },
-        { fillOpacity: 0.3, duration: 0.05, stagger: 0.02 }
+        { fillOpacity: 0.3, duration: 0.025, stagger: 0.01 }
       );
 
       // Анимация paths
@@ -73,10 +73,10 @@ const PrincipleCard: FC<PrincipleCardProps> = ({
           path,
           {
             strokeDashoffset: 0,
-            duration: 1,
+            duration: 0.2,
             ease: 'power1.out',
           },
-          '<+=0.05'
+          '<+=0.03'
         );
       });
 
@@ -84,16 +84,16 @@ const PrincipleCard: FC<PrincipleCardProps> = ({
       timeline.fromTo(
         ellipses,
         { scale: 0, transformOrigin: 'center' },
-        { scale: 1, duration: 0.05, stagger: 0.05 },
-        '+=0.05'
+        { scale: 1, duration: 0.025, stagger: 0.025 },
+        '+=0.025'
       );
 
       // Анимация rects
       timeline.fromTo(
         rects,
         { scale: 0, transformOrigin: 'center' },
-        { scale: 1, duration: 0.05, stagger: 0.05 },
-        '+=0.05'
+        { scale: 1, duration: 0.025, stagger: 0.025 },
+        '+=0.025'
       );
 
       // Анимация треугольника
@@ -101,8 +101,8 @@ const PrincipleCard: FC<PrincipleCardProps> = ({
         timeline.fromTo(
           triangle,
           { scale: 0, opacity: 0, transformOrigin: 'center' },
-          { scale: 1, opacity: 0.05, duration: 0.2 },
-          '+=0.05'
+          { scale: 1, opacity: 1, duration: 0.1 },
+          '+=0.025'
         );
       }
 
@@ -111,8 +111,8 @@ const PrincipleCard: FC<PrincipleCardProps> = ({
         timeline.fromTo(
           [titleElement, numberElement, descriptionElement],
           { opacity: 0 },
-          { opacity: 1, duration: 0.1, stagger: 0.2 },
-          '+=0.1'
+          { opacity: 1, duration: 0.05, stagger: 0.1 },
+          '+=0.05'
         );
       }
     }
