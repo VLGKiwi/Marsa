@@ -94,6 +94,8 @@ const Part: FC<PartProps> = ({ className }) => {
   // Определите коэффициент скорости
   const speedFactor = 0.2 // Меняйте значение для регулировки скорости (0.5 = вдвое медленнее)
 
+
+
   useEffect(() => {
     const mascot = mascotRef.current
     if (!mascot) {
@@ -145,6 +147,7 @@ const Part: FC<PartProps> = ({ className }) => {
         gsap.to(friendRef.current, {
           opacity: 1,
           duration: 1,
+          ease: 'power1.out'
         })
 
         setIsProgress(true)
@@ -154,49 +157,66 @@ const Part: FC<PartProps> = ({ className }) => {
         gsap.to(friendRef.current, {
           opacity: 0,
           duration: 1,
+          ease: 'power4.out'
         })
+      }
+
+      if (self.progress === 1) {
+        gsap.to([box1Ref.current, box2Ref.current, box3Ref.current], {
+          opacity: 0,
+          duration: 0,
+          ease: 'power4.out',
+        });
       }
 
       // Настройка анимации для плашек
       if (self.progress >= 0.7) {
         gsap.to(box3Ref.current, {
           opacity: 0,
-          duration: 1
+          duration: 1,
+          ease: 'power4.out'
         })
       } else if (self.progress >= 0.5) {
         gsap.to(box2Ref.current, {
           opacity: 0,
-          duration: 1
+          duration: 1,
+          ease: 'power4.out'
         })
 
         gsap.to(box3Ref.current, {
           opacity: 1,
-          duration: 1
+          duration: 1,
+          ease: 'power1.out'
         })
       } else if (self.progress >= 0.2) {
         gsap.to(box1Ref.current, {
           opacity: 0,
-          duration: 1
+          duration: 1,
+          ease: 'power4.out'
         })
 
         gsap.to(box2Ref.current, {
           opacity: 1,
-          duration: 1
+          duration: 1,
+          ease: 'power1.out'
         })
 
         gsap.to(box3Ref.current, {
           opacity: 0,
-          duration: 1
+          duration: 1,
+          ease: 'power4.out'
         })
       } else if (self.progress < 0.15) {
         gsap.to(box1Ref.current, {
           opacity: 1,
-          duration: 1
+          duration: 1,
+          ease: 'power1.out'
         })
 
         gsap.to(box2Ref.current, {
           opacity: 0,
-          duration: 1
+          duration: 1,
+          ease: 'power4.out'
         })
       }
 
@@ -304,6 +324,22 @@ const Part: FC<PartProps> = ({ className }) => {
       markers: false, // Установите true для отладки, false для продакшена
       onUpdate: (self) => {
         camMove(self)
+        if ((scrollProgressRef.current === 1) || (scrollProgressRef.current >= 0.7)) {
+          gsap.to([box1Ref.current, box2Ref.current, box3Ref.current], {
+            opacity: 0,
+            duration: 0,
+            ease: 'power4.out',
+          });
+        }
+      },
+      onScrubComplete: () => {
+        if (scrollProgressRef.current === 1) {
+          gsap.to([box1Ref.current, box2Ref.current, box3Ref.current], {
+            opacity: 0,
+            duration: 0,
+            ease: 'power4.out',
+          });
+        }
       },
     })
 
