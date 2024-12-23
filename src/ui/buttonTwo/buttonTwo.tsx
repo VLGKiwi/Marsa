@@ -32,11 +32,11 @@ const Button: FC<ButtonTwoProps> = ({
       }, {
         width: '100%',
         height: '100%',
-        duration: 2,
+        duration: 1,
       })
       .to(textRef.current, {
         opacity: 1,
-        duration: 1
+        duration: 0.3
       });
 
     // Создаем IntersectionObserver
