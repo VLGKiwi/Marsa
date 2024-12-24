@@ -43,7 +43,7 @@ const translations: Translations = {
   },
 };
 
-const AUTO_CHANGE_INTERVAL = 5000; // Интервал смены карточек (мс)
+const AUTO_CHANGE_INTERVAL = 3500; // Интервал смены карточек (мс)
 const START_DELAY = 1500; // Задержка перед стартом слайдера
 
 const Principle: FC<PrincipleProps> = ({ className }) => {
