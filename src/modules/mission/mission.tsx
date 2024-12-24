@@ -56,7 +56,7 @@ const Mission: FC<MissionProps> = ({ className }) => {
       },
       {
         y: 0,
-        duration: 3,
+        duration: 1.5,
         scrollTrigger: {
           trigger: container,
           start: 'top 40%',
