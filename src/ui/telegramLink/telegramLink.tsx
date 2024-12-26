@@ -13,7 +13,7 @@ const TelegramLink: FC<TelegramLinkProps> = ({
 
   return (
     <div className={rootClassName}>
-      <a href="https://t.me/marsateam" className={styles.link}>
+      <a href="https://t.me/+QYowERz7p6c2NjMy" className={styles.link}>
         <SvgTelegram className={styles.link__item} width={40} />
       </a>
     </div>
