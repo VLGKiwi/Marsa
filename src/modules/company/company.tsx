@@ -43,6 +43,7 @@ const Company: FC<CompanyProps> = ({ className }) => {
   const text1 = useRef(null);
   const text2 = useRef(null);
   const text3 = useRef(null);
+  const companyRef = useRef(null)
 
   const { language } = useLanguage();
   const { fullText, text1: localizedText1, text2: localizedText2, text3: localizedText3 } = translations[language];
@@ -55,12 +56,16 @@ const Company: FC<CompanyProps> = ({ className }) => {
     const t2 = text2.current;
     const t3 = text3.current;
 
+    const company = companyRef.current
+
     if (!cont || !txt) return;
 
     const tl = gsap.timeline({
       scrollTrigger: {
-        trigger: cont,
-        start: 'top 70%',
+        trigger: company,
+        start: 'top top',
+        scrub: true,
+        pin: true
       },
     });
 
@@ -92,7 +97,7 @@ const Company: FC<CompanyProps> = ({ className }) => {
 
   if (window.innerWidth > 768) {
     return (
-      <div className={styles.company}>
+      <div className={styles.company} ref={companyRef}>
         <GradientBlur className={styles.gradient} />
         <div className={rootClassName}>
           <div className={styles.container__title} ref={container}>
@@ -126,7 +131,7 @@ const Company: FC<CompanyProps> = ({ className }) => {
     );
   } else {
     return (
-      <div className={styles.company}>
+      <div className={styles.company} ref={companyRef}>
         <GradientBlur className={styles.gradient} />
         <div className={rootClassName}>
           <div className={styles.container__title} ref={container}>

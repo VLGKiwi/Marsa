@@ -150,6 +150,24 @@ const Part: FC<PartProps> = ({ className }) => {
           ease: 'power1.out'
         })
 
+        gsap.to(box1Ref.current, {
+          opacity: 0,
+          duration: 1,
+          ease: 'power4.out'
+        })
+
+        gsap.to(box2Ref.current, {
+          opacity: 0,
+          duration: 1,
+          ease: 'power4.out'
+        })
+
+        gsap.to(box3Ref.current, {
+          opacity: 0,
+          duration: 1,
+          ease: 'power4.out'
+        })
+
         setIsProgress(true)
         const targetY = 0.9 * Math.PI * 2; // Преобразуем в радианы
         setTargetRotation([0, targetY, 0]);
