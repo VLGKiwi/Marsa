@@ -64,6 +64,7 @@ const Company: FC<CompanyProps> = ({ className }) => {
       scrollTrigger: {
         trigger: company,
         start: 'top top',
+        end: '+=300%',
         scrub: true,
         pin: true
       },
@@ -72,7 +73,7 @@ const Company: FC<CompanyProps> = ({ className }) => {
     tl.fromTo(
       cont,
       { width: 43, height: 46 },
-      { width: '100%', height: '100%', duration: 0.4, ease: 'power2.out' }
+      { width: '100%', height: '100%', duration: 1, ease: 'power2.out' }
     );
 
     tl.fromTo(
@@ -89,7 +90,7 @@ const Company: FC<CompanyProps> = ({ className }) => {
       tl.fromTo(
         element,
         { opacity: 0 },
-        { opacity: 1, duration: 0.8, ease: 'power2.out' },
+        { opacity: 1, duration: 3, ease: 'power2.out' },
         `-=${0.5 - index * 0.1}`
       );
     });
