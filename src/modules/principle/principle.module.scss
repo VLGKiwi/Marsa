@@ -4,8 +4,6 @@
 
 /* stylelint-disable rule */
 
-/* stylelint-disable rule */
-
 .root {
   position: relative;
   display: flex;
@@ -54,6 +52,7 @@
   }
 }
 
+/* stylelint-disable-next-line selector-class-pattern */
 .principleCards {
   position: relative;
   width: 100%;
@@ -69,21 +68,8 @@
 
 .slide {
   position: absolute;
-  opacity: 0;
-  transform: scale(0.1) translateX(100%); // Начальное состояние: снизу с уменьшенным масштабом
-  transition: opacity 0.5s ease, transform 0.5s ease; // Плавная анимация
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-.slide.entering {
-  opacity: 1;
-  transform: scale(1) translateY(0); // Финальное состояние: в центре с нормальным масштабом
-}
-
-.slide.exiting {
-  opacity: 0;
-  transform: scale(0.1) translateX(-100%); // Исчезновение вниз с уменьшенным масштабом
 }

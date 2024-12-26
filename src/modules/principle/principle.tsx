@@ -1,6 +1,6 @@
 'use client';
 
-import { FC, useEffect, useRef, useState } from 'react';
+import { FC, useRef } from 'react';
 import classNames from 'classnames';
 import styles from './principle.module.scss';
 import { PrincipleProps } from './principle.types';
@@ -9,6 +9,7 @@ import PrincipleCard from '../../components/principleCard/principleCard';
 import { Language, useLanguage } from '@/service/language';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { useGSAP } from '@gsap/react';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -43,63 +44,47 @@ const translations: Translations = {
   },
 };
 
-const AUTO_CHANGE_INTERVAL = 3500; // Интервал смены карточек (мс)
-const START_DELAY = 1500; // Задержка перед стартом слайдера
-
 const Principle: FC<PrincipleProps> = ({ className }) => {
   const rootClassName = classNames(styles.root, className);
   const { language } = useLanguage();
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [animationStage, setAnimationStage] = useState<'entering' | 'exiting'>('entering');
   const containerRef = useRef<HTMLDivElement | null>(null);
-  const hasTriggered = useRef<boolean>(false);
 
+  useGSAP(() => {
+    const slides = containerRef.current?.querySelectorAll(`.${styles.slide}`);
+    console.log(slides)
+    if (!slides) return;
 
-  useEffect(() => {
-    function startAnimation() {
-      return setInterval(() => {
-        setAnimationStage('exiting');
-        setTimeout(() => {
-          setCurrentIndex((prevIndex) => (prevIndex + 1) % translations[language].principles.length);
-          setAnimationStage('entering');
-        }, 500);
-      }, AUTO_CHANGE_INTERVAL);
-    };
-
-    const timers = {
-      start: null as NodeJS.Timeout | null,
-      interval: null as NodeJS.Timeout | null
-    };
-
-    const handleEnter = () => {
-      if (!hasTriggered.current) {
-        hasTriggered.current = true;
-        timers.start = setTimeout(() => {
-          timers.interval = startAnimation();
-        }, START_DELAY);
-      }
-    };
-
-    const clearTimers = () => {
-      hasTriggered.current = false;
-      if (timers.start) clearTimeout(timers.start);
-      if (timers.interval) clearInterval(timers.interval);
-    };
-
-    const trigger = ScrollTrigger.create({
-      trigger: containerRef.current,
-      start: 'top center',
-      onEnter: handleEnter,
-      onLeave: clearTimers,
-      onEnterBack: handleEnter,
-      onLeaveBack: clearTimers
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: containerRef.current,
+        start: 'top top',
+        end: '+=400%',
+        scrub: 1,
+        pin: true
+      },
     });
 
-    return () => {
-      trigger.kill();
-      clearTimers();
-    };
-  }, [language]);
+    slides.forEach((slide) => {
+      tl.fromTo(slide, {
+        xPercent: 50,
+        scale: 0,
+        rotateY: -180
+      }, {
+        scale: 1,
+        xPercent: 0,
+        ease: 'none',
+        rotateY: 0
+      });
+
+      tl.to(slide, {
+        scale: 0,
+        xPercent: -50,
+        delay: 1.5,
+        ease: 'none',
+        rotateY: 180
+      });
+    })
+  })
 
   return (
     <div className={rootClassName} ref={containerRef}>
@@ -113,11 +98,7 @@ const Principle: FC<PrincipleProps> = ({ className }) => {
         {translations[language].principles.map((card, index) => (
           <div
             key={index}
-            className={classNames(styles.slide, {
-              [styles.active]: index === currentIndex,
-              [styles.entering]: index === currentIndex && animationStage === 'entering',
-              [styles.exiting]: index === currentIndex && animationStage === 'exiting',
-            })}
+            className={classNames(styles.slide)}
           >
             <PrincipleCard
               number={card.number}
