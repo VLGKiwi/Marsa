@@ -58,7 +58,7 @@ const Principle: FC<PrincipleProps> = ({ className }) => {
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: container,
-        start: window.innerWidth < 768 ? 'top 20%' : 'top top',
+        start: 'top top',
         end: '+=1300%',
         scrub: 1,
         pin: true,
