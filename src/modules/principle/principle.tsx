@@ -73,7 +73,7 @@ const Principle: FC<PrincipleProps> = ({ className }) => {
         scale: 1,
         xPercent: 0,
         rotateY: 0,
-        ease: "power2.inOut", // плавное ускорение и замедление
+        ease: "power2.inOut(2)", // плавное ускорение и замедление
       });
 
       tl.to(slide, {
