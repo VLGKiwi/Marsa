@@ -58,7 +58,7 @@ const Principle: FC<PrincipleProps> = ({ className }) => {
       scrollTrigger: {
         trigger: containerRef.current,
         start: 'top top',
-        end: '+=550%',
+        end: '+=700%',
         scrub: 1,
         pin: true
       },
@@ -72,16 +72,16 @@ const Principle: FC<PrincipleProps> = ({ className }) => {
       }, {
         scale: 1,
         xPercent: 0,
-        ease: 'none',
-        rotateY: 0
+        rotateY: 0,
+        ease: "power2.inOut", // плавное ускорение и замедление
       });
 
       tl.to(slide, {
         scale: 0,
         xPercent: -50,
-        delay: 1.5,
-        ease: 'none',
-        rotateY: 180
+        delay: 0.7,
+        rotateY: 180,
+        ease: "back.inOut(1.7)", // добавляет небольшой "отскок"
       });
     })
   })
