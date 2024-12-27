@@ -58,7 +58,7 @@ const Principle: FC<PrincipleProps> = ({ className }) => {
       scrollTrigger: {
         trigger: containerRef.current,
         start: 'top top',
-        end: '+=400%',
+        end: '+=550%',
         scrub: 1,
         pin: true
       },
