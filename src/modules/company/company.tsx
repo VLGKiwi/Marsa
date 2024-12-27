@@ -63,7 +63,7 @@ const Company: FC<CompanyProps> = ({ className }) => {
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: company,
-        start: 'top top',
+        start: window.innerWidth < 768 ? 'top 20%' : 'top top',
         end: '+=300%',
         scrub: true,
         pin: true

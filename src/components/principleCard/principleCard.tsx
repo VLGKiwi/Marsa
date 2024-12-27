@@ -1,11 +1,12 @@
 'use client';
-import { FC, useEffect, useRef } from 'react';
+import { FC, useRef } from 'react';
 import classNames from 'classnames';
 import { gsap } from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
 
 import styles from './principleCard.module.scss';
 import { PrincipleCardProps } from './principleCard.types';
+import { useGSAP } from '@gsap/react';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -21,7 +22,7 @@ const PrincipleCard: FC<PrincipleCardProps> = ({
   const mobileSvgRef = useRef<SVGSVGElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
+  useGSAP(() => {
     if (!isFirst) return;
 
     const isMobile = window.innerWidth < 768;

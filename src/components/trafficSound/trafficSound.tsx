@@ -1,9 +1,10 @@
 'use client'
 
-import { FC, useEffect, useState, useRef } from 'react';
+import { FC, useState, useRef } from 'react';
 import classNames from 'classnames';
 import styles from './trafficSound.module.scss';
 import { TrafficSoundProps } from './trafficSound.types';
+import { useGSAP } from '@gsap/react';
 
 const NUM_COLUMNS = 7; // Количество столбцов
 const NUM_SQUARES = 5; // Количество квадратиков в каждом столбце
@@ -16,7 +17,7 @@ const TrafficSound: FC<TrafficSoundProps> = ({ className }) => {
   const [isVisible, setIsVisible] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
+  useGSAP(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
         setIsVisible(entry.isIntersecting);
@@ -31,7 +32,7 @@ const TrafficSound: FC<TrafficSoundProps> = ({ className }) => {
     return () => observer.disconnect();
   }, []);
 
-  useEffect(() => {
+  useGSAP(() => {
     if (!isVisible) return; // Останавливаем анимацию, если компонент не виден
 
     const interval = setInterval(() => {

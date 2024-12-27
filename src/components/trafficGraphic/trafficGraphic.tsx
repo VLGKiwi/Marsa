@@ -1,10 +1,11 @@
 'use client';
 
-import { FC, useEffect, useState, useRef } from 'react';
+import { FC, useState, useRef } from 'react';
 import { Line } from 'react-chartjs-2';
 import { Chart as ChartJS, LineElement, PointElement, LinearScale, CategoryScale, Tooltip } from 'chart.js';
 import styles from './trafficGraphic.module.scss';
 import { useLanguage, Language } from '@/service/language';
+import { useGSAP } from '@gsap/react';
 
 ChartJS.register(LineElement, PointElement, LinearScale, CategoryScale, Tooltip);
 
@@ -29,7 +30,7 @@ const TrafficGraphic: FC = () => {
   const { language } = useLanguage(); // Получение текущего языка
   const graphRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
+  useGSAP(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
         setIsVisible(entry.isIntersecting);
@@ -44,7 +45,7 @@ const TrafficGraphic: FC = () => {
     return () => observer.disconnect();
   }, []);
 
-  useEffect(() => {
+  useGSAP(() => {
     if (!isVisible) return;
 
     const interval = setInterval(() => {

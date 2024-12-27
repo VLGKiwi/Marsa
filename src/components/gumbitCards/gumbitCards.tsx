@@ -1,6 +1,6 @@
 'use client';
 
-import { FC, useEffect, useState, useRef } from 'react';
+import { FC, useState, useRef } from 'react';
 import classNames from 'classnames';
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
@@ -89,7 +89,7 @@ const GumbitCards: FC<GumbitCardsProps> = ({ className }) => {
     original.map((row) => row.map((text) => translateText(text)));
 
   // Обновляем массив строк в зависимости от разрешения экрана
-  useEffect(() => {
+  useGSAP(() => {
     const handleResize = () => {
       const width = window.innerWidth;
       if (width < 768) {

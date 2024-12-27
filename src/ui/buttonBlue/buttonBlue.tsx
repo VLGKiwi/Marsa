@@ -1,12 +1,13 @@
 'use client'
 
-import { FC, useRef, useEffect } from 'react';
+import { FC, useRef } from 'react';
 import classNames from 'classnames';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 import styles from './buttonBlue.module.scss';
 import { ButtonBlueProps } from './buttonBlue.types';
+import { useGSAP } from '@gsap/react';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -14,7 +15,7 @@ const ButtonBlue: FC<ButtonBlueProps> = ({ className, children }) => {
   const rootClassName = classNames(styles.root, className);
   const buttonRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
+  useGSAP(() => {
     if (buttonRef.current) {
       gsap.fromTo(
         buttonRef.current,

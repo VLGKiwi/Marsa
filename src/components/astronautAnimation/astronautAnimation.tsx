@@ -9,6 +9,7 @@ import { useGLTF, useAnimations } from '@react-three/drei'
 import { EXRLoader, GLTF, RGBELoader } from 'three-stdlib'
 import { useFrame, GroupProps, useThree } from '@react-three/fiber'
 import gsap from 'gsap'
+import { useGSAP } from '@gsap/react'
 
 // Тип для имени анимации
 type ActionName = 'Action.001'
@@ -64,7 +65,7 @@ const Model = forwardRef<THREE.Group, ModelProps>(({ scrollProgressRef, scrlProg
   const { scene, gl } = useThree()
 
   // Настройка тонмаппинга и гамма-коррекции
-  useEffect(() => {
+  useGSAP(() => {
     gl.toneMapping = THREE.ACESFilmicToneMapping
     gl.toneMappingExposure = 1 // Сделаем немного ярче
     gl.outputColorSpace = THREE.SRGBColorSpace;
@@ -78,7 +79,7 @@ const Model = forwardRef<THREE.Group, ModelProps>(({ scrollProgressRef, scrlProg
   const envSphereRef = useRef<THREE.Mesh>()
   const cubeCameraRef = useRef<THREE.CubeCamera>()
 
-  useEffect(() => {
+  useGSAP(() => {
     const rgbeLoader = new RGBELoader()
     rgbeLoader.load('/models/MARSA-team-logo.hdr', (texture) => {
       texture.wrapS = THREE.ClampToEdgeWrapping;
@@ -137,7 +138,7 @@ const Model = forwardRef<THREE.Group, ModelProps>(({ scrollProgressRef, scrlProg
   }, [gl, materials, scene, scrlProgress])
 
 
-  useEffect(() => {
+  useGSAP(() => {
     // Проверяем наличие анимации
     const action = actions['Action.001']
 

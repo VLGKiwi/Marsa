@@ -1,5 +1,5 @@
 'use client'
-import { FC, useEffect, useState } from 'react'
+import { FC, useState } from 'react'
 import classNames from 'classnames'
 
 import styles from './home.module.scss'
@@ -23,7 +23,7 @@ const Home: FC<HomeProps> = ({ className }) => {
   const rootClassName = classNames(styles.root, className)
   const [showIntroduce, setShowIntroduce] = useState(true)
 
-  useEffect(() => {
+  useGSAP(() => {
     const handleScroll = () => {
       if (window.scrollY > window.innerHeight * 2) {
         setShowIntroduce(false)

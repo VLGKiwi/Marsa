@@ -1,9 +1,10 @@
 'use client'
 
-import React, { useRef, useEffect } from 'react'
+import React, { useRef } from 'react'
 import { useGLTF } from '@react-three/drei'
 import { GroupProps } from '@react-three/fiber'
 import * as THREE from 'three'
+import { useGSAP } from '@gsap/react'
 
 interface EnvironmentGLTFProps extends GroupProps {
   url: string
@@ -22,7 +23,7 @@ const EnvironmentGLTF: React.FC<EnvironmentGLTFProps> = ({
   const group = useRef<THREE.Group>(null)
   const { scene } = useGLTF(url) as unknown as { scene: THREE.Scene } // Явно указываем тип сцены
 
-  useEffect(() => {
+  useGSAP(() => {
     if (scene) {
       // Обновление материалов для поддержки отражений
       scene.traverse((child) => {

@@ -1,6 +1,6 @@
 'use client'
 
-import { FC, useEffect, useState } from 'react';
+import { FC, useState } from 'react';
 import classNames from 'classnames';
 
 import styles from './trafficTv.module.scss';
@@ -13,12 +13,13 @@ import { TrafficCircle } from '../trafficCircle';
 import Image from 'next/image';
 import BackgroundStart from '@public/images/traffic__background__start.webp';
 import BackgroundEnd from '@public/images/traffic__background__end.webp';
+import { useGSAP } from '@gsap/react';
 
 const TrafficTv: FC<TrafficTvProps> = ({ className }) => {
   const rootClassName = classNames(styles.root, className);
   const [isMobile, setIsMobile] = useState(false);
 
-  useEffect(() => {
+  useGSAP(() => {
     const updateIsMobile = () => {
       setIsMobile(window.innerWidth < 768);
     };

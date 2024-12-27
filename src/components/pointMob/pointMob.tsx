@@ -1,8 +1,9 @@
 'use client';
 
-import { FC, useState, useEffect, useRef } from 'react';
+import { FC, useState, useRef } from 'react';
 import styles from './pointMob.module.scss';
 import { useLanguage, Language } from '@/service/language'; // Хук для языка
+import { useGSAP } from '@gsap/react';
 
 const Point: FC = () => {
   const [activePoint, setActivePoint] = useState<number | null>(null); // Активная точка
@@ -57,7 +58,7 @@ const Point: FC = () => {
   };
 
   // Эффект для таймера
-  useEffect(() => {
+  useGSAP(() => {
     resetInactivityTimer();
     return () => {
       if (inactivityTimer.current) clearTimeout(inactivityTimer.current);
@@ -65,7 +66,7 @@ const Point: FC = () => {
   }, []);
 
   // Эффект для анимации при изменении activePoint
-  useEffect(() => {
+  useGSAP(() => {
     if (activePoint !== null) {
       const card = document.querySelector(`.${styles.cardContent}`);
       if (card) {
@@ -77,7 +78,7 @@ const Point: FC = () => {
   }, [activePoint]);
 
   // Эффект для авто-активации точек
-  useEffect(() => {
+  useGSAP(() => {
     const interval = setInterval(() => {
       if (!isUserActive.current) {
         activateNextPoint();

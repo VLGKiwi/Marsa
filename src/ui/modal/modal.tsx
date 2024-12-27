@@ -1,6 +1,7 @@
-import React, { ReactNode, useEffect } from 'react';
+import React, { ReactNode } from 'react';
 import ReactDOM from 'react-dom';
 import styles from './modal.module.scss';
+import { useGSAP } from '@gsap/react';
 
 interface ModalProps {
   isOpen: boolean;
@@ -10,7 +11,7 @@ interface ModalProps {
 
 const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children }) => {
   // Эффект для блокировки скролла
-  useEffect(() => {
+  useGSAP(() => {
     if (isOpen) {
       document.body.style.overflow = 'hidden'; // Блокируем скролл
     } else {

@@ -1,11 +1,12 @@
 'use client'
 
-import { FC, useEffect, useRef } from 'react';
+import { FC, useRef } from 'react';
 import classNames from 'classnames';
 import gsap from 'gsap';
 
 import styles from './titleGradient.module.scss';
 import { TitleGradientProps } from './titleGradient.types';
+import { useGSAP } from '@gsap/react';
 
 const TitleGradient: FC<TitleGradientProps> = ({
   className,
@@ -19,7 +20,7 @@ const TitleGradient: FC<TitleGradientProps> = ({
   const textRef = useRef<HTMLDivElement>(null);
   const animationRef = useRef<gsap.core.Tween | null>(null);
 
-  useEffect(() => {
+  useGSAP(() => {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {

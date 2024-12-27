@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 'use client'
 
-import { FC, useState, useEffect } from 'react'
+import { FC, useState } from 'react'
 import classNames from 'classnames'
 
 import styles from './faq.module.scss'
@@ -9,6 +9,8 @@ import { FaqProps } from './faq.types'
 import { Point, TitleGradient } from '@/ui'
 import { PointMob, PointTab } from '@/components'
 import { useLanguage, Language } from '@/service/language' // Хук для смены языка
+import { useGSAP } from '@gsap/react'
+
 
 const Faq: FC<FaqProps> = ({ className }) => {
   const rootClassName = classNames(styles.root, className);
@@ -17,7 +19,7 @@ const Faq: FC<FaqProps> = ({ className }) => {
   const [activePointIndex, setActivePointIndex] = useState(0);
 
   // Отслеживание взаимодействия пользователя
-  useEffect(() => {
+  useGSAP(() => {
     const handleInteraction = () => {
       setIsUserInteracted(true);
       setActivePointIndex(-1); // Отключаем активную точку при взаимодействии
@@ -33,7 +35,7 @@ const Faq: FC<FaqProps> = ({ className }) => {
   }, []);
 
   // Эффект для циклической анимации точек
-  useEffect(() => {
+  useGSAP(() => {
     if (!isUserInteracted) {
       const points = translations[language];
       const interval = setInterval(() => {

@@ -1,12 +1,13 @@
 'use client';
 
-import { FC, useEffect, useRef, useState } from 'react';
+import { FC, useRef, useState } from 'react';
 import classNames from 'classnames';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 import styles from './animatedImage.module.scss';
 import { AnimatedImageProps } from './animatedImage.types';
+import { useGSAP } from '@gsap/react';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -15,7 +16,7 @@ const AnimatedImage: FC<AnimatedImageProps> = ({ className }) => {
   const svgRef = useRef<SVGSVGElement>(null);
   const [isInView, setIsInView] = useState(false);
 
-  useEffect(() => {
+  useGSAP(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -35,7 +36,7 @@ const AnimatedImage: FC<AnimatedImageProps> = ({ className }) => {
     return () => observer.disconnect();
   }, []);
 
-  useEffect(() => {
+  useGSAP(() => {
     const svgElement = svgRef.current;
     if (!svgElement || !isInView) {
       return;

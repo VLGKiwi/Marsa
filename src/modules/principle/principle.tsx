@@ -50,17 +50,18 @@ const Principle: FC<PrincipleProps> = ({ className }) => {
   const containerRef = useRef<HTMLDivElement | null>(null);
 
   useGSAP(() => {
+    const container = containerRef.current
     const slides = containerRef.current?.querySelectorAll(`.${styles.slide}`);
     console.log(slides)
     if (!slides) return;
 
     const tl = gsap.timeline({
       scrollTrigger: {
-        trigger: containerRef.current,
-        start: 'top top',
+        trigger: container,
+        start: window.innerWidth < 768 ? 'top 20%' : 'top top',
         end: '+=1300%',
         scrub: 1,
-        pin: true
+        pin: true,
       },
     });
 
