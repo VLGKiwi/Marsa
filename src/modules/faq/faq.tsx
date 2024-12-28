@@ -61,7 +61,7 @@ const Faq: FC<FaqProps> = ({ className }) => {
       { title: 'What traffic sources do you work with?', text: 'We work closely with FB, Google Ads (PPC, UAC, KMC), and ASO.', leftP: '50%', topP: '50%' },
       { title: 'Do you have designers, and how quickly are creatives delivered?', text: 'We have a team of in-house motion designers (4 people). Creatives are ready in a few hours to two days depending on complexity.', leftP: '15%', topP: '0%' },
       { title: 'Who finds the offers?', text: 'Our experienced Bizdev will help find the right offer for your needs and secure unlimited cap or raise the rates.', leftP: '63%', topP: '8%' },
-      { title: 'Who handles technical support?', text: 'Our IT integrator oversees the technical process of ad campaign launches.', leftP: '30%', topP: '35%' },
+      { title: 'Who handles technical support?', text: 'Our IT integrator oversees the technical process of ad campaign launches.', leftP: '30%', topP: '45%' },
       { title: 'Who manages media buying?', text: 'Each source has its Head and Team Lead who coordinate teams and optimize processes.', leftP: '61%', topP: '2%' },
       { title: 'What does it take to join your team?', text: 'Message our HR Varvara @var_marsa for an interview and test task.', leftP: '25%', topP: '5%' },
     ],
