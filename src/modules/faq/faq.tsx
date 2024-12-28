@@ -52,7 +52,7 @@ const Faq: FC<FaqProps> = ({ className }) => {
     ru: [
       { title: 'С какими источниками вы работаете?', text: 'Плотно работаем с FB, Google Ads (PPC, UAC, KMC), ASO', leftP: '50%', topP: '50%' },
       { title: 'Есть ли у вас дизайнеры, как быстро выдаются крео?', text: 'Есть команда штатных моушен-дизайнеров (4 человека), готовые крео выдаются от пары часов до 2-х дней', leftP: '15%', topP: '0%' },
-      { title: 'Кто ищет офферы?', text: 'В штате компании есть опытный Bizdev, который помогает найти любой оффер и увеличить ставку по нему', leftP: '63%', topP: '10%' },
+      { title: 'Кто ищет офферы?', text: 'В штате компании есть опытный Bizdev, который помогает найти любой оффер и увеличить ставку по нему', leftP: '63%', topP: '8%' },
       { title: 'Кто занимается техническим сопровождением?', text: 'Опытный IT-интегратор сопровождает технический процесс запуска РК на всех этапах', leftP: '30%', topP: '35%' },
       { title: 'Кто руководит баингом?', text: 'Каждый источник имеет Head и Team Lead, координирующих команды и процессы', leftP: '61%', topP: '2%' },
       { title: 'Что необходимо, чтобы попасть к вам в команду?', text: 'Напиши нашему HR Варваре @var_marsa для собеседования и тестового задания', leftP: '25%', topP: '5%' },
@@ -60,9 +60,9 @@ const Faq: FC<FaqProps> = ({ className }) => {
     en: [
       { title: 'What traffic sources do you work with?', text: 'We work closely with FB, Google Ads (PPC, UAC, KMC), and ASO.', leftP: '50%', topP: '50%' },
       { title: 'Do you have designers, and how quickly are creatives delivered?', text: 'We have a team of in-house motion designers (4 people). Creatives are ready in a few hours to two days depending on complexity.', leftP: '15%', topP: '0%' },
-      { title: 'Who finds the offers?', text: 'Our experienced Bizdev will help find the right offer for your needs and secure unlimited cap or raise the rates.', leftP: '70%', topP: '10%' },
+      { title: 'Who finds the offers?', text: 'Our experienced Bizdev will help find the right offer for your needs and secure unlimited cap or raise the rates.', leftP: '63%', topP: '8%' },
       { title: 'Who handles technical support?', text: 'Our IT integrator oversees the technical process of ad campaign launches.', leftP: '30%', topP: '35%' },
-      { title: 'Who manages media buying?', text: 'Each source has its Head and Team Lead who coordinate teams and optimize processes.', leftP: '61%', topP: '0%' },
+      { title: 'Who manages media buying?', text: 'Each source has its Head and Team Lead who coordinate teams and optimize processes.', leftP: '61%', topP: '2%' },
       { title: 'What does it take to join your team?', text: 'Message our HR Varvara @var_marsa for an interview and test task.', leftP: '25%', topP: '5%' },
     ],
   };

@@ -32,11 +32,11 @@
 	.text1 {
 		position: absolute;
 		left: 21%;
-		top: 20%;
-		background: center no-repeat url('../../shared/assets/icons/line1.svg');
+		top: 25%;
+		background: top no-repeat url('../../shared/assets/icons/line1.svg');
 		background-size: contain;
 
-		padding: 50px 100px 70px 30px;
+		padding: 15px 100px 15px 30px;
 
 		@include tablet {
 			left: 5%;
