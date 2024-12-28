@@ -61,6 +61,7 @@ const Header: FC<HeaderProps> = ({ className }) => {
 
         <div className={styles.language}>
           {/* Отображение TelegramLink для маленьких экранов */}
+          {!isLargeScreen && <InstagramLink className={styles.instagram} />}
           {!isLargeScreen && <TelegramLink className={styles.telegramSmall} />}
           <LanguageLinks className={styles.language__links} />
         </div>
