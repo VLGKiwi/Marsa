@@ -1,7 +1,7 @@
 'use client';
 
 import { FC, useState, useEffect } from 'react';
-import { LanguageLinks, TelegramLink, Wrapper } from '@/ui';
+import { InstagramLink, LanguageLinks, TelegramLink, Wrapper } from '@/ui';
 import classNames from 'classnames';
 
 import styles from './header.module.scss';
@@ -48,6 +48,7 @@ const Header: FC<HeaderProps> = ({ className }) => {
       <Wrapper className={styles.wrapper}>
         {/* Отображение TelegramLink для больших экранов */}
         <div className={styles.tg__about}>
+          {isLargeScreen && <InstagramLink className={styles.instagram} />}
           {isLargeScreen && <TelegramLink className={styles.telegram} />}
           {name === '/vacancy' && window.innerWidth > 1199 && (
             <Link href={'/'}>

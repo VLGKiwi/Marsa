@@ -1,0 +1,15 @@
+@use "@styles/func";
+@use "@styles/mixins" as *;
+@use "@styles/variables";
+
+.root {
+	svg {
+		width: 40px;
+		height: 42px;
+
+		@include tablet-small {
+			width: 32px;
+			height: 32px;
+		}
+	}
+}

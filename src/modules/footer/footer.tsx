@@ -1,7 +1,7 @@
 'use client';
 
 import { FC } from 'react';
-import { LanguageLinks, TelegramLink, Wrapper } from '@/ui';
+import { InstagramLink, LanguageLinks, TelegramLink, Wrapper } from '@/ui';
 import { useLanguage, Language } from '@/service/language';
 
 import styles from './footer.module.scss';
@@ -29,7 +29,10 @@ const Footer: FC = () => {
           </a>
         </div>
         <div className={styles.links}>
-          <TelegramLink />
+          <div className={styles.social}>
+            <TelegramLink />
+            <InstagramLink />
+          </div>
           <LanguageLinks />
         </div>
       </Wrapper>

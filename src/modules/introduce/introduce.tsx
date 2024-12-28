@@ -25,7 +25,7 @@ const translations: Translations = {
 };
 
 const Introduce: FC<IntroduceProps> = ({ className }) => {
-  const [imageSrc, setImageSrc] = useState('/images/introduce.webp');
+  const [imageSrc, setImageSrc] = useState('/images/introduce.png');
   const [isMobile, setIsMobile] = useState(false); // Для отслеживания ширины экрана
   const rootClassName = classNames(styles.root, className);
   const { language } = useLanguage();
@@ -48,13 +48,13 @@ const Introduce: FC<IntroduceProps> = ({ className }) => {
   useEffect(() => {
     const updateImageSrc = () => {
       if (window.matchMedia('(max-width: 480px)').matches) {
-        setImageSrc('/images/introduce-mobile.webp'); // Mobile
+        setImageSrc('/images/introduce-mobile.png'); // Mobile
       } else if (window.matchMedia('(max-width: 1200px)').matches) {
-        setImageSrc('/images/introduce.webp'); // Tablet
+        setImageSrc('/images/introduce.png'); // Tablet
       } else if (window.matchMedia('(min-width: 1440px)').matches) {
-        setImageSrc('/images/introduce-large.webp'); // Large screen
+        setImageSrc('/images/introduce-large.png'); // Large screen
       } else {
-        setImageSrc('/images/introduce-tablet.webp'); // Default
+        setImageSrc('/images/introduce-tablet.png'); // Default
       }
     };
 
