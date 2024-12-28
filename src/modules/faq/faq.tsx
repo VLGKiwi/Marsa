@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 'use client'
 
-import { FC, useState } from 'react'
+import { FC, useState, useEffect } from 'react'
 import classNames from 'classnames'
 
 import styles from './faq.module.scss'
@@ -9,8 +9,6 @@ import { FaqProps } from './faq.types'
 import { Point, TitleGradient } from '@/ui'
 import { PointMob, PointTab } from '@/components'
 import { useLanguage, Language } from '@/service/language' // Хук для смены языка
-import { useGSAP } from '@gsap/react'
-
 
 const Faq: FC<FaqProps> = ({ className }) => {
   const rootClassName = classNames(styles.root, className);
@@ -19,7 +17,7 @@ const Faq: FC<FaqProps> = ({ className }) => {
   const [activePointIndex, setActivePointIndex] = useState(0);
 
   // Отслеживание взаимодействия пользователя
-  useGSAP(() => {
+  useEffect(() => {
     const handleInteraction = () => {
       setIsUserInteracted(true);
       setActivePointIndex(-1); // Отключаем активную точку при взаимодействии
@@ -35,7 +33,7 @@ const Faq: FC<FaqProps> = ({ className }) => {
   }, []);
 
   // Эффект для циклической анимации точек
-  useGSAP(() => {
+  useEffect(() => {
     if (!isUserInteracted) {
       const points = translations[language];
       const interval = setInterval(() => {
@@ -56,7 +54,7 @@ const Faq: FC<FaqProps> = ({ className }) => {
       { title: 'Есть ли у вас дизайнеры, как быстро выдаются крео?', text: 'Есть команда штатных моушен-дизайнеров (4 человека), готовые крео выдаются от пары часов до 2-х дней', leftP: '15%', topP: '0%' },
       { title: 'Кто ищет офферы?', text: 'В штате компании есть опытный Bizdev, который помогает найти любой оффер и увеличить ставку по нему', leftP: '70%', topP: '10%' },
       { title: 'Кто занимается техническим сопровождением?', text: 'Опытный IT-интегратор сопровождает технический процесс запуска РК на всех этапах', leftP: '30%', topP: '35%' },
-      { title: 'Кто руководит баингом?', text: 'Каждый источник имеет Head и Team Lead, координирующих команды и процессы', leftP: '60%', topP: '0%' },
+      { title: 'Кто руководит баингом?', text: 'Каждый источн��к имеет Head и Team Lead, координирующих команды и процессы', leftP: '60%', topP: '0%' },
       { title: 'Что необходимо, чтобы попасть к вам в команду?', text: 'Напиши нашему HR Варваре @var_marsa для собеседования и тестового задания', leftP: '25%', topP: '5%' },
     ],
     en: [
@@ -70,6 +68,7 @@ const Faq: FC<FaqProps> = ({ className }) => {
   };
 
   const points = translations[language]; // Получаем переведенный контент
+
 
   if (typeof window !== 'undefined' && window.innerWidth >= 1440) {
     return (

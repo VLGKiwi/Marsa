@@ -1,6 +1,6 @@
 'use client';
 
-import { FC, useRef, useState } from 'react';
+import { FC, useEffect, useRef, useState } from 'react';
 import classNames from 'classnames';
 
 import styles from './point.module.scss';
@@ -42,7 +42,7 @@ const Point: FC<PointProps> = ({
     }
   };
 
-  useGSAP(() => {
+  useEffect(() => {
     // Устанавливаем слушатель изменения размера окна
     handleResize(); // Вызываем сразу, чтобы применить настройки
     window.addEventListener('resize', handleResize);
@@ -119,7 +119,7 @@ const Point: FC<PointProps> = ({
     }
   };
 
-  useGSAP(() => {
+  useEffect(() => {
     if (isAutoAnimating) {
       // Запускаем анимацию появления
       handleMouseEnter();
