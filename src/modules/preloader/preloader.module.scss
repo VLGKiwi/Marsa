@@ -34,3 +34,33 @@
     transform: rotate(360deg);
   }
 }
+
+.progressContainer {
+  position: absolute;
+  bottom: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 200px;
+  height: 4px;
+  background-color: var(--color-dark-blue-3);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.progressBar {
+  height: 100%;
+  width: 0;
+  background-color: var(--color-blue-main);
+  transition: width 0.3s ease-out;
+}
+
+.progressText {
+  font-family: var(--font-act);
+  font-size: 18px;
+  line-height: 150%;
+  position: absolute;
+  bottom: calc(20% + 15px);
+  left: 50%;
+  transform: translateX(-50%);
+  color: var(--color-blue-main);
+}

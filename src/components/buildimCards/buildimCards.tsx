@@ -23,131 +23,161 @@ const translations: Record<Language, any> = {
   ru: {
     subTitleFirst: 'Что вы будете делать:',
     subTitleSecond: 'Что мы ждем от вас:',
+    subTitleTeam: 'Что мы предлагаем:',
+    subTitleTeamSecond: 'Почему MARSA Team?',
+    subTitleTeamThird: 'Как это работает?',
     descriptions: {
-      first: `Ищем проактивного медиабайера, готового принять вызов и стать частью лидирующей команды в медиабаинге в вертикале iGaming.
-
-Если ты ищешь среду, где трудности превращаются в возможности для роста, готов брать на себя ответственность и находить уникальные решения сложных задач – ты наш человек.
-
-Мы не обучаем с нуля, но если ты покажешь, что способен мыслить нестандартно, брать ответственность и добиваться реальных результатов, мы дадим тебе все ресурсы для дальнейшего развития.`,
-      second: `Ищем тимлида, который не боится сложных вызовов и готов возглавить команду, постоянно стремится к высоким результатам.
-
-У нас тебя ждут амбициозные задачи, требующие нестандартного подхода и сильного лидерства.`,
-      third: `Мы в поисках креативного дизайнера, который готов работать в динамичной среде и создавать визуальные решения, привлекать внимание на международных рынках.
-
-Если ты обладаешь чувством стиля и умеешь делать креативы, которые цепляют с первого взгляда – нам нужен именно ты!`,
+      first: 'Ищем проактивного медиабайера, готового принять вызов и стать частью лидирующей команды в медиабаинге в вертикале iGaming.',
+      second: 'Ищем тимлида, который не боится сложных вызовов и готов возглавить команду, постоянно стремится к высоким результатам.',
+      third: 'Мы в поисках креативного дизайнера, который готов работать в динамичной среде и создавать визуальные решения.',
+      fourth: 'Ищем сформированные команды профессионалов, готовых к новым высотам. У нас есть всё, чтобы ваш рост стал стремительным.'
     },
     tasks: {
       first: [
-        'Управление рекламными кампаниями в выбранном направлении: FB, Google, In-App, Push, ASO, SEO, TikTok, УБТ, TG ads, SMS и др.',
+        'Управление рекламными кампаниями в выбранном направлении',
         'Оптимизация бюджета и достижение максимального ROI',
         'Анализ и тестирование креативов, создание новых решений',
-        'Поиск и использование новых источников трафика и возможностей для роста',
+        'Поиск и использование новых источников трафика'
       ],
       second: [
-        'Управление командой в выбранном направлении: FB, Google, In-App, Push, ASO, SEO, TikTok, УБТ, TG ads, SMS и др.',
-        'Постановка задач, контроль их выполнения и обеспечение достижения целей',
-        'Создание стратегий, которые помогут команде достигать новых высот',
-        'Поиск уникальных решений и развитие талантов внутри команды',
+        'Управление командой в выбранном направлении',
+        'Постановка задач, контроль их выполнения',
+        'Создание стратегий для достижения новых высот',
+        'Поиск уникальных решений и развитие талантов'
       ],
       third: [
         'Разработка графики и креативов для рекламных кампаний',
-        'Взаимодействие с медиабайерами и другими отделами для создания визуальных решений',
-        'Улучшение дизайна текущих проектов и создание новых концепций',
+        'Взаимодействие с медиабайерами и другими отделами',
+        'Улучшение дизайна текущих проектов'
       ],
+      fourth: [
+        'Гарантированная поддержка: Мы обеспечиваем вас доступом к масштабным бюджетам и передовым инструментам аналитики и автоматизации',
+        'Экосистема для роста: MARSA Team — это не просто холдинг, это сообщество профессионалов, где ценятся результаты, инновации и амбиции',
+        'Прозрачное партнерство: Мы знаем, что вы уже создали успешную команду. Наша задача — помочь вам увеличить доходы, сохраняя контроль и автономию в принятии решений'
+      ]
     },
     expectations: {
       first: [
-        'Опыт работы в одном из направлений: FB, Google, In-App, Push и др.',
-        'Способность принимать вызовы, преодолевать трудности и предлагать решения',
-        'Проактивность, инициативность и готовность брать ответственность за результаты',
+        'Опыт работы в одном из направлений',
+        'Способность принимать вызовы и предлагать решения',
+        'Проактивность и готовность брать ответственность'
       ],
       second: [
-        'Опыт управления командой в одном из направлений',
-        'Способность принимать сложные вызовы и вести команду к успеху',
-        'Умение мыслить креативно и разрабатывать новые стратегии',
+        'Опыт управления командой',
+        'Способность принимать сложные вызовы',
+        'Умение мыслить креативно'
       ],
       third: [
-        'Опыт работы в сфере дизайна, желательно в digital и рекламе',
-        'Умение создавать визуальные концепты, которые соответствуют целевой аудитории',
-        'Творческое мышление и готовность к работе в команде',
+        'Опыт работы в сфере дизайна',
+        'Умение создавать визуальные концепты',
+        'Творческое мышление'
       ],
+      fourth: [
+        'У нас более 10 лет опыта в медиабаинге',
+        'Мы сотрудничаем с крупнейшими рекламодателями и партнёрскими программами',
+        'Мы стремимся к технологическому лидерству, используя самые современные инструменты оптимизации'
+      ]
     },
+    teamProcess: [
+      'Презентация команды: Расскажите нам о своей команде, покажите кейсы и достижения',
+      'Обсуждение условий: Мы предложим лучшие условия сотрудничества, адаптированные к вашим целям',
+      'Масштабирование: С нашей поддержкой ваша команда достигнет новых рекордов'
+    ],
     hrMessages: {
-      first: 'Если ты готов к сложным задачам, которые выводят тебя на новый уровень, и хочешь стать частью команды, обратись к нашему HR через Telegram.',
-      second: 'Если ты готов принять вызов и повести команду вперед, обращайся к нашему HR через Telegram.',
-      third: 'Если ты готов создавать смелые креативы, обращайся к нашему HR через Telegram.',
+      first: 'Если вы готовы к сложным задачам, обратитесь к нашему HR через Telegram.',
+      second: 'Если вы готовы принять вызов и вести команду вперед, обращайтесь к HR.',
+      third: 'Если вы готовы создавать смелые креативы, обращайтесь к HR.',
+      fourth: 'Присоединяйтесь к холдингу, который задаёт стандарты медиабаинга. Свяжитесь с нами прямо сейчас, и мы обсудим, как совместно вывести ваши проекты на новый уровень!'
     },
     button: 'Написать HR',
+    modalTitle: {
+      fourth: 'Присоединяйтесь к MARSA Team — медиабаинговому холдингу, который масштабирует успех!'
+    }
   },
   en: {
     subTitleFirst: 'What you will do:',
     subTitleSecond: 'What we expect from you:',
+    subTitleTeam: 'What we offer:',
+    subTitleTeamSecond: 'Why MARSA Team?',
+    subTitleTeamThird: 'How does it work?',
     descriptions: {
-      first: `We’re looking for a proactive media buyer ready to take on challenges and join the leading media buying team in the iGaming vertical.
-      If you're seeking an environment where challenges turn into growth opportunities, ready to take responsibility, and able to find unique solutions to complex tasks – you’re the person we need.
-      We don’t train from scratch, but if you show that you can think creatively, take responsibility, and achieve real results, we’ll provide all the resources you need for further development.`,
-      second: `We’re looking for a team lead unafraid of challenges and ready to lead a high-performing team.
-
-We offer ambitious tasks that require an unconventional approach and strong leadership. We support those who are ready to overcome obstacles, find new paths, and take responsibility for results.
-
-This isn’t just a job – it’s a challenge for those who strive to be the best.`,
-      third: `We are searching for a creative Designer ready to work in a dynamic environment and create visuals that attract international attention.
-
-If you have a sense of style and can create eye-catching creatives – we need you!`,
+      first: 'We\'re looking for a proactive media buyer ready to take on challenges and join the leading team.',
+      second: 'We\'re looking for a team lead unafraid of challenges and ready to lead a high-performing team.',
+      third: 'We are searching for a creative Designer ready to work in a dynamic environment.',
+      fourth: 'We are looking for established teams of professionals ready to reach new heights. We have everything you need for your growth to be rapid.'
     },
     tasks: {
       first: [
-        'Manage ad campaigns in your chosen area: FB, Google, In-App, Push, ASO, SEO, TikTok, UBT, TG ads, SMS, and more',
+        'Manage advertising campaigns in your chosen direction',
         'Optimize budgets to achieve maximum ROI',
-        'Analyze and test creatives, and develop new solutions',
-        'Discover and utilize new traffic sources and growth opportunities',
+        'Analyze and test creatives, develop new solutions',
+        'Discover new traffic sources and opportunities'
       ],
       second: [
-        'Lead a team in your chosen area: FB, Google, In-App, Push, ASO, SEO, TikTok, UBT, TG ads, SMS, and more',
-        'Set tasks, monitor their progress, and ensure goals are met',
-        'Develop strategies to help the team reach new heights',
-        'Find unique solutions and foster talent within the team',
+        'Lead a team in your chosen direction',
+        'Set tasks and monitor their progress',
+        'Develop strategies for new achievements',
+        'Find unique solutions and develop talent'
       ],
       third: [
-        'Developing graphics and creatives for advertising campaigns',
-        'Collaborating with media buyers and other departments',
-        'Improving current designs and creating new visual concepts',
+        'Develop graphics and creatives for campaigns',
+        'Collaborate with media buyers and other departments',
+        'Improve current designs and create new concepts'
       ],
+      fourth: [
+        'Guaranteed support: We provide you with access to large budgets and advanced analytics and automation tools',
+        'An ecosystem for growth: MARSA Team is not just a holding; it\'s a community of professionals where results, innovation, and ambition are valued',
+        'Transparent partnership: We know you have already built a successful team. Our task is to help you increase your revenue while maintaining control and autonomy in decision-making'
+      ]
     },
     expectations: {
       first: [
-        'Experience in one of the following areas: FB, Google, In-App, Push, etc.',
-        'Ability to embrace challenges, overcome obstacles, and propose solutions',
-        'Proactivity, initiative, and readiness to take responsibility for results',
+        'Experience in one of the directions',
+        'Ability to take on challenges',
+        'Proactivity and responsibility'
       ],
       second: [
-        'Experience in managing a team in one of the relevant areas',
-        'Ability to take on tough challenges and lead the team to success',
-        'Creative thinking and the ability to develop new strategies',
+        'Team management experience',
+        'Ability to handle complex challenges',
+        'Creative thinking skills'
       ],
       third: [
-        'Experience in design, preferably in digital or advertising',
-        'Ability to create visual concepts tailored to the target audience',
-        'Creative mindset and readiness to work in a team',
+        'Experience in design',
+        'Ability to create visual concepts',
+        'Creative mindset'
       ],
+      fourth: [
+        'We have over 10 years of experience in media buying',
+        'We collaborate with the largest advertisers and affiliate programs',
+        'We strive for technological leadership, using the most modern optimization tools'
+      ]
     },
+    teamProcess: [
+      'Team presentation: Tell us about your team, showcase your cases and achievements',
+      'Discussing conditions: We will offer the best cooperation terms tailored to your goals',
+      'Scaling: With our support, your team will achieve new records'
+    ],
     hrMessages: {
-      first: 'If you’re ready for complex tasks that push you to a new level and want to join a team that values results, reach out to our HR on Telegram.',
-      second: 'If you’re ready to accept the challenge and lead the team forward, contact our HR on Telegram',
-      third: 'If you are ready to create bold creatives, contact our HR via Telegram.',
+      first: 'If you\'re ready for complex tasks, contact our HR via Telegram.',
+      second: 'If you\'re ready to lead the team forward, contact our HR.',
+      third: 'If you\'re ready to create bold designs, contact our HR.',
+      fourth: 'Join the holding that sets the standards for media buying. Contact us right now, and let\'s discuss how we can take your projects to the next level!'
     },
     button: 'Contact HR',
-  },
+    modalTitle: {
+      fourth: 'Join MARSA Team — a media buying holding that scales success!'
+    }
+  }
 };
 
-
+type CardType = 'first' | 'second' | 'third' | 'fourth';
 
 const BuildimCards: FC<BuildimCardsProps> = ({ className, onHoverCard }) => {
   const { language } = useLanguage(); // Язык пользователя
   const t = translations[language];
   const [activeIcon, setActiveIcon] = useState<string | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [selectedCard, setSelectedCard] = useState<string | null>(null);
+  const [selectedCard, setSelectedCard] = useState<CardType | null>(null);
 
   const rootClassName = classNames(styles.root, className);
 
@@ -166,16 +196,46 @@ const BuildimCards: FC<BuildimCardsProps> = ({ className, onHoverCard }) => {
         setActiveIcon('third-active');
         onHoverCard('third');
         break;
+      case 3:
+        setActiveIcon('fourth-active');
+        onHoverCard('fourth');
+        break;
       default:
         setActiveIcon(null);
         onHoverCard(null);
     }
   };
 
-  const handleCardClick = (cardName: string) => {
+  const handleCardClick = (cardName: CardType) => {
     setSelectedCard(cardName);
     setIsModalOpen(true);
   };
+
+  useEffect(() => {
+    const handleBackgroundChange = (cardName: string | null) => {
+      const body = document.querySelector('body');
+      if (!body) return;
+
+      switch (cardName) {
+        case 'first':
+          body.style.backgroundImage = 'url(/images/bg-1.webp)';
+          break;
+        case 'second':
+          body.style.backgroundImage = 'url(/images/bg-2.webp)';
+          break;
+        case 'third':
+          body.style.backgroundImage = 'url(/images/bg-3.webp)';
+          break;
+        case 'fourth':
+          body.style.backgroundImage = 'url(/images/bg-4.webp)';
+          break;
+        default:
+          body.style.backgroundImage = 'url(/images/bg-1.webp)';
+      }
+    };
+
+    handleBackgroundChange(activeIcon?.split('-')[0] || null);
+  }, [activeIcon]);
 
   return (
     <div className={rootClassName}>
@@ -207,7 +267,6 @@ const BuildimCards: FC<BuildimCardsProps> = ({ className, onHoverCard }) => {
             navigation: false,
             pagination: false,
             scrollbar: false,
-            autoplay: false,
           },
         }}
         onSlideChange={handleSlideChange}
@@ -244,19 +303,31 @@ const BuildimCards: FC<BuildimCardsProps> = ({ className, onHoverCard }) => {
             />
           </div>
         </SwiperSlide>
+        <SwiperSlide className={styles.swiperSlide}>
+          <div
+            onMouseEnter={() => handleSlideChange({ realIndex: 3 })}
+            onClick={() => handleCardClick('fourth')}
+          >
+            <BuildimCard
+              iconName={activeIcon === 'fourth-active' ? 'fourth-active' : 'fourth'}
+            />
+          </div>
+        </SwiperSlide>
       </Swiper>
 
       <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
-        {/* Заголовок */}
         <div className={styles.modalHeader}>
-          {/* Заголовок h2 */}
           <h2 className={styles.modalTitle}>
             {selectedCard === 'first' && (<TitleGradient text='Media buyer' />)}
             {selectedCard === 'second' && (<TitleGradient text='Team lead' />)}
             {selectedCard === 'third' && (<TitleGradient text='Designer' />)}
+            {selectedCard === 'fourth' && (
+              <div className={styles.modalTitle__team}>
+                <TitleGradient text={t.modalTitle.fourth} />
+              </div>
+            )}
           </h2>
 
-          {/* Блок с SVG отображается только для первой и третьей карточки */}
           {(selectedCard === 'first' || selectedCard === 'third') && (
             <div className={styles.modalIcons}>
               <svg width="84" height="39" viewBox="0 0 84 39" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -274,41 +345,79 @@ const BuildimCards: FC<BuildimCardsProps> = ({ className, onHoverCard }) => {
           )}
         </div>
 
-        {/* Основной текст */}
         <div className={styles.modalText}>
           {selectedCard && (
             <p className={styles.modalText__inside}>{t.descriptions[selectedCard]}</p>
           )}
         </div>
 
-        <div className={styles.modalSection}>
-          <h3 className={styles.modalSubtitle}>{t.subTitleFirst}</h3>
-          {selectedCard && (
-            <ul className={styles.modalList}>
-              {t.tasks[selectedCard]?.map((task: string, i: number) => (
-                <li key={i}>{task}</li>
-              ))}
-            </ul>
-          )}
-        </div>
+        {selectedCard !== 'fourth' ? (
+          <>
+            <div className={styles.modalSection}>
+              <h3 className={styles.modalSubtitle}>{t.subTitleFirst}</h3>
+              {selectedCard && (
+                <ul className={styles.modalList}>
+                  {t.tasks[selectedCard]?.map((task: string, i: number) => (
+                    <li key={i}>{task}</li>
+                  ))}
+                </ul>
+              )}
+            </div>
 
-        <div className={styles.modalSection}>
-          <h3 className={styles.modalSubtitle}>{t.subTitleSecond}</h3>
-          {selectedCard && (
-            <ul className={styles.modalList}>
-              {t.expectations[selectedCard]?.map((exp: string, i: number) => (
-                <li key={i}>{exp}</li>
-              ))}
-            </ul>
-          )}
-        </div>
+            <div className={styles.modalSection}>
+              <h3 className={styles.modalSubtitle}>{t.subTitleSecond}</h3>
+              {selectedCard && (
+                <ul className={styles.modalList}>
+                  {t.expectations[selectedCard]?.map((exp: string, i: number) => (
+                    <li key={i}>{exp}</li>
+                  ))}
+                </ul>
+              )}
+            </div>
+          </>
+        ) : (
+          <>
+            <div className={styles.modalSection}>
+              <h3 className={styles.modalSubtitle}>{t.subTitleTeam}</h3>
+              <ul className={styles.modalList}>
+                {t.tasks[selectedCard].map((task: string, i: number) => (
+                  <li key={i}>{task}</li>
+                ))}
+              </ul>
+            </div>
+
+            <div className={styles.modalSection}>
+              <h3 className={styles.modalSubtitle}>{t.subTitleTeamSecond}</h3>
+              <ul className={styles.modalList}>
+                {t.expectations[selectedCard].map((exp: string, i: number) => (
+                  <li key={i}>{exp}</li>
+                ))}
+              </ul>
+            </div>
+
+            <div className={styles.modalSection}>
+              <h3 className={styles.modalSubtitle}>{t.subTitleTeamThird}</h3>
+              <ul className={styles.modalList}>
+                {t.teamProcess.map((process: string, i: number) => (
+                  <li key={i}>{process}</li>
+                ))}
+              </ul>
+            </div>
+          </>
+        )}
 
         <div className={styles.modalText}>
           {selectedCard && (
             <p className={styles.modalText__inside}>{t.hrMessages[selectedCard]}</p>
           )}
         </div>
-        <a href="https://t.me/Var_marsa">
+
+        <a
+          href="https://t.me/marsa_hr"
+          target="_blank"
+          rel="noopener noreferrer"
+          className={styles.modalLink}
+        >
           <ButtonTwo className={styles.modalButton} text={t.button} big={false} modal={true} />
         </a>
       </Modal>

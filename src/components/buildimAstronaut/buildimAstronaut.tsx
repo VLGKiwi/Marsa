@@ -47,6 +47,20 @@ const BuildimAstronaut: FC<BuildimAstronautProps> = ({ className, activeImage })
           [styles.visible]: activeImage === 'third', // Видимое, если activeImage === 'third'
         })}
       />
+
+
+
+      {/* Четвертое изображение */}
+      <Image
+        src="/images/fourth.webp"
+        width={1200}
+        height={700}
+        quality={100}
+        alt="Fourth Astronaut"
+        className={classNames(styles.image, {
+          [styles.visible]: activeImage === 'fourth', // Видимое, если activeImage === 'fourth'
+        })}
+      />
     </div>
   );
 };
