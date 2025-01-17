@@ -24,7 +24,7 @@ const Footer: FC = () => {
     <footer className={styles.root}>
       <Wrapper className={styles.wrapper}>
         <div className={styles.info}>
-          <a target="_blank" href="/vacancy">
+          <a target="_blank" href="/careers">
             {translations[language].vacancies}
           </a>
         </div>

@@ -375,7 +375,7 @@ const Part: FC<PartProps> = ({ className }) => {
             <TitleGradient text={translations[language].teamTitle} />
           </h2>
           <p>{translations[language].teamPar}</p>
-          <Link href='/vacancy'><ButtonTwo text={translations[language].teamButton} /></Link>
+          <Link href='/careers'><ButtonTwo text={translations[language].teamButton} /></Link>
         </div>
         <div
           className={rootClassName}
@@ -457,7 +457,7 @@ const Part: FC<PartProps> = ({ className }) => {
             <TitleGradient text={translations[language].teamTitle} />
           </h2>
           <p>{translations[language].teamPar}</p>
-          <Link href='/vacancy'><ButtonTwo text={translations[language].teamButton} /></Link>
+          <Link href='/careers'><ButtonTwo text={translations[language].teamButton} /></Link>
         </div>
         <div
           className={rootClassName}
@@ -538,7 +538,7 @@ const Part: FC<PartProps> = ({ className }) => {
             <TitleGradient text={translations[language].teamTitle} />
           </h2>
           <p>{translations[language].teamPar}</p>
-          <Link href='/vacancy'><ButtonTwo text={translations[language].teamButton} /></Link>
+          <Link href='/careers'><ButtonTwo text={translations[language].teamButton} /></Link>
         </div>
         <div
           className={rootClassName}

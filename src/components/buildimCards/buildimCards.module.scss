@@ -58,15 +58,19 @@
         font-size: inherit;
         letter-spacing: inherit;
         line-height: 1.2;
-        height: 81px;
+        height: 100px;
+        margin: 0;
+        text-align: left;
         display: inline-block;
+        max-width: 700px;
       }
 
       @include tablet-small {
         font-size: 24px;
 
         h2, span {
-          height: 72px;
+          height: 82px;
+          font-size: 18px;
         }
       }
     }

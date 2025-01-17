@@ -211,32 +211,6 @@ const BuildimCards: FC<BuildimCardsProps> = ({ className, onHoverCard }) => {
     setIsModalOpen(true);
   };
 
-  useEffect(() => {
-    const handleBackgroundChange = (cardName: string | null) => {
-      const body = document.querySelector('body');
-      if (!body) return;
-
-      switch (cardName) {
-        case 'first':
-          body.style.backgroundImage = 'url(/images/bg-1.webp)';
-          break;
-        case 'second':
-          body.style.backgroundImage = 'url(/images/bg-2.webp)';
-          break;
-        case 'third':
-          body.style.backgroundImage = 'url(/images/bg-3.webp)';
-          break;
-        case 'fourth':
-          body.style.backgroundImage = 'url(/images/bg-4.webp)';
-          break;
-        default:
-          body.style.backgroundImage = 'url(/images/bg-1.webp)';
-      }
-    };
-
-    handleBackgroundChange(activeIcon?.split('-')[0] || null);
-  }, [activeIcon]);
-
   return (
     <div className={rootClassName}>
       <Swiper

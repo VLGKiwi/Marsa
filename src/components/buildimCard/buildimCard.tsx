@@ -15,9 +15,10 @@ import CardThirdActive from '@icons/vacancy-card-third-active.svg';
 import CardFourthActive from '@icons/vacancy-card-fourth-active.svg';
 
 type IconName = 'first' | 'second' | 'third' | 'fourth' | 'first-active' | 'second-active' | 'third-active' | 'fourth-active';
+type SvgComponent = React.FunctionComponent<React.SVGProps<SVGSVGElement>>;
 
 // Обновленный объект для маппинга SVG
-const SVG_MAP: Record<IconName, any> = {
+const SVG_MAP: Record<IconName, SvgComponent> = {
   first: CardFirst,
   second: CardSecond,
   third: CardThird,
@@ -42,8 +43,7 @@ const BuildimCard: FC<BuildimCardProps> = ({ className, iconName = 'first' }) =>
 
   return (
     <div className={rootClassName}>
-      {/* Рендерим выбранную SVG */}
-      <SelectedIcon alt="Graphic Icon" width={238} height={150} />
+      <SelectedIcon width={238} height={150} />
     </div>
   );
 };

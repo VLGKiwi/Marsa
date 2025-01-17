@@ -115,7 +115,7 @@ const Introduce: FC<IntroduceProps> = ({ className }) => {
         quality={100}
         className={styles.image}
       />
-      <div className={styles.button}><Link href='/vacancy'><ButtonBlue>{translations[language].vacancies}</ButtonBlue></Link></div>
+      <div className={styles.button}><Link href='/careers'><ButtonBlue>{translations[language].vacancies}</ButtonBlue></Link></div>
       {isVisible && <AnimatedImage className={styles.introducesvg} />}
       <div className={styles.marsa}>
         {isMobile ? (
