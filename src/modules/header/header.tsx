@@ -10,6 +10,7 @@ import Logo from './logo';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useLanguage, Language } from '@/service/language';
+import { BurgerMenu } from '@/components/burgerMenu';
 
 // Объект переводов
 const translations: Record<Language, { about: string }> = {
@@ -63,7 +64,8 @@ const Header: FC<HeaderProps> = ({ className }) => {
           {/* Отображение TelegramLink для маленьких экранов */}
           {!isLargeScreen && <InstagramLink className={styles.instagram} />}
           {!isLargeScreen && <TelegramLink className={styles.telegramSmall} />}
-          <LanguageLinks className={styles.language__links} />
+          {isLargeScreen && <LanguageLinks className={styles.language__links} />}
+          <BurgerMenu />
         </div>
       </Wrapper>
     </header>
